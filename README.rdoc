@@ -1,0 +1,16 @@
+= auto_html
+
+Rails plugin for easy embedding HTML of links, images and youtubes (more to come) in model attribute ...
+
+
+== example usage
+
+	class BlogPost < ActiveRecord::Base
+	
+		auto_html :body, :body_html
+	end
+	
+	...
+	
+	BlogPost.create(:body => 'Hey, visit my blog at http://rors.org')
+	=> #<BlogPost id: 1, body: 'Hey, visit my blog at http://rors.org', body_html: '<p>Hey, visit my blog at <a href="http://rors.org" rel="nofollow" target="_blank">http://rors.org</a></p>'>
