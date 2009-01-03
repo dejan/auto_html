@@ -3,8 +3,8 @@ require File.dirname(__FILE__) + '/auto_html/filters/image'
 require File.dirname(__FILE__) + '/auto_html/filters/youtube'
 
 module AutoHtml
-  def self.included(mod)
-    mod.extend(ClassMethods)
+  def self.included(base)
+    base.extend(ClassMethods)
   end
 
   module ClassMethods
