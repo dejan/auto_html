@@ -7,7 +7,7 @@ Rails plugin for easy embedding HTML of links, images and youtubes (more to come
 
 	class BlogPost < ActiveRecord::Base
 	
-		auto_html :body, :body_html
+	  auto_html :body, :body_html, [:link, :image, :youtube]
 	end
 	
 	...
