@@ -24,17 +24,15 @@ module AutoHtml
   end
 
   module InstanceMethods
-    include Filters::Link, Filters::Image, Filters::Youtube
+    include Filters
 
     def do_auto_html(raw_value)
-      simple_format(raw_value.gsub(AUTO_LINK_RE) { |url| transform(url) })
+      simple_format(raw_value.gsub(AUTO_LINK_RE) { |url| transform(url) || url })
     end
 
     def transform(url)
-      (auto_html_filters.include?(:image)     && auto_image(url))   || 
-        (auto_html_filters.include?(:youtube) && auto_youtube(url)) ||
-          (auto_html_filters.include?(:link)  && auto_link(url, :all, :rel => "nofollow", :target => '_blank')) ||
-            url
+      filter = auto_html_filters.detect { |filter| send("auto_html_match_#{filter}", url) }
+      filter && send("auto_html_transform_#{filter}", url)
     end
   end
 end

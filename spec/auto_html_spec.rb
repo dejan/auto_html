@@ -8,7 +8,7 @@ describe AutoHtml do
       include AutoHtml::InstanceMethods
       
       def auto_html_filters
-        [:link, :image, :youtube]
+        [:image, :youtube, :link]
       end
     end
   end
