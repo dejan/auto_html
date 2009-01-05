@@ -1,4 +1,9 @@
-2009-01-01
+0.0.2 | 2009-01-04
+* deezer filter
+* ability to add your own filters in initializers script
+
+0.0.1 | 2009-01-01
 * Initial release, starting simple
 * Source & target attributes are configurable
+* link, image, youtube filters
 * Happy New Year :)
