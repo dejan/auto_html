@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + '/auto_html/filters/link'
 require File.dirname(__FILE__) + '/auto_html/filters/image'
 require File.dirname(__FILE__) + '/auto_html/filters/youtube'
+require File.dirname(__FILE__) + '/auto_html/filters/deezer'
 
 module AutoHtml
   def self.included(base)
