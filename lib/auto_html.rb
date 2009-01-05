@@ -16,11 +16,9 @@ module AutoHtml
       write_inheritable_attribute :auto_html_filters, filters
       class_inheritable_reader    :auto_html_filters
       
-      class_eval %{
-        def auto_html_prepare
-          self.send("#{htmlized_attr}=", do_auto_html(self.send("#{raw_attr}")))
-        end
-      }
+      define_method("auto_html_prepare") do
+        self.send("#{htmlized_attr}=", do_auto_html(self.send(raw_attr)))
+      end
     end
   end
 
