@@ -38,12 +38,17 @@ module AutoHtml
     include Filters
     
     def do_auto_html(raw_value)
-      simple_format(raw_value.gsub(AutoHtml.options[:token_match_regexp]) { |url| transform(url) || url })
+      simple_format(html_escape(raw_value).gsub(AutoHtml.options[:token_match_regexp]) { |url| transform(url) || url })
     end
 
     def transform(url)
       filter = auto_html_filters.detect { |filter| send("auto_html_match_#{filter}", url) }
       filter && send("auto_html_transform_#{filter}", url)
+    end
+    
+    def html_escape(s)
+      html_escape => { '&' => '&amp;', '"' => '&quot;', '>' => '&gt;', '<' => '&lt;' }
+      s.to_s.gsub(/[&\"><]/) { |special| html_escape[special] }
     end
   end
 end
