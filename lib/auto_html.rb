@@ -4,6 +4,13 @@ require File.dirname(__FILE__) + '/auto_html/filters/youtube'
 require File.dirname(__FILE__) + '/auto_html/filters/deezer'
 
 module AutoHtml
+  
+  # default options that can be overridden on the global level
+  @@options = {
+    :token_match_regexp => ActionView::Helpers::TextHelper::AUTO_LINK_RE
+  }
+  mattr_reader :options
+  
   def self.included(base)
     base.extend(ClassMethods)
   end
@@ -24,9 +31,9 @@ module AutoHtml
 
   module InstanceMethods
     include Filters
-
+    
     def do_auto_html(raw_value)
-      simple_format(raw_value.gsub(AUTO_LINK_RE) { |url| transform(url) || url })
+      simple_format(raw_value.gsub(AutoHtml.options[:token_match_regexp]) { |url| transform(url) || url })
     end
 
     def transform(url)
