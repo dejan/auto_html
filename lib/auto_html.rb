@@ -7,7 +7,8 @@ module AutoHtml
   
   # default options that can be overridden on the global level
   @@options = {
-    :token_match_regexp => ActionView::Helpers::TextHelper::AUTO_LINK_RE
+    :token_match_regexp => ActionView::Helpers::TextHelper::AUTO_LINK_RE,
+    :htmlized_attribute_suffix => '_html'
   }
   mattr_reader :options
   
@@ -16,7 +17,7 @@ module AutoHtml
   end
 
   module ClassMethods
-    def auto_html(raw_attr, htmlized_attr, filters = [:image, :youtube, :link])
+    def auto_html(raw_attr, filters = [:image, :youtube, :link])
       include AutoHtml::InstanceMethods
       before_save :auto_html_prepare
       
@@ -24,7 +25,8 @@ module AutoHtml
       class_inheritable_reader    :auto_html_filters
       
       define_method("auto_html_prepare") do
-        self.send("#{htmlized_attr}=", do_auto_html(self.send(raw_attr)))
+        self.send(raw_attr.to_s + AutoHtml.options[:htmlized_attribute_suffix] + "=", 
+          do_auto_html(self.send(raw_attr)))
       end
     end
   end
