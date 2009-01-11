@@ -17,7 +17,7 @@ module AutoHtml
   end
 
   module ClassMethods
-    def auto_html(raw_attr, filters = [:image, :youtube, :link])
+    def auto_html(raw_attrs, filters = [:image, :youtube, :link])
       include AutoHtml::InstanceMethods
       before_save :auto_html_prepare
       
@@ -25,8 +25,11 @@ module AutoHtml
       class_inheritable_reader    :auto_html_filters
       
       define_method("auto_html_prepare") do
-        self.send(raw_attr.to_s + AutoHtml.options[:htmlized_attribute_suffix] + "=", 
-          do_auto_html(self.send(raw_attr)))
+        raw_attrs = [raw_attrs] unless raw_attrs.respond_to?(:each)
+        raw_attrs.each do |raw_attr|
+          self.send(raw_attr.to_s + AutoHtml.options[:htmlized_attribute_suffix] + "=", 
+            do_auto_html(self.send(raw_attr)))
+        end
       end
     end
   end
