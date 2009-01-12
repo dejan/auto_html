@@ -47,7 +47,7 @@ module AutoHtml
     end
     
     def html_escape(s)
-      html_escape => { '&' => '&amp;', '"' => '&quot;', '>' => '&gt;', '<' => '&lt;' }
+      html_escape = { '&' => '&amp;', '"' => '&quot;', '>' => '&gt;', '<' => '&lt;' }
       s.to_s.gsub(/[&\"><]/) { |special| html_escape[special] }
     end
   end
