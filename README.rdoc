@@ -1,16 +1,32 @@
 = auto_html
 
-Rails plugin for easy embedding HTML of links, images and youtubes (more to come) in model attribute ...
+Rails plugin for easy converting URL's to appropriate HTML blocks for links, images, youtube, deezer, ... (more to come)
 
-
-== example usage
-
-	class BlogPost < ActiveRecord::Base
+== Quickstart
 	
-	  auto_html :body, [:image, :youtube, :link]
-	end
+= in model:
+
+	auto_html_for :body, [:simple_format, :image]
 	
-	...
+	# As a result you'll have:
 	
 	BlogPost.create(:body => 'Hey, visit my blog at http://rors.org')
 	=> #<BlogPost id: 1, body: 'Hey, visit my blog at http://rors.org', body_html: '<p>Hey, visit my blog at <a href="http://rors.org" rel="nofollow" target="_blank">http://rors.org</a></p>'>
+
+= in view:
+
+	auto_html(@comment.body, :image, :youtube, :link)
+
+== Tutorial
+
+Published at: http://elctech.com/....
+
+....
+
+include AutoHtml
+before_save :do_auto_html
+def do_auto_html
+  body_html = auto_html(body, [:simple_format, :image])
+end
+
+....
