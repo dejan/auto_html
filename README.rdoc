@@ -6,27 +6,11 @@ Rails plugin for easy converting URL's to appropriate HTML blocks for links, ima
 	
 = in model:
 
-	auto_html_for :body, [:simple_format, :image]
-	
+	class BlogPost < ActiveRecord::Base
+	  auto_html_for :body, [:simple_format, :image]
+	end
+
 	# As a result you'll have:
 	
 	BlogPost.create(:body => 'Hey, visit my blog at http://rors.org')
 	=> #<BlogPost id: 1, body: 'Hey, visit my blog at http://rors.org', body_html: '<p>Hey, visit my blog at <a href="http://rors.org" rel="nofollow" target="_blank">http://rors.org</a></p>'>
-
-= in view:
-
-	auto_html(@comment.body, :image, :youtube, :link)
-
-== Tutorial
-
-Published at: http://elctech.com/....
-
-....
-
-include AutoHtml
-before_save :do_auto_html
-def do_auto_html
-  body_html = auto_html(body, [:simple_format, :image])
-end
-
-....
