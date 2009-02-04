@@ -1,5 +1,6 @@
 2009-02-04
 * Complete rewrite of the plugin
+* Backward compatibility broken
 
 2009-01-01
 * Initial release, starting simple
