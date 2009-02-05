@@ -1,27 +1,38 @@
 module AutoHtml
   class Filter
-    attr_accessor :regexp, :block
-    
-    def initialize(regexp, block)
-      @regexp = regexp
+
+    def initialize(block)
       @block = block
+      @options = {}
     end
-    
-    def apply(text)
-      if regexp
-        text.gsub(regexp) do |match|
-          block.call(match)
-        end
-      else
-        block.call(text.dup)
+
+    def self.create(name, &block)
+      returning Filter.new(block) do |filter|
+        AutoHtml.filters.merge!(name => filter)
       end
     end
-    
-    # posible solution for tweaking options. Example:
+
+    def with(options, &block)
+      @options = options
+      @block = block
+    end
+
+    def apply(text)
+      if @options.empty?
+        @block.call(text.dup)
+      else
+        @block.call(text.dup, @options)
+      end
+    end
+
     #
-    #   AutoHtml.filters[:youtube].tweak({:width => 300, :height => 200})
-    #
-    # def tweak
-    # end
+    # Tweaking options. Example:
+    # 
+    #   AutoHtml.filters[:youtube].tweak(:width => 300, :height => 200)
+    # 
+    def tweak(tweaked_options)
+      @options.merge!(tweaked_options)
+    end
+
   end
 end

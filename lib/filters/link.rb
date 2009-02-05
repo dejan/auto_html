@@ -1,6 +1,6 @@
 require 'action_view'
 
-AutoHtml.register_filter(:link) do |text|
+AutoHtml::Filter.create(:link) do |text|
 
   include ActionView::Helpers::TextHelper
   include ActionView::Helpers::TagHelper

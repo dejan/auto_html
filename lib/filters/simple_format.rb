@@ -1,4 +1,4 @@
-AutoHtml.register_filter(:simple_format) do |text|
+AutoHtml::Filter.create(:simple_format) do |text|
   start_tag = '<p>'
   text.gsub!(/\r\n?/, "\n")                    # \r\n and \r -> \n
   text.gsub!(/\n\n+/, "</p>\n\n#{start_tag}")  # 2+ newline  -> paragraph

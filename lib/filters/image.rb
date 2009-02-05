@@ -1,3 +1,5 @@
-AutoHtml.register_filter(:image, /http:\/\/.+(jpg|gif|png)/) do |match|
-  %|<img src="#{match}" alt=""/>|
+AutoHtml::Filter.create(:image) do |text|
+  text.gsub(/http:\/\/.+(jpg|gif|png)/) do |match|
+    %|<img src="#{match}" alt=""/>|
+  end
 end

@@ -1,12 +1,10 @@
 require File.join(File.dirname(__FILE__), 'filter')
+require 'rubygems'
+require 'active_support'
 
 module AutoHtml
   @@filters = {}
-  # mattr_reader :filters
-
-  def self.register_filter(name, regexp = nil, &block)
-    @@filters.merge!(name => Filter.new(regexp, block))
-  end
+  mattr_reader :filters
 
   def auto_html(raw, filters)
     [filters].flatten.inject(raw) do |text, filter_name|
