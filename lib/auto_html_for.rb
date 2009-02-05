@@ -16,6 +16,13 @@ module AutoHtmlFor
       before_save :auto_html_prepare
 
       define_method("auto_html_prepare") do
+        auto_html_methods = ["auto_html_prepare_body"]
+        auto_html_methods.each do |method|
+          self.send(method)
+        end
+      end
+      
+      define_method("auto_html_prepare_#{raw_attr}") do
         self.send(raw_attr.to_s + AutoHtmlFor.options[:htmlized_attribute_suffix] + "=", 
           auto_html(self.send(raw_attr), filters))
       end
