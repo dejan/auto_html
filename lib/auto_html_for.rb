@@ -16,7 +16,7 @@ module AutoHtmlFor
       before_save :auto_html_prepare
 
       define_method("auto_html_prepare") do
-        auto_html_methods = ["auto_html_prepare_body"]
+        auto_html_methods = self.methods.select { |m| m=~/^auto_html_prepare_/ }
         auto_html_methods.each do |method|
           self.send(method)
         end
