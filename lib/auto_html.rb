@@ -4,9 +4,6 @@ require 'rubygems'
 require 'active_support'
 
 module AutoHtml
-
-  # mattr_reader :filters
-
   def auto_html(raw, &proc)
     builder = Builder.new(raw)
     builder.instance_eval(&proc)

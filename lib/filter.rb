@@ -20,14 +20,5 @@ module AutoHtml
       end
     end
 
-    #
-    # Tweaking options. Example:
-    # 
-    #   AutoHtml.filters[:youtube].tweak(:width => 300, :height => 200)
-    # 
-    def tweak(tweaked_options)
-      @options.merge!(tweaked_options)
-    end
-
   end
 end
