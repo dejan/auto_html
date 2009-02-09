@@ -1,6 +1,6 @@
 require 'action_view'
 
-AutoHtml::Filter.create(:link).with(:html_options => {:rel => "nofollow", :target => '_blank'}) do |text, options|
+AutoHtml::Builder.add_filter(:link).with(:html_options => {}) do |text, options|
 
   include ActionView::Helpers::TextHelper
   include ActionView::Helpers::TagHelper

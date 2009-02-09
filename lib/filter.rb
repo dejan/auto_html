@@ -6,22 +6,17 @@ module AutoHtml
       @options = {}
     end
 
-    def self.create(name, &block)
-      returning Filter.new(block) do |filter|
-        AutoHtml.filters.merge!(name => filter)
-      end
-    end
-
     def with(options, &block)
       @options = options
       @block = block
     end
 
-    def apply(text)
-      if @options.empty?
+    def apply(text, options = {})
+      _options = @options.merge(options)
+      if _options.empty?
         @block.call(text.dup)
       else
-        @block.call(text.dup, @options)
+        @block.call(text.dup, _options)
       end
     end
 

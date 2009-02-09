@@ -1,16 +1,15 @@
 require File.join(File.dirname(__FILE__), 'filter')
+require File.join(File.dirname(__FILE__), 'builder')
 require 'rubygems'
 require 'active_support'
 
 module AutoHtml
-  @@filters = {}
-  mattr_reader :filters
 
-  def auto_html(raw, filters)
-    [filters].flatten.inject(raw) do |text, filter_name|
-      filter = @@filters[filter_name]
-      filter.apply(text)
-    end
+  # mattr_reader :filters
+
+  def auto_html(raw, &proc)
+    builder = Builder.new(raw)
+    builder.instance_eval(&proc)
   end
 end
 
