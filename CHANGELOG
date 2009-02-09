@@ -1,3 +1,7 @@
+2009-02-09
+* Block instead of array of symbols for invoking filters
+* Backward compatibility broken
+
 2009-02-04
 * Complete rewrite of the plugin
 * Backward compatibility broken
