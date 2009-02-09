@@ -25,6 +25,6 @@ describe AutoHtml do
       auto.image
       auto.link
     end.
-      should == '<p>Check the logo: <img src="http://rors.org/images/rails.png" alt=""/>. Visit: <a href="http://rubyonrails.org" rel="nofollow" target="_blank">http://rubyonrails.org</a></p>'
+      should == '<p>Check the logo: <img src="http://rors.org/images/rails.png" alt=""/>. Visit: <a href="http://rubyonrails.org">http://rubyonrails.org</a></p>'
   end
 end
