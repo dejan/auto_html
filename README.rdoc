@@ -3,18 +3,18 @@
 Rails plugin for easy converting URL's to appropriate HTML blocks for links, images, youtube, deezer, ... (more to come)
 
 == Quickstart
-	
-= in model:
-
+ 
+  # In model have something like
+  
   class BlogPost < ActiveRecord::Base
     auto_html_for(:body) do |auto|
       auto.html_escape
-      auto.simple_format
       auto.link(:html_options => {:rel => "nofollow"})
-    end		
+      auto.simple_format
+    end
   end
 
-  # As a result you'll have:
-	
+  # ... and as a result you'll have this behavior:
+
   BlogPost.create(:body => 'Hey, visit my blog at http://rors.org')  
   => #<BlogPost id: 1, body: 'Hey, visit my blog at http://rors.org', body_html: '<p>Hey, visit my blog at <a href="http://rors.org" rel="nofollow">http://rors.org</a></p>'>
