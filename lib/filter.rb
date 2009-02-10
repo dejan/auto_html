@@ -1,6 +1,6 @@
 module AutoHtml
-  class Filter
 
+  class Filter
     def initialize(block)
       @block = block
       @options = {}
@@ -19,6 +19,6 @@ module AutoHtml
         @block.call(text.dup, _options)
       end
     end
-
   end
+
 end

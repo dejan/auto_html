@@ -1,34 +1,7 @@
-require 'action_view'
-include ActionView::Helpers::TagHelper
-
-AutoHtml.add_filter(:link).
-  with(
-    :html_options => {},
-    :auto_link_re => %r{
-                  (                          # leading text
-                    <\w+.*?>|                # leading HTML tag, or
-                    [^=!:'"/]|               # leading punctuation, or
-                    ^                        # beginning of line
-                  )
-                  (
-                    (?:https?://)|           # protocol spec, or
-                    (?:www\.)                # www.*
-                  )
-                  (
-                    [-\w]+                   # subdomain or domain
-                    (?:\.[-\w]+)*            # remaining subdomains or domain
-                    (?::\d+)?                # port
-                    (?:/(?:[~\w\+@%=\(\)-]|(?:[,.;:'][^\s$]))*)* # path
-                    (?:\?[\w\+@%&=.;:-]+)?     # query string
-                    (?:\#[\w\-]*)?           # trailing anchor
-                  )
-                  ([[:punct:]]|<|$|)       # trailing text
-                 }x) do |text, options|
-
-  auto_link_re = options[:auto_link_re]
+AutoHtml.add_filter(:link).with(:html_options => {}) do |text, options|
   html_options = options[:html_options]
   extra_options = tag_options(html_options.stringify_keys) || ""
-  text.gsub(options[:auto_link_re]) do
+  text.gsub(AUTO_LINK_RE) do
     all, a, b, c, d = $&, $1, $2, $3, $4
     if a =~ /<a\s/i # don't replace URL's that are already linked
       all
