@@ -6,16 +6,15 @@ Rails plugin for easy converting URL's to appropriate HTML blocks for links, ima
 	
 = in model:
 
-	class BlogPost < ActiveRecord::Base
-		auto_html_for(:body) do |auto|
-		  auto.html_escape
-		  auto.simple_format
-		  auto.link(:html_options => {:rel => "nofollow"})
-		end
-		
-	end
+  class BlogPost < ActiveRecord::Base
+    auto_html_for(:body) do |auto|
+      auto.html_escape
+      auto.simple_format
+      auto.link(:html_options => {:rel => "nofollow"})
+    end		
+  end
 
-	# As a result you'll have:
+  # As a result you'll have:
 	
-	BlogPost.create(:body => 'Hey, visit my blog at http://rors.org')
-	=> #<BlogPost id: 1, body: 'Hey, visit my blog at http://rors.org', body_html: '<p>Hey, visit my blog at <a href="http://rors.org" rel="nofollow">http://rors.org</a></p>'>
+  BlogPost.create(:body => 'Hey, visit my blog at http://rors.org')  
+  => #<BlogPost id: 1, body: 'Hey, visit my blog at http://rors.org', body_html: '<p>Hey, visit my blog at <a href="http://rors.org" rel="nofollow">http://rors.org</a></p>'>
