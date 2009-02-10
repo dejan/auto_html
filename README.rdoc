@@ -2,8 +2,6 @@
 
 Rails plugin for easy converting URL's to appropriate HTML blocks for links, images, youtube, deezer, ... (more to come)
 
-== Quickstart
- 
   # In model have something like
   
   class BlogPost < ActiveRecord::Base
