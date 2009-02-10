@@ -1,4 +1,9 @@
-AutoHtml::Builder.add_filter(:html_escape) do |text|
-  HTML_ESCAPE = { '&' => '&amp;',  '>' => '&gt;',   '<' => '&lt;', '"' => '&quot;' }
-  text.to_s.gsub(/[&"><]/) { |special| HTML_ESCAPE[special] }
+AutoHtml::Builder.add_filter(:html_escape).with(
+  :map => { 
+    '&' => '&amp;',  
+    '>' => '&gt;',
+    '<' => '&lt;',
+    '"' => '&quot;' }) do |text, options|
+
+  text.to_s.gsub(/[&"><]/) { |special| options[:map][special] }
 end
