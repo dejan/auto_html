@@ -1,4 +1,4 @@
-AutoHtml::Builder.add_filter(:html_escape).with(
+AutoHtml.add_filter(:html_escape).with(
   :map => { 
     '&' => '&amp;',  
     '>' => '&gt;',

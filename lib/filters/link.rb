@@ -1,7 +1,7 @@
 require 'action_view'
 include ActionView::Helpers::TagHelper
 
-AutoHtml::Builder.add_filter(:link).
+AutoHtml.add_filter(:link).
   with(
     :html_options => {},
     :auto_link_re => %r{
