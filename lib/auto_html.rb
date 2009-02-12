@@ -1,7 +1,5 @@
 require File.join(File.dirname(__FILE__), 'filter')
 require File.join(File.dirname(__FILE__), 'builder')
-require 'rubygems'
-require 'active_support'
 
 module AutoHtml
   def self.add_filter(name, &block)
