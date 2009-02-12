@@ -1,4 +1,8 @@
 AutoHtml.add_filter(:link).with(:html_options => {}) do |text, options|
+  require 'action_view'
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::TextHelper
+
   html_options = options[:html_options]
   extra_options = tag_options(html_options.stringify_keys) || ""
   text.gsub(AUTO_LINK_RE) do

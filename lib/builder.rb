@@ -1,5 +1,6 @@
 module AutoHtml
   class Builder
+
     @@filters = {}
 
     def initialize(text)

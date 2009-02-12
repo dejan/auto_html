@@ -1,11 +1,9 @@
-require 'action_view'
 require File.join(File.dirname(__FILE__), 'filter')
 require File.join(File.dirname(__FILE__), 'builder')
+require 'rubygems'
+require 'active_support'
 
 module AutoHtml
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::TextHelper
-
   def self.add_filter(name, &block)
     AutoHtml::Builder.add_filter(name, &block)
   end

@@ -7,23 +7,23 @@ describe AutoHtml do
   end
   
   it 'should apply simple_format filter' do
-    auto_html("Hey check out my blog => http://rors.org") {|auto| auto.simple_format}.
+    auto_html("Hey check out my blog => http://rors.org") { simple_format }.
       should == "<p>Hey check out my blog => http://rors.org</p>"
   end
   
   it 'should apply simple_format and image filter' do
-    auto_html("Check the logo: http://rors.org/images/rails.png") do |auto|
-      auto.simple_format
-      auto.image
+    auto_html("Check the logo: http://rors.org/images/rails.png") do
+      simple_format
+      image
     end.
       should == '<p>Check the logo: <img src="http://rors.org/images/rails.png" alt=""/></p>'
   end
   
   it 'should apply simple_format, image and link filter ' do
-    auto_html("Check the logo: http://rors.org/images/rails.png. Visit: http://rubyonrails.org") do |auto|
-      auto.simple_format
-      auto.image
-      auto.link
+    auto_html("Check the logo: http://rors.org/images/rails.png. Visit: http://rubyonrails.org") do
+      simple_format
+      image
+      link
     end.
       should == '<p>Check the logo: <img src="http://rors.org/images/rails.png" alt=""/>. Visit: <a href="http://rubyonrails.org">http://rubyonrails.org</a></p>'
   end

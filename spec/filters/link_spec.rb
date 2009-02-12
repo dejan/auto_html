@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe AutoHtml do
   it 'should transform URL to HTML links' do
-    auto_html("http://vukajlija.com") { |auto| auto.link }.
+    auto_html("http://vukajlija.com") { link }.
       should == '<a href="http://vukajlija.com">http://vukajlija.com</a>'
   end
   
