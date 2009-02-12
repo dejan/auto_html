@@ -1,19 +1,9 @@
-require File.join(File.dirname(__FILE__), 'filter')
-require File.join(File.dirname(__FILE__), 'builder')
-
-module AutoHtml
-  def self.add_filter(name, &block)
-    AutoHtml::Builder.add_filter(name, &block)
-  end
-
-  def auto_html(raw, &proc)
-    builder = Builder.new(raw)
-    builder.instance_eval(&proc)
-  end
+%w(base filter builder auto_html_for).each do |f|
+  require File.dirname(__FILE__) + "/auto_html/#{f}"
 end
 
 # Register built-in filters
 #
-Dir["#{File.join(File.dirname(__FILE__), 'filters')}/**/*"].each do |filter|
+Dir["#{File.dirname(__FILE__) + '/auto_html/filters'}/**/*"].each do |filter|
   require "#{filter}"
 end
