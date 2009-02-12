@@ -16,3 +16,5 @@ Rails plugin for easy converting URL's to appropriate HTML blocks for links, ima
 
   BlogPost.create(:body => 'Hey, visit my blog at http://rors.org')  
   => #<BlogPost id: 1, body: 'Hey, visit my blog at http://rors.org', body_html: '<p>Hey, visit my blog at <a href="http://rors.org" rel="nofollow">http://rors.org</a></p>'>
+
+Check http://www.elctech.com/projects/auto_html-plugin for more details.
