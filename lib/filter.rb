@@ -3,7 +3,7 @@ module AutoHtml
   class Filter
     def initialize(block)
       @block = block
-      @options = {}
+      @options = nil
     end
 
     def with(options, &block)
@@ -12,11 +12,11 @@ module AutoHtml
     end
 
     def apply(text, options = {})
-      _options = @options.merge(options)
-      if _options.empty?
-        @block.call(text.dup)
-      else
+      _options = @options && @options.merge(options)
+      if _options
         @block.call(text.dup, _options)
+      else
+        @block.call(text.dup)
       end
     end
   end

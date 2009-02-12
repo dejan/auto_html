@@ -7,7 +7,7 @@ Rails plugin for easy converting URL's to appropriate HTML blocks for links, ima
   class BlogPost < ActiveRecord::Base
     auto_html_for(:body) do
       html_escape
-      link(:html_options => {:rel => "nofollow"})
+      link(:rel => "nofollow")
       simple_format
     end
   end

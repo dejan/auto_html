@@ -2,7 +2,7 @@
 # ActionView::Helpers::TagHelper and
 # ActionView::Helpers::TextHelper
 #
-AutoHtml.add_filter(:link).with(:html_options => {}) do |text, options|
+AutoHtml.add_filter(:link).with({}) do |text, options|
   
   def tag_options(options)
     unless options.blank?
@@ -35,8 +35,7 @@ AutoHtml.add_filter(:link).with(:html_options => {}) do |text, options|
      }x
   end
 
-  html_options = options[:html_options]
-  extra_options = tag_options(html_options.stringify_keys) || ""
+  extra_options = tag_options(options.stringify_keys) || ""
   text.gsub(auto_link_re) do
     all, a, b, c, d = $&, $1, $2, $3, $4
     if a =~ /<a\s/i # don't replace URL's that are already linked
