@@ -1,20 +1,68 @@
 = auto_html
 
-Rails plugin for easy converting URL's to appropriate HTML blocks for links, images, youtube, deezer, ... (more to come)
+Rails plugin for easy converting URL's to appropriate HTML blocks for links, images, youtube, vimeo, deezer, ... (more to come)
 
-  # In model have something like
-  
-  class BlogPost < ActiveRecord::Base
-    auto_html_for(:body) do
+
+== Synopsis
+
+auto_html plugin is the perfect choice if you don't want to bother visitors with rich HTML editor or markup code, but you still want to allow them to embed video, images, links and more on your site, purely by pasting URL.
+
+Let's say you have model Comment with attribute body. Create another column in table Comments called body_html. Now have something like this: 
+
+  class Comment < ActiveRecord::Base
+    auto_html_for :body do
       html_escape
-      link(:rel => "nofollow")
+      youtube(:width => 400, :height => 250)
+      image
+      link(:target => "_blank", :rel => "nofollow")
       simple_format
     end
   end
 
-  # ... and as a result you'll have this behavior:
+... and you'll have this behaviour: 
 
-  BlogPost.create(:body => 'Hey, visit my blog at http://rors.org')  
-  => #<BlogPost id: 1, body: 'Hey, visit my blog at http://rors.org', body_html: '<p>Hey, visit my blog at <a href="http://rors.org" rel="nofollow">http://rors.org</a></p>'>
+  Comment.create(:body => 'Hey check out this cool video: http://www.youtube.com/watch?v=WdsGihou8J4')  
+  => #<Comment id: 123, body: 'Hey check out this cool video: http://www.youtube.com/watch?v=WdsGihou8J4', body_html: '<p>Hey check out this cool video: <object height="250" width="400"><param name="movie" value="http://www.youtube.com/v/WdsGihou8J4" /><param name="wmode" value="transparent" /><embed src="http://www.youtube.com/v/WdsGihou8J4" type="application/x-shockwave-flash" height="250" wmode="transparent" width="400"></embed></object></p>'>
 
-Check http://www.elctech.com/projects/auto_html-plugin for more details.
+Note that order of invoking filters is important, ie. you want html_escape as first and link amongst last, so that it doesn't transform youtube URL to plain link.
+
+
+Now all you have to do is to display it in template without escaping, since plugin took care of that:
+
+  <% for comment in @comments %>
+     <li><%= comment.body_html %></li>
+  <% end %>
+
+
+If you need to display preview, no problem. Have something like this as action in your controller:
+
+  def preview
+    comment = Comment.new(params[:comment])
+    comment.auto_html_prepare
+    render :text => comment.body_html
+  end
+
+Plugin is highly customizable, and you can easily create new filters that will transform user input any way you like. For instance, this is the filter for youtube that comes bundled with plugin:
+
+  AutoHtml.add_filter(:youtube).with(:width => 390, :height => 250) do |text, options|
+    text.gsub(/http:\/\/www.youtube\.com\/watch\?v=([A-Za-z0-9._%-]*)[&\w;=\+_\-]*/) do
+      youtube_id = $1
+      %{<object width="#{options[:width]}" height="#{options[:height]}"><param name="movie" value="http://www.youtube.com/v/#{youtube_id}"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/#{youtube_id}" type="application/x-shockwave-flash" wmode="transparent" width="#{options[:width]}" height="#{options[:height]}"></embed></object>}
+    end
+  end
+
+
+== Install
+
+  script/plugin install git://github.com/dejan/auto_html.git
+
+
+== Links:
+
+* http://www.elctech.com/projects/auto_html-plugin
+
+
+== Credits
+
+Author::       {Dejan Simic}[http://github.com/dejan]
+Contributor::  {Claudio Perez Gamayo}[http://github.com/crossblaim]

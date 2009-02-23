@@ -6,5 +6,8 @@ describe AutoHtml do
     auto_html("Hey check out my blog => http://rors.org") { simple_format }.should == 
       "<p>Hey check out my blog => http://rors.org</p>"
 
+    auto_html("Hey check out my code => http://github.com/dejan") { simple_format }.should == 
+      "<p>Hey check out my code => http://github.com/dejan</p>"
+
   end
 end
