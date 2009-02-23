@@ -7,9 +7,9 @@ describe AutoHtml do
   end
   
   it 'should transform URL to HTML links with html options' do
-    auto_html("http://vukajlija.com") do |auto| 
+    auto_html("http://rors.org") do |auto| 
       auto.link :rel => "nofollow", :target => "_blank"
     end.
-      should == '<a href="http://vukajlija.com" rel="nofollow" target="_blank">http://vukajlija.com</a>'
+      should == '<a href="http://rors.org" rel="nofollow" target="_blank">http://rors.org</a>'
   end
 end
