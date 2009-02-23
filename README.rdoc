@@ -64,5 +64,5 @@ Plugin is highly customizable, and you can easily create new filters that will t
 
 == Credits
 
-* Author::       {Dejan Simic}[http://github.com/dejan]
-* Contributor::  {Claudio Perez Gamayo}[http://github.com/crossblaim]
+Author::       {Dejan Simic}[http://github.com/dejan]
+Contributor::  {Claudio Perez Gamayo}[http://github.com/crossblaim]
