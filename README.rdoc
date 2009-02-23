@@ -52,6 +52,11 @@ Plugin is highly customizable, and you can easily create new filters that will t
   end
 
 
+== Bundled filters
+
+For filter list and options they support check: http://github.com/dejan/auto_html/tree/master/lib/auto_html/filters 
+
+
 == Install
 
   script/plugin install git://github.com/dejan/auto_html.git
