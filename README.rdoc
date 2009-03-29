@@ -64,6 +64,7 @@ For filter list and options they support check: http://github.com/dejan/auto_htm
 
 == Links:
 
+* http://auto_html.rors.org
 * http://www.elctech.com/projects/auto_html-plugin
 
 
