@@ -11,5 +11,9 @@ describe AutoHtml do
 
     auto_html('http://blog.phusion.nl/2009/04/16/phusions-one-year-anniversary-gift-phusion-passenger-220/') { image }.should_not == 
       '<img src="http://blog.phusion.nl/2009/04/16/phusions-one-year-anniversary-gif" alt=""/>'
+      
+    auto_html('http://www.lockhartfineart.com/images/Rio_Grande_Frost.JPG') { image }.should == 
+      '<img src="http://www.lockhartfineart.com/images/Rio_Grande_Frost.JPG" alt=""/>'
+
   end
 end
