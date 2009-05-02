@@ -15,5 +15,7 @@ describe AutoHtml do
     auto_html('http://www.lockhartfineart.com/images/Rio_Grande_Frost.JPG') { image }.should == 
       '<img src="http://www.lockhartfineart.com/images/Rio_Grande_Frost.JPG" alt=""/>'
 
+    auto_html('http://1.bp.blogspot.com/_Mj2OYyOJbIY/SfmcOSE8npI/AAAAAAAAIlo/Fr8f4opuSN4/s1600-h/_inglish-725743.jpg') { image }.should == 
+      '<img src="http://1.bp.blogspot.com/_Mj2OYyOJbIY/SfmcOSE8npI/AAAAAAAAIlo/Fr8f4opuSN4/s1600-h/_inglish-725743.jpg" alt=""/>'
   end
 end
