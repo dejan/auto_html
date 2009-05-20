@@ -17,5 +17,12 @@ describe AutoHtml do
 
     auto_html('http://1.bp.blogspot.com/_Mj2OYyOJbIY/SfmcOSE8npI/AAAAAAAAIlo/Fr8f4opuSN4/s1600-h/_inglish-725743.jpg') { image }.should == 
       '<img src="http://1.bp.blogspot.com/_Mj2OYyOJbIY/SfmcOSE8npI/AAAAAAAAIlo/Fr8f4opuSN4/s1600-h/_inglish-725743.jpg" alt=""/>'
+
+    auto_html('http://farm4.static.flickr.com/3664/3512431377_71b8d002ef.jpg?v=0') { image }.should == 
+      '<img src="http://farm4.static.flickr.com/3664/3512431377_71b8d002ef.jpg?v=0" alt=""/>'
+
+    auto_html('Do you like this logo http://rors.org/images/rails.png? Yeah?') { image }.should == 
+      'Do you like this logo <img src="http://rors.org/images/rails.png" alt=""/>? Yeah?'
+
   end
 end
