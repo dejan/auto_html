@@ -24,5 +24,8 @@ describe AutoHtml do
     auto_html('Do you like this logo http://rors.org/images/rails.png? Yeah?') { image }.should == 
       'Do you like this logo <img src="http://rors.org/images/rails.png" alt=""/>? Yeah?'
 
+    auto_html('http://tbn3.google.com/images?q=tbn:vS-jtEi9Xc8K6M:http://upload.wikimedia.org/wikipedia/commons/b/ba/Potturinn.jpeg') { image }.should == 
+      '<img src="http://tbn3.google.com/images?q=tbn:vS-jtEi9Xc8K6M:http://upload.wikimedia.org/wikipedia/commons/b/ba/Potturinn.jpeg" alt=""/>'
+
   end
 end
