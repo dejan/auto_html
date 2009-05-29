@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../test_helper'
+require File.dirname(__FILE__) + '/../unit_test_helper'
 
 class DeezerTest < Test::Unit::TestCase
 
