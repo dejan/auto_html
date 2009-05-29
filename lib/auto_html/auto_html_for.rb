@@ -21,7 +21,7 @@ module AutoHtmlFor
           self.send(method)
         end
       end
-      
+
       [raw_attrs].flatten.each do |raw_attr|
         define_method("auto_html_prepare_#{raw_attr}") do
           self.send(raw_attr.to_s + AutoHtmlFor.options[:htmlized_attribute_suffix] + "=", 

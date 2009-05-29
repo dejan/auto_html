@@ -3,7 +3,7 @@
 # ActionView::Helpers::TextHelper
 #
 AutoHtml.add_filter(:link).with({}) do |text, options|
-  
+
   def tag_options(options)
     unless options.blank?
       attrs = []
