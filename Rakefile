@@ -1,10 +1,9 @@
-desc 'Default: run specs.'
-task :default => :spec
+require 'rake/testtask'
 
-desc 'Alias for running specs'
-task :test => :spec
+desc 'Default: run tests'
+task :default => :test
 
-desc 'Run all specs'
-task :spec do
-  system('spec spec')
+desc 'Test AutoHtml'
+Rake::TestTask.new(:test) do |t|
+  t.pattern = 'test/**/*_test.rb'
 end
