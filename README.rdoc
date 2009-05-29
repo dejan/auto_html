@@ -12,9 +12,9 @@ Let's say you have model Comment with attribute body. Create another column in t
   class Comment < ActiveRecord::Base
     auto_html_for :body do
       html_escape
-      youtube(:width => 400, :height => 250)
       image
-      link(:target => "_blank", :rel => "nofollow")
+      youtube :width => 400, :height => 250
+      link :target => "_blank", :rel => "nofollow"
       simple_format
     end
   end
