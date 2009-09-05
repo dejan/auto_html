@@ -1,4 +1,5 @@
 require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + '/../fixture_setup'
 
 class Article < ActiveRecord::Base
   auto_html_for :body do
@@ -11,14 +12,7 @@ class Article < ActiveRecord::Base
 end
 
 class AutoHtmlForTest < Test::Unit::TestCase
-
-  def setup
-    fixtures_dir = File.dirname(__FILE__) + '/../fixtures'
-    connections = YAML.load_file("#{fixtures_dir}/database.yml")
-    ActiveRecord::Base.establish_connection(connections['sqlite3'])
-    ActiveRecord::Migration.verbose = false
-    load "#{fixtures_dir}/schema.rb"
-  end
+  include FixtureSetup
 
   def test_transform_after_save
     @article = Article.new(:body => 'Yo!')
@@ -32,6 +26,4 @@ class AutoHtmlForTest < Test::Unit::TestCase
     @article.save!
     assert_equal '<p><a href="http://vukajlija.com" rel="nofollow" target="_blank">http://vukajlija.com</a></p>', @article.body_html
   end
-
 end
-
