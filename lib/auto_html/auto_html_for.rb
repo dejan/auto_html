@@ -1,7 +1,6 @@
 module AutoHtmlFor
 
   # default options that can be overridden on the global level
-  puts "aaa" if defined?(@@options)
   @@options = {
     :htmlized_attribute_suffix => '_html'
   }
