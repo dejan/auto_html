@@ -1,6 +1,7 @@
 module AutoHtmlFor
 
   # default options that can be overridden on the global level
+  puts "aaa" if defined?(@@options)
   @@options = {
     :htmlized_attribute_suffix => '_html'
   }
@@ -24,7 +25,10 @@ module AutoHtmlFor
 
       [raw_attrs].flatten.each do |raw_attr|
         define_method("auto_html_prepare_#{raw_attr}") do
-          self.send(raw_attr.to_s + AutoHtmlFor.options[:htmlized_attribute_suffix] + "=", 
+          suffix = 
+            AutoHtmlFor.options[:htmlized_attribute_suffix] ||
+              AutoHtmlFor.options[:htmlized_attribute_suffix] 
+          self.send(raw_attr.to_s + suffix + "=", 
             auto_html(self.send(raw_attr), &proc))
         end
       end

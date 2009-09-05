@@ -1,6 +1,6 @@
 = auto_html
 
-Rails plugin for embedding rich content by converting provided URL's to appropriate HTML blocks for links, images, youtube, vimeo, google video, deezer and more.
+Rails plugin for embedding rich content by converting provided URL's to appropriate HTML blocks for links, images, youtube, vimeo, google video and more.
 
 
 == Synopsis
