@@ -7,6 +7,11 @@ class LinkTest < Test::Unit::TestCase
     assert_equal '<a href="http://vukajlija.com">http://vukajlija.com</a>', result
   end
 
+  def test_transform_with_the_slash_at_the_end
+    result = auto_html("http://github.com/") { link }
+    assert_equal '<a href="http://github.com/">http://github.com/</a>', result
+  end
+
   def test_transform_with_param
     result = auto_html('http://google.com/abc?query=ruby') { link }
     assert_equal '<a href="http://google.com/abc?query=ruby">http://google.com/abc?query=ruby</a>', result
