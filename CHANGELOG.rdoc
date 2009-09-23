@@ -1,3 +1,7 @@
+== 1.1.2, released 2009-09-24
+
+* link filter fix. Closes: http://github.com/dejan/auto_html/issues#issue/2 
+
 == 1.1.1, released 2009-09-06
 
 * test_helper fix
