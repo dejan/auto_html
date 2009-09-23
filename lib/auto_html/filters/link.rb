@@ -28,7 +28,7 @@ AutoHtml.add_filter(:link).with({}) do |text, options|
         (?:\.[-\w]+)*            # remaining subdomains or domain
         (?::\d+)?                # port
         (?:/(?:[~\w\+@%=\(\)-]|(?:[,.;:'][^\s$]))*)* # path
-        (?:[\?|\#][\w\+@%&=.;:-]+)?     # query string
+        (?:[\?\#][\w\+@%&=.;:-]+)?     # query string
         (?:\#[\w\-]*)?           # trailing anchor
       )
       ([[:punct:]]|<|$|)       # trailing text
