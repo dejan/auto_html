@@ -1,6 +1,6 @@
 = auto_html
 
-Rails plugin for embedding rich content by converting provided URL's to appropriate HTML blocks for links, images, youtube, vimeo, google video and more.
+Rails plugin for transforming urls to appropriate resource (image, link, YouTube, Vimeo video,...). Check out the {live demo}[http://auto_html.rors.org].
 
 
 == Synopsis
@@ -63,7 +63,7 @@ For filter list and options they support check: http://github.com/dejan/auto_htm
 To enable the library in your Rails 2.1 (or greater) project, use the gem configuration method in "config/environment.rb"
 
   Rails::Initializer.run do |config|
-    config.gem 'dejan-auto_html', :version => '~> 1.1.0', :lib => 'auto_html', :source => 'http://gems.github.com'
+    config.gem 'dejan-auto_html', :version => '~> 1.1.2', :lib => 'auto_html', :source => 'http://gems.github.com'
   end
 
 === As a Rails plugin
