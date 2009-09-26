@@ -64,7 +64,7 @@ NOTE: auto_html uses Rails' engine for discovering links. There are some bugs wi
 To enable the library in your Rails 2.1 (or greater) project, use the gem configuration method in "config/environment.rb"
 
   Rails::Initializer.run do |config|
-    config.gem 'dejan-auto_html', :version => '~> 1.1.2', :lib => 'auto_html', :source => 'http://gems.github.com'
+    config.gem 'dejan-auto_html', :version => '~> 1.2.0', :lib => 'auto_html', :source => 'http://gems.github.com'
   end
 
 === As a Rails plugin
