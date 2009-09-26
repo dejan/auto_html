@@ -13,13 +13,23 @@ class LinkTest < Test::Unit::TestCase
   end
 
   def test_transform_with_param
-    result = auto_html('http://google.com/abc?query=ruby') { link }
-    assert_equal '<a href="http://google.com/abc?query=ruby">http://google.com/abc?query=ruby</a>', result
+    result = auto_html('http://example.com/abc?query=ruby') { link }
+    assert_equal '<a href="http://example.com/abc?query=ruby">http://example.com/abc?query=ruby</a>', result
+  end
+
+  def test_transform_with_param_and_trailing_dot
+    result = auto_html('http://example.com/abc?query=ruby.') { link }
+    assert_equal '<a href="http://example.com/abc?query=ruby">http://example.com/abc?query=ruby</a>.', result
+  end
+
+  def test_transform_with_anchor_and_trailing_dot
+    result = auto_html('http://example.com/example#id=123.12.') { link }
+    assert_equal '<a href="http://example.com/example#id=123.12">http://example.com/example#id=123.12</a>.', result
   end
 
   def test_transform_with_params
     result = auto_html('http://www.youtube.com/watch?v=s5C5Zk4kobo&feature=related') { link }
-    assert_equal '<a href="http://www.youtube.com/watch?v=s5C5Zk4kobo&feature=related">http://www.youtube.com/watch?v=s5C5Zk4kobo&feature=related</a>', result
+    assert_equal '<a href="http://www.youtube.com/watch?v=s5C5Zk4kobo&amp;feature=related">http://www.youtube.com/watch?v=s5C5Zk4kobo&amp;feature=related</a>', result
   end
 
   def test_transform_with_commas
@@ -29,7 +39,7 @@ class LinkTest < Test::Unit::TestCase
 
   def test_transform_complex_url
     result = auto_html("http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0") { link }
-    assert_equal '<a href="http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0">http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0</a>', result
+    assert_equal '<a href="http://www.google.com/#q=nikola+tesla&amp;ct=tesla09&amp;oi=ddle&amp;fp=Xmf0jJ9P_V0">http://www.google.com/#q=nikola+tesla&amp;ct=tesla09&amp;oi=ddle&amp;fp=Xmf0jJ9P_V0</a>', result
   end
 
   def test_transform_with_options
