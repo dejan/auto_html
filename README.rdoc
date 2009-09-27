@@ -54,7 +54,8 @@ Plugin is highly customizable, and you can easily create new filters that will t
 == Bundled filters
 
 For filter list and options they support check: http://github.com/dejan/auto_html/tree/master/lib/auto_html/filters 
-NOTE: auto_html uses Rails' engine for discovering links. There are some bugs with that engine in versions under Rails 2.3.
+
+NOTE: auto_html uses Rails' engine for discovering links. There are some bugs with that engine in versions under Rails 2.3.2.
 
 
 == Install
