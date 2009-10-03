@@ -55,10 +55,16 @@ Plugin is highly customizable, and you can easily create new filters that will t
 
 For filter list and options they support check: http://github.com/dejan/auto_html/tree/master/lib/auto_html/filters 
 
-NOTE: auto_html uses Rails' engine for discovering links. There are some bugs with that engine in versions under Rails 2.3.2.
-
 
 == Install
+
+=== Important note on versions
+
+As from version 1.2.0 auto_html uses Rails' engine for discovering links. There are some bugs with that engine in versions under Rails 2.3.2. so it's recommended you use auto_html 1.1.2 in that case, since internal engine is used in that version.
+
+App that uses Rails version::       <= 2.3.1::       >= 2.3.2
+should use auto_html version::         1.1.2::          1.2.0
+
 
 === As a gem
 
