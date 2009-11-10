@@ -21,5 +21,15 @@ class AutoHtmlTest < Test::Unit::TestCase
     result = auto_html("Check the logo: http://rors.org/images/rails.png. Visit: http://rubyonrails.org") { simple_format; image; link }
     assert_equal '<p>Check the logo: <img src="http://rors.org/images/rails.png" alt=""/>. Visit: <a href="http://rubyonrails.org">http://rubyonrails.org</a></p>', result
   end
+  
+  def test_should_return_blank_if_input_is_blank
+    result = auto_html("") { simple_format; image; link }
+    assert_equal "", result
+  end
+  
+  def test_should_not_apply_simple_format_if_input_is_nil
+    result = auto_html(nil) { simple_format; image; link }
+    assert_equal "", result
+  end
 
 end
