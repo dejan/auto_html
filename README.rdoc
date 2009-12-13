@@ -1,6 +1,6 @@
 = auto_html
 
-Rails plugin for transforming urls to appropriate resource (image, link, YouTube, Vimeo video,...). Check out the {live demo}[http://auto_html.rors.org].
+Rails plugin for transforming urls to appropriate resource (image, link, YouTube, Vimeo video,...). Check out the {live demo}[http://auto-html.rors.org].
 
 
 == Synopsis
@@ -82,7 +82,7 @@ To enable the library in your Rails 2.1 (or greater) project, use the gem config
 
 == Links:
 
-* http://auto_html.rors.org
+* http://auto-html.rors.org
 * http://www.elctech.com/projects/auto_html-plugin
 
 
