@@ -63,7 +63,7 @@ For filter list and options they support check: <http://github.com/dejan/auto_ht
 
 As from version 1.2.0 auto_html uses Rails' engine for discovering links. There are some bugs with that engine in versions under Rails 2.3.2. so it's recommended you use auto_html 1.1.2 in that case, since internal engine is used in that version.
 
-> for Rails <= 2.3.1 use auto_html 1.1.2
+> for Rails <= 2.3.1 use auto_html 1.1.2<br/>
 > for Rails >= 2.3.2 use auto_html 1.2.1
 
 
