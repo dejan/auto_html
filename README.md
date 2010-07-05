@@ -54,7 +54,7 @@ Plugin is highly customizable, and you can easily create new filters that will t
 
 ## Bundled filters
 
-For filter list and options they support check: http://github.com/dejan/auto_html/tree/master/lib/auto_html/filters 
+For filter list and options they support check: <http://github.com/dejan/auto_html/tree/master/lib/auto_html/filters>
 
 
 ## Install
@@ -63,8 +63,8 @@ For filter list and options they support check: http://github.com/dejan/auto_htm
 
 As from version 1.2.0 auto_html uses Rails' engine for discovering links. There are some bugs with that engine in versions under Rails 2.3.2. so it's recommended you use auto_html 1.1.2 in that case, since internal engine is used in that version.
 
-for Rails <= 2.3.1 use auto_html 1.1.2
-for Rails >= 2.3.2 use auto_html 1.2.1
+> for Rails <= 2.3.1 use auto_html 1.1.2
+> for Rails >= 2.3.2 use auto_html 1.2.1
 
 
 ### As a gem
@@ -77,16 +77,16 @@ To enable the library in your Rails 2.1 (or greater) project, use the gem config
 
 ### As a Rails plugin
 
-  script/plugin install git://github.com/dejan/auto_html.git
+    script/plugin install git://github.com/dejan/auto_html.git
 
 
 ## Links
 
-* http://auto-html.rors.org
-* http://www.elctech.com/projects/auto_html-plugin
+* <http://auto-html.rors.org>
+* <http://www.elctech.com/projects/auto_html-plugin>
 
 
 ## Credits
 
-Author: [Dejan Simic](http://github.com/dejan)
+Author: [Dejan Simic](http://github.com/dejan)<br/>
 Contributor: [Claudio Perez Gamayo](http://github.com/crossblaim)
