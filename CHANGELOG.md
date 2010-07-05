@@ -1,3 +1,6 @@
+## edge (planned for 1.3)
+* no need for explicit call to auto_html_prepare
+
 ## 1.2.1, released 2009-10-28
 
 * more options for vimeo filter

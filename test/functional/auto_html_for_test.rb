@@ -14,6 +14,11 @@ end
 class AutoHtmlForTest < Test::Unit::TestCase
   include FixtureSetup
 
+  def test_transform_on_initialization
+    @article = Article.new(:body => 'Yo!')
+    assert_equal '<p>Yo!</p>', @article.body_html
+  end
+
   def test_transform_after_save
     @article = Article.new(:body => 'Yo!')
     @article.save!
