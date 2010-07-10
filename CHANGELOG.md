@@ -1,5 +1,7 @@
 ## edge (planned for 1.3)
 * no need for explicit call to auto_html_prepare
+* correctly handle blank and nil values when applying auto_html
+* more filters: youtube_js_api
 
 ## 1.2.1, released 2009-10-28
 
