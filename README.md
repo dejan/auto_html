@@ -1,12 +1,10 @@
 auto_html
 =========
 
-Rails plugin for transforming urls to appropriate resource (image, link, YouTube, Vimeo video,...). Check out the [live demo](http://auto-html.rors.org).
+auto_html is a Rails extension for transforming URLs to appropriate resource (image, link, YouTube, Vimeo video,...). It's the perfect choice if you don't want to bother visitors with rich HTML editor or markup code, but you still want to allow them to embed video, images, links and more on your site, purely by pasting URL. Check out the [live demo](http://auto-html.rors.org).
 
 
-## Synopsis
-
-auto_html plugin is the perfect choice if you don't want to bother visitors with rich HTML editor or markup code, but you still want to allow them to embed video, images, links and more on your site, purely by pasting URL.
+## Example usage
 
 Let's say you have model Comment with attribute body. Create another column in table Comments called body_html. Now have something like this: 
 
@@ -66,6 +64,7 @@ As from version 1.2.0 auto_html uses Rails' engine for discovering links. There 
 > for Rails <= 2.3.1 use auto_html 1.1.2<br/>
 > for Rails >= 2.3.2 use auto_html 1.2.1
 
+auto_html have been tested to work with Rails 3 and Ruby 1.9.
 
 ### As a gem
 
@@ -78,12 +77,6 @@ To enable the library in your Rails 2.1 (or greater) project, use the gem config
 ### As a Rails plugin
 
     script/plugin install git://github.com/dejan/auto_html.git
-
-
-## Links
-
-* <http://auto-html.rors.org>
-* <http://www.elctech.com/projects/auto_html-plugin>
 
 
 ## Credits
