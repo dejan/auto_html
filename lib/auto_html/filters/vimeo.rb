@@ -1,10 +1,8 @@
 AutoHtml.add_filter(:vimeo).with(:width => 440, :height => 248, :show_title => false, :fullscreen => true, :show_byline => false, :show_portrait => false) do |text, options|
   text.gsub(/http:\/\/(www.)?vimeo\.com\/([A-Za-z0-9._%-]*)((\?|#)\S+)?/) do
     vimeo_id = $2
-    
     width  = options[:width]
     height = options[:height]
-    
     allowfullscreen = options[:fullscreen]
     fullscreen      = options[:fullscreen]    ? 1 : 0 
     show_title      = options[:show_title]    ? 1 : 0

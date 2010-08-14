@@ -9,4 +9,3 @@ module AutoHtml
     builder.instance_eval(&proc)
   end
 end
-
