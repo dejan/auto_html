@@ -37,7 +37,6 @@ If you need to display preview, no problem. Have something like this as action i
 
     def preview
       comment = Comment.new(params[:comment])
-      comment.auto_html_prepare
       render :text => comment.body_html
     end
 
