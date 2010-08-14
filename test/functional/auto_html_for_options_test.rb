@@ -16,6 +16,7 @@ class AutoHtmlForTest < Test::Unit::TestCase
 
   def test_transform_after_save
     @article = Article.new(:body => 'Yo!')
+    assert_equal '<p>Yo!</p>', @article.body_htmlized
     @article.save!
     assert_equal '<p>Yo!</p>', @article.body_htmlized
   end

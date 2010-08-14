@@ -6,7 +6,7 @@ auto_html is a Rails extension for transforming URLs to appropriate resource (im
 
 ## Example usage
 
-Let's say you have model Comment with attribute body. Create another column in table Comments called body_html. Now have something like this: 
+Let's say you have model Comment with attribute body. Create another column in table Comments called body_html (this is optional, but recommended for performance reasons). Now have something like this: 
 
     class Comment < ActiveRecord::Base
       auto_html_for :body do

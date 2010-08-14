@@ -1,9 +1,11 @@
 ## edge (planned for 1.3)
 * no need for explicit call to auto_html_prepare
+* no need for DB column for cache (ie. _html)
+* Rails 3 support
 * correctly handle blank and nil values when applying auto_html
 * more filters: youtube_js_api
 * youtube filter supports html5
-* Rails 3 support
+
 
 ## 1.2.1, released 2009-10-28
 
