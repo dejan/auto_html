@@ -63,7 +63,7 @@ As from version 1.2.0 auto_html uses Rails' engine for discovering links. There 
 > for Rails <= 2.3.1 use auto_html 1.1.2<br/>
 > for Rails >= 2.3.2 use auto_html 1.2.1
 
-auto_html have been tested to work with Rails 3 and Ruby 1.9.
+auto_html has been tested to work with Rails 3 and Ruby 1.9.
 
 ### As a gem
 
