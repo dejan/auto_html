@@ -61,17 +61,21 @@ For filter list and options they support check: <http://github.com/dejan/auto_ht
 As from version 1.2.0 auto_html uses Rails' engine for discovering links. There are some bugs with that engine in versions under Rails 2.3.2. so it's recommended you use auto_html 1.1.2 in that case, since internal engine is used in that version.
 
 > for Rails <= 2.3.1 use auto_html 1.1.2<br/>
-> for Rails >= 2.3.2 use auto_html 1.3.0
+> for Rails >= 2.3.2 use the latest auto_html
 
-auto_html has been tested to work with Rails 3 and Ruby 1.9.
+As from version 1.3.0, auto_html has been tested to work with Rails 3 and Ruby 1.9.
 
 ### As a gem
 
-To enable the library in your Rails 2.1 (or greater) project, use the gem configuration method in "config/environment.rb"
+To enable the library in your Rails 2.1-2.3 project, use the gem configuration method in "config/environment.rb"
 
     Rails::Initializer.run do |config|
-      config.gem 'auto_html', :version => '~> 1.3.0'
+      config.gem 'auto_html'
     end
+
+In Rails 3.0 specify the gem in your Gemfile
+
+    gem "auto_html"
 
 ### As a Rails plugin
 
