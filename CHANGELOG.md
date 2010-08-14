@@ -1,4 +1,4 @@
-## edge (planned for 1.3)
+## 1.3.0, released 2010-08-14
 * no need for explicit call to auto_html_prepare
 * no need for DB column for cache (ie. _html)
 * Rails 3 support
