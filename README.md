@@ -89,4 +89,4 @@ To enable the library in your Rails 2.1 (or greater) project, use the gem config
 ## Credits
 
 Author: [Dejan Simic](http://github.com/dejan)<br/>
-Contributors: [Claudio Perez Gamayo](http://github.com/crossblaim), [Ryan Heneise](http://github.com/mysmallidea), [Caleb Wright](http://github.com/fabrikagency), [Matt Polito](http://github.com/mattpolito)
+Contributors: [Claudio Perez Gamayo](http://github.com/crossblaim), [Matt Polito](http://github.com/mattpolito), [Ryan Heneise](http://github.com/mysmallidea), [Caleb Wright](http://github.com/fabrikagency)

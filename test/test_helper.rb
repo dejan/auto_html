@@ -1,7 +1,10 @@
 require 'rubygems'
 
-gem "activerecord", "2.3.6"
-gem "actionpack", "2.3.6"
+rails_version = ENV['RAILS_VERSION']
+if rails_version
+  gem "activerecord", rails_version
+  gem "actionpack", rails_version
+end
 
 require 'test/unit'
 require 'active_record'
