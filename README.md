@@ -21,7 +21,7 @@ Let's say you have model Comment with attribute body. Create another column in t
 ... and you'll have this behaviour: 
 
     Comment.create(:body => 'Hey check out this cool video: http://www.youtube.com/watch?v=WdsGihou8J4')  
-    => #<Comment id: 123, body: 'Hey check out this cool video: http://www.youtube.com/watch?v=WdsGihou8J4', body_html: '<p>Hey check out this cool video: <object height="250" width="400"><param name="movie" value="http://www.youtube.com/v/WdsGihou8J4" /><param name="wmode" value="transparent" /><embed src="http://www.youtube.com/v/WdsGihou8J4" type="application/x-shockwave-flash" height="250" wmode="transparent" width="400"></embed></object></p>'>
+    => #<Comment id: 123, body: '<p>Hey check out this cool video: <iframe class="youtube-player" type="text/html" width="587" height="350" src="http://www.youtube.com/embed/WdsGihou8J4" frameborder="0"> <br /></iframe></p>'>
 
 Note that order of invoking filters is important, ie. you want html_escape as first and link amongst last, so that it doesn't transform youtube URL to plain link.
 
@@ -60,8 +60,8 @@ For filter list and options they support check: <http://github.com/dejan/auto_ht
 
 As from version 1.2.0 auto_html uses Rails' engine for discovering links. There are some bugs with that engine in versions under Rails 2.3.2. so it's recommended you use auto_html 1.1.2 in that case, since internal engine is used in that version.
 
-> for Rails <= 2.3.1 use auto_html 1.1.2<br/>
-> for Rails >= 2.3.2 use the latest auto_html
+    for Rails <= 2.3.1 use auto_html 1.1.2<br/>
+    for Rails >= 2.3.2 use the latest auto_html
 
 As from version 1.3.0, auto_html has been tested to work with Rails 3 and Ruby 1.9.
 
