@@ -28,8 +28,9 @@ class LinkTest < Test::Unit::TestCase
   end
 
   def test_transform_with_params
-    result = auto_html('http://www.youtube.com/watch?v=s5C5Zk4kobo&feature=related') { link }
-    assert_equal '<a href="http://www.youtube.com/watch?v=s5C5Zk4kobo&amp;feature=related">http://www.youtube.com/watch?v=s5C5Zk4kobo&amp;feature=related</a>', result
+    url = 'http://www.youtube.com/watch?v=s5C5Zk4kobo&feature=related'
+    # uses auto_link instead raw to support both Rails 2 & 3
+    assert_equal(ActionView::Base.new.auto_link(url), auto_html(url) { link })
   end
 
   def test_transform_with_commas
@@ -38,8 +39,9 @@ class LinkTest < Test::Unit::TestCase
   end
 
   def test_transform_complex_url
-    result = auto_html("http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0") { link }
-    assert_equal '<a href="http://www.google.com/#q=nikola+tesla&amp;ct=tesla09&amp;oi=ddle&amp;fp=Xmf0jJ9P_V0">http://www.google.com/#q=nikola+tesla&amp;ct=tesla09&amp;oi=ddle&amp;fp=Xmf0jJ9P_V0</a>', result
+    url = 'http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0'
+    # uses auto_link instead raw to support both Rails 2 & 3
+    assert_equal(ActionView::Base.new.auto_link(url), auto_html(url) { link })
   end
 
   def test_transform_with_options
