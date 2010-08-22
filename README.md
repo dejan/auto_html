@@ -6,7 +6,14 @@ auto_html is a Rails extension for transforming URLs to appropriate resource (im
 
 ## Example usage
 
-Let's say you have model Comment with attribute body. Create another column in table Comments called body_html (this is optional, but recommended for performance reasons). Now have something like this: 
+Transforming string with text and URLs is done with *auto_html* method:
+
+    inlcude AutoHtml
+    
+    auto_html('Hey! Checkout out: http://vukajlija.com') { simple_format; link(:target => 'blank') }
+    => "<p>Hey! Checkout out: <a href='http://vukajlija.com' target='blank'>http://vukajlija.com</a></p>"
+
+You'll probably have user input stored in model, so it's a good place to automate and even store this conversion for performance reason. This is done with *auto_html_for* method. Let's say you have model Comment with attribute body. Create another column in table Comments called body_html (again, this is optional but recommended for performance reasons). Now have something like this: 
 
     class Comment < ActiveRecord::Base
       auto_html_for :body do
@@ -47,6 +54,7 @@ Plugin is highly customizable, and you can easily create new filters that will t
         %|<img src="#{match}" alt=""/>|
       end
     end
+
 
 
 ## Bundled filters
