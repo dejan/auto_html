@@ -1,3 +1,8 @@
+## 1.3.1, released 2010-08-22
+* Rails 3 initialization fix
+* fixes to conform Rails 3.0.0.rc, sanitization by default in text_helpers (auto_link, simple_format)
+* added vimeo html5 universal embed player 
+
 ## 1.3.0, released 2010-08-14
 * no need for explicit call to auto_html_prepare
 * no need for DB column for cache (ie. _html)
