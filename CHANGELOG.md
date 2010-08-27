@@ -1,3 +1,6 @@
+## 1.3.2, released 2010-08-27
+* pre-rails 3 initialization fix
+
 ## 1.3.1, released 2010-08-22
 * Rails 3 initialization fix
 * fixes to conform Rails 3.0.0.rc, sanitization by default in text_helpers (auto_link, simple_format)

@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{auto_html}
-  s.version = "1.3.1"
+  s.version = "1.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dejan Simic"]
-  s.date = %q{2010-08-22}
+  s.date = %q{2010-08-27}
   s.description = %q{Automatically transforms urls (via domain) and includes the destination resource (Vimeo, YouTube movie, image, ...) in your document}
   s.email = %q{desimic@gmail.com}
   s.extra_rdoc_files = [
@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
      "lib/auto_html/filters/vimeo.rb",
      "lib/auto_html/filters/youtube.rb",
      "lib/auto_html/filters/youtube_js_api.rb",
+     "rails/init.rb",
      "test/fixture_setup.rb",
      "test/fixtures/database.yml",
      "test/fixtures/schema.rb",
