@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{auto_html}
-  s.version = "1.3.2"
+  s.version = "1.3.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dejan Simic"]
-  s.date = %q{2010-08-27}
+  s.date = %q{2010-09-01}
   s.description = %q{Automatically transforms urls (via domain) and includes the destination resource (Vimeo, YouTube movie, image, ...) in your document}
   s.email = %q{desimic@gmail.com}
   s.extra_rdoc_files = [

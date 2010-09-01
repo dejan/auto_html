@@ -1,3 +1,6 @@
+## 1.3.3, released 2010-09-01
+* yet another Rails 3 initialization fix
+
 ## 1.3.2, released 2010-08-27
 * pre-rails 3 initialization fix
 
