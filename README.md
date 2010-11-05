@@ -8,7 +8,7 @@ auto_html is a Rails extension for transforming URLs to appropriate resource (im
 
 Transforming string with text and URLs is done with *auto_html* method:
 
-    inlcude AutoHtml
+    include AutoHtml
     
     auto_html('Hey! Checkout out: http://vukajlija.com') { simple_format; link(:target => 'blank') }
     => "<p>Hey! Checkout out: <a href='http://vukajlija.com' target='blank'>http://vukajlija.com</a></p>"
