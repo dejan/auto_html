@@ -1,3 +1,6 @@
+## edge
+* added metacafe filter
+
 ## 1.3.3, released 2010-09-01
 * yet another Rails 3 initialization fix
 
