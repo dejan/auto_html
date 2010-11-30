@@ -1,8 +1,12 @@
-AutoHtml.add_filter(:simple_format) do |text|
-  start_tag = '<p>'
-  text.gsub!(/\r\n?/, "\n")                    # \r\n and \r -> \n
-  text.gsub!(/\n\n+/, "</p>\n\n#{start_tag}")  # 2+ newline  -> paragraph
-  text.gsub!(/([^\n]\n)(?=[^\n])/, '\1<br />') # 1 newline   -> br
-  text.insert 0, start_tag
-  text << "</p>"
+require 'action_view'
+
+AutoHtml.add_filter(:simple_format).with({}) do |text, html_options|
+  args = [text, {}, {:sanitize => false}]
+  begin
+    ActionView::Base.new.simple_format(*args) 
+  rescue ArgumentError
+    # Rails 2 support
+    args.pop
+    retry
+  end
 end

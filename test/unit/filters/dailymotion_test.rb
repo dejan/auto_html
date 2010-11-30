@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../unit_test_helper'
 
-class GoogleVideoTest < Test::Unit::TestCase
+class DailyMotionTest < Test::Unit::TestCase
 
   def test_transform
     result = auto_html("http://www.dailymotion.com/en/featured/video/xag4p2_tempsmorttv-episode-01_shortfilms") { dailymotion }

@@ -22,11 +22,16 @@ module AutoHtmlFor
         end
       end
 
+      suffix =  AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix]
+
       [raw_attrs].flatten.each do |raw_attr|
+        define_method("#{raw_attr}#{suffix}=") do |val|
+          write_attribute("#{raw_attr}#{suffix}", val)
+        end
+        define_method("#{raw_attr}#{suffix}") do
+          read_attribute("#{raw_attr}#{suffix}") || send("auto_html_prepare_#{raw_attr}")
+        end
         define_method("auto_html_prepare_#{raw_attr}") do
-          suffix = 
-            AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix] ||
-              AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix] 
           self.send(raw_attr.to_s + suffix + "=", 
             auto_html(self.send(raw_attr), &proc))
         end
