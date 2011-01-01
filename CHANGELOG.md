@@ -1,4 +1,4 @@
-## edge
+## 1.3.4, released 2011-01-01
 * added metacafe filter
 * converts all filter outputs to_s
 
