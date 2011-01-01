@@ -25,6 +25,12 @@ class AutoHtmlForTest < Test::Unit::TestCase
     assert_equal '<p>Yo!</p>', @article.body_html
   end
 
+  def test_transform_of_nil
+    @article = Article.new(:body => nil)
+    @article.save!
+    assert_equal '', @article.body_html
+  end
+
   def test_transform_after_update
     @article = Article.create!(:body => 'Yo!')
     @article.update_attributes(:body => 'http://vukajlija.com')
