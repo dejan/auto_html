@@ -10,7 +10,7 @@ end
 
 desc 'Test with recent versions of Rails'
 task :test_with_recent do
-  versions = ['2.3.6', '3.0.1']
+  versions = ['2.3.8', '3.0.3']
   versions.each do |v|
     puts "\n###### TESTING WITH RAILS #{v}"
     ENV['RAILS_VERSION'] = v
