@@ -1,4 +1,5 @@
-require File.dirname(__FILE__) + '/unit_test_helper'
+require File.expand_path('../unit_test_helper', __FILE__)
+
 
 class AutoHtmlTest < Test::Unit::TestCase
 

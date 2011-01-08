@@ -1,5 +1,5 @@
-require File.dirname(__FILE__) + '/../test_helper'
-require File.dirname(__FILE__) + '/../fixture_setup'
+require File.expand_path('../../test_helper', __FILE__)
+require File.expand_path('../../fixture_setup', __FILE__)
 
 AutoHtml.add_filter(:foo) do |text|
   nil
