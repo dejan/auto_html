@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 end
 
-class AutoHtmlForTest < Test::Unit::TestCase
+class FilterTest < Test::Unit::TestCase
   include FixtureSetup
 
   def test_transform_after_save

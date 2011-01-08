@@ -11,7 +11,7 @@ class Article < ActiveRecord::Base
   end
 end
 
-class AutoHtmlForTest < Test::Unit::TestCase
+class AutoHtmlForOptionsTest < Test::Unit::TestCase
   include FixtureSetup
 
   def test_transform_after_save
