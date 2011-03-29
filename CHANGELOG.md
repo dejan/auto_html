@@ -1,3 +1,7 @@
+## 1.3.5, released 2011-30-03
+* RedCloth filter
+* https support for image filter
+
 ## 1.3.4, released 2011-01-01
 * added metacafe filter
 * converts all filter outputs to_s
