@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name = 'auto_html'
-  gem.version = '1.3.4'
+  gem.version = '1.3.5'
   gem.date = Date.today.to_s
 
   gem.summary = "Transform URIs to appropriate markup"
