@@ -9,6 +9,8 @@ Gem::Specification.new do |gem|
   gem.authors  = ['Dejan Simic']
   gem.email    = 'desimic@gmail.com'
   gem.homepage = 'http://github.com/dejan/auto_html'
+
+  gem.add_dependency('redcloth')
   
   # ensure the gem is built out of versioned files
   gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
