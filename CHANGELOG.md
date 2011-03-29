@@ -1,3 +1,6 @@
+## 1.3.6, released 2011-30-03
+* RedCloth name fix in gemspec
+
 ## 1.3.5, released 2011-30-03
 * RedCloth filter
 * https support for image filter
