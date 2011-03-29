@@ -42,4 +42,9 @@ class ImageTest < Test::Unit::TestCase
     assert_equal '<img src="http://tbn3.google.com/images?q=tbn:vS-jtEi9Xc8K6M:http://upload.wikimedia.org/wikipedia/commons/b/ba/Potturinn.jpeg" alt=""/>', result
   end
 
+  def test_https
+    result = auto_html('https://img.skitch.com/20100910-1wrbg5749xe29ya5t3s85bnaiy.png') { image }
+    assert_equal '<img src="https://img.skitch.com/20100910-1wrbg5749xe29ya5t3s85bnaiy.png" alt=""/>', result
+  end
+
 end
