@@ -6,4 +6,6 @@ Dir["#{File.dirname(__FILE__) + '/auto_html/filters'}/**/*"].each do |filter|
   require "#{filter}"
 end
 
-ActiveRecord::Base.send :include, AutoHtmlFor
+if defined?(ActiveRecord::Base)
+  ActiveRecord::Base.send :include, AutoHtmlFor
+end
