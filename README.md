@@ -56,9 +56,9 @@ AutoHtml is highly customizable, and you can easily create new filters that will
     end
 
 
-## Non-ActiveModel models
+## Non-ActiveRecord models
 
-AutoHtml uses standard ActiveModel API meaning you can include AutoHtmlFor module (that automates transformation of the field) in any non-ActiveRecord model that uses ActiveModel. Here's working [mongoid](http://mongoid.org/) example:
+AutoHtml uses standard ActiveModel API, which means that you can include AutoHtmlFor module (that automates transformation of the field) in any non-ActiveRecord model that uses ActiveModel. Here's working [mongoid](http://mongoid.org/) example:
 
     class Post
       include Mongoid::Document
