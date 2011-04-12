@@ -47,7 +47,7 @@ If you need to display preview, no problem. Have something like this as action i
       render :text => comment.body_html
     end
 
-Plugin is highly customizable, and you can easily create new filters that will transform user input any way you like. For instance, this is the image filter that comes bundled with plugin:
+AutoHtml is highly customizable, and you can easily create new filters that will transform user input any way you like. For instance, this is the image filter that comes bundled with plugin:
 
     AutoHtml.add_filter(:image) do |text|
       text.gsub(/http:\/\/.+\.(jpg|jpeg|bmp|gif|png)(\?\S+)?/i) do |match|
@@ -55,6 +55,22 @@ Plugin is highly customizable, and you can easily create new filters that will t
       end
     end
 
+
+## Non-ActiveModel models
+
+AutoHtml uses standard ActiveModel API meaning you can include AutoHtmlFor module (that automates transformation of the field) in any non-ActiveRecord model that uses ActiveModel. Here's working [mongoid](http://mongoid.org/) example:
+
+    class Post
+      include Mongoid::Document
+      include AutoHtmlFor
+
+      field :body
+
+      auto_html_for :body do
+        simple_format
+        link
+      end
+    end
 
 
 ## Bundled filters
