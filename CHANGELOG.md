@@ -1,3 +1,6 @@
+## 1.3.7, released 2011-12-04
+* require activerecord only if available
+
 ## 1.3.6, released 2011-30-03
 * RedCloth name fix in gemspec
 
