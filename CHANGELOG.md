@@ -1,3 +1,6 @@
+## edge
+* remove Rails dependencies by using rinku & tag_helper
+
 ## 1.3.7, released 2011-12-04
 * require activerecord only if available
 

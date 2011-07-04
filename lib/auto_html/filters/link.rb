@@ -1,5 +1,6 @@
-require 'action_view'
+require 'rinku'
+require 'tag_helper'
 
 AutoHtml.add_filter(:link).with({}) do |text, options|
-  ActionView::Base.new.auto_link(text, :html => options, :sanitize => false)
+  Rinku.auto_link(text, :all, TagHelper.attributes(options))
 end
