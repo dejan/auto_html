@@ -14,27 +14,27 @@ class AutoHtmlTest < Test::Unit::TestCase
   end
 
   def test_should_apply_simple_format_and_image_filter
-    result = auto_html("Check the logo: http://rors.org/images/rails.png") { simple_format; image }
-    assert_equal '<p>Check the logo: <img src="http://rors.org/images/rails.png" alt="" /></p>', result
+    result = auto_html("Check the logo: http://rors.org/images/rails.png") { simple_format; image(:alt => nil) }
+    assert_equal '<p>Check the logo: <img src="http://rors.org/images/rails.png" /></p>', result
   end
 
   def test_should_apply_simple_format_image_and_link_filter
-    result = auto_html("Check the logo: http://rors.org/images/rails.png. Visit: http://rubyonrails.org") { simple_format; image; link }
-    assert_equal '<p>Check the logo: <img src="http://rors.org/images/rails.png" alt="" />. Visit: <a href="http://rubyonrails.org" >http://rubyonrails.org</a></p>', result
+    result = auto_html("Check the logo: http://rors.org/images/rails.png. Visit: http://rubyonrails.org") { simple_format; image(:alt => nil); link }
+    assert_equal '<p>Check the logo: <img src="http://rors.org/images/rails.png" />. Visit: <a href="http://rubyonrails.org" >http://rubyonrails.org</a></p>', result
   end
   
   def test_should_apply_simple_format_image_and_redcloth_and_link_filter
-    result = auto_html('Check the logo: http://rors.org/images/rails.png. Visit: http://rubyonrails.org and "Read the Guides":http://guides.rubyonrails.org/') { simple_format; image; redcloth; link }
-    assert_equal '<p>Check the logo: <img src="http://rors.org/images/rails.png" alt="" />. Visit: <a href="http://rubyonrails.org" >http://rubyonrails.org</a> and <a href="http://guides.rubyonrails.org/">Read the Guides</a></p>', result
+    result = auto_html('Check the logo: http://rors.org/images/rails.png. Visit: http://rubyonrails.org and "Read the Guides":http://guides.rubyonrails.org/') { simple_format; image(:alt => nil); redcloth; link }
+    assert_equal '<p>Check the logo: <img src="http://rors.org/images/rails.png" />. Visit: <a href="http://rubyonrails.org" >http://rubyonrails.org</a> and <a href="http://guides.rubyonrails.org/">Read the Guides</a></p>', result
   end
 
   def test_should_return_blank_if_input_is_blank
-    result = auto_html("") { simple_format; image; link }
+    result = auto_html("") { simple_format; image(:alt => nil); link }
     assert_equal "", result
   end
   
   def test_should_not_apply_simple_format_if_input_is_nil
-    result = auto_html(nil) { simple_format; image; link }
+    result = auto_html(nil) { simple_format; image(:alt => nil); link }
     assert_equal "", result
   end
 
