@@ -19,6 +19,12 @@ class AutoHtmlForTest < Test::Unit::TestCase
     assert_equal '<p>Yo!</p>', @article.body_html
   end
 
+  def test_html_safe
+    return unless "".respond_to?(:html_safe?)
+    @article = Article.new(:body => 'Yo!')
+    assert @article.body_html.html_safe?
+  end
+
   def test_transform_after_save
     @article = Article.new(:body => 'Yo!')
     @article.save!
