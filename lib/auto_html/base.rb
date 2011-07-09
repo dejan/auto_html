@@ -1,4 +1,6 @@
 module AutoHtml
+  extend self
+
   def self.add_filter(name, &block)
     AutoHtml::Builder.add_filter(name, &block)
   end
@@ -11,4 +13,5 @@ module AutoHtml
       result.html_safe :
         result
   end
+
 end
