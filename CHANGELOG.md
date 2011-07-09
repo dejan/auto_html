@@ -1,16 +1,16 @@
-## edge
+## 1.4.0, released 2011-07-09
 * remove Rails dependencies by using rinku & tag_helper
 * image filter supports attributes
-* html_safe string
+* input is always escaped, output is html_safe
+* auto_html module is included in ApplicationHelper
 
-
-## 1.3.7, released 2011-12-04
+## 1.3.7, released 2011-04-12
 * require activerecord only if available
 
-## 1.3.6, released 2011-30-03
+## 1.3.6, released 2011-03-30
 * RedCloth name fix in gemspec
 
-## 1.3.5, released 2011-30-03
+## 1.3.5, released 2011-03-30
 * RedCloth filter
 * https support for image filter
 
