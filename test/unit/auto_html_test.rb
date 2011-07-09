@@ -3,9 +3,10 @@ require File.expand_path('../unit_test_helper', __FILE__)
 
 class AutoHtmlTest < Test::Unit::TestCase
 
-  def test_should_be_nil_no_filters_provided
-    result = auto_html("Hey check out my blog => http://rors.org") { }
-    assert_nil result
+  def test_should_be_raw_input_when_no_filters_provided
+    input = "Hey check out my blog => http://rors.org"
+    result = auto_html(input) { }
+    assert_equal result, input
   end
 
   def test_should_apply_simple_format_filter
