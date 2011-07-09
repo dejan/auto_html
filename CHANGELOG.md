@@ -1,7 +1,7 @@
 ## 1.4.1, released 2011-07-09
 * AutoHtml gets module method: AutoHtml.auto_html(...)
-* AutoHtmlFor producing html_safe
 * on blank filter list return input instead of nil
+* AutoHtmlFor producing html_safe
 
 ## 1.4.0, released 2011-07-09
 * remove Rails dependencies by using rinku & tag_helper
