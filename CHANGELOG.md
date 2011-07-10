@@ -6,7 +6,7 @@
 ## 1.4.0, released 2011-07-09
 * remove Rails dependencies by using rinku & tag_helper
 * image filter supports attributes
-* input is always escaped, output is html_safe
+* output of auto_html method is html_safe
 * auto_html module is included in ApplicationHelper
 
 ## 1.3.7, released 2011-04-12
