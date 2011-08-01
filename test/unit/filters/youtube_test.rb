@@ -31,5 +31,12 @@ class YouTubeTest < Test::Unit::TestCase
     assert_equal '<iframe class="youtube-player" type="text/html" width="300" height="255" src="http://www.youtube.com/embed/BwNrmYRiX_o" frameborder="1">
 </iframe>', result
   end
+  
+  
+  def test_transform_with_short_url
+    result = auto_html('http://www.youtu.be/BwNrmYRiX_o') { youtube }
+    assert_equal '<iframe class="youtube-player" type="text/html" width="390" height="250" src="http://www.youtube.com/embed/BwNrmYRiX_o" frameborder="0">
+</iframe>', result
+  end
 
 end
