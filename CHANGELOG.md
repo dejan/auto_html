@@ -1,3 +1,6 @@
+planned for 1.4.2
+* Add support for YouTube short url
+
 ## 1.4.1, released 2011-07-09
 * AutoHtml gets module method: AutoHtml.auto_html(...)
 * on blank filter list return input instead of nil
