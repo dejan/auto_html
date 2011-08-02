@@ -88,4 +88,4 @@ Specify the gem in Gemfile of the project
 ## Credits
 
 Author: [Dejan Simic](http://github.com/dejan)<br/>
-Contributors: [Claudio Perez Gamayo](http://github.com/crossblaim), [Matt Polito](http://github.com/mattpolito), [Ryan Heneise](http://github.com/mysmallidea), [Caleb Wright](http://github.com/fabrikagency), [Derrick Camerino](https://github.com/robustdj), [Daniel Weinmann](https://github.com/danielweinmann), [Edgars Beigarts](ebeigarts)
+Contributors: [Claudio Perez Gamayo](http://github.com/crossblaim), [Matt Polito](http://github.com/mattpolito), [Ryan Heneise](http://github.com/mysmallidea), [Caleb Wright](http://github.com/fabrikagency), [Derrick Camerino](https://github.com/robustdj), [Daniel Weinmann](https://github.com/danielweinmann), [Edgars Beigarts](https://github.com/ebeigarts), [Henning Thies](https://github.com/henningthies)
