@@ -13,6 +13,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency('rinku')
   gem.add_dependency('tag_helper')
   gem.add_dependency('RedCloth')
+  gem.add_dependency('redcarpet')
 
   # ensure the gem is built out of versioned files
   gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
