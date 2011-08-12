@@ -1,3 +1,5 @@
+* added Redcarpet filter (Markdown rendering)
+
 ## 1.4.1, released 2011-07-09
 * AutoHtml gets module method: AutoHtml.auto_html(...)
 * on blank filter list return input instead of nil
