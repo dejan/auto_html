@@ -1,4 +1,4 @@
-## 1.4.2
+## 1.4.2, released 2011-08-12
 * Add support for YouTube short url
 * added Redcarpet filter (Markdown rendering)
 
