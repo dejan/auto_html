@@ -7,6 +7,7 @@ Dir["#{File.dirname(__FILE__) + '/auto_html/filters'}/**/*"].each do |filter|
 end
 
 # if rails
+require 'auto_html/railtie' if defined?(Rails::Railtie)
 if defined?(ActiveRecord::Base)
   ActiveRecord::Base.send :include, AutoHtmlFor
 
