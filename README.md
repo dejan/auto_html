@@ -72,6 +72,17 @@ AutoHtml uses standard ActiveModel API, which means that you can include AutoHtm
       end
     end
 
+## Rake and Capistrano tasks
+
+AutoHtml has a Rake task for rebuilding cached in DB column values
+Usage: `rake auto_html:rebuild CLASS=[your model]`
+Where `[your model]` is the name of model which values you want to rebuild.
+
+If you want to run it on remote server, just add this to your `deploy.rb`:
+
+    require 'auto_html/capistrano'
+    
+Now you can run `cap cap auto_html:rebuild CLASS=[your_model]`.
 
 ## Bundled filters
 
@@ -88,4 +99,4 @@ Specify the gem in Gemfile of the project
 ## Credits
 
 Author: [Dejan Simic](http://github.com/dejan)<br/>
-Contributors: [Claudio Perez Gamayo](https://github.com/crossblaim), [Matt Polito](https://github.com/mattpolito), [Ryan Heneise](https://github.com/mysmallidea), [Caleb Wright](https://github.com/fabrikagency), [Derrick Camerino](https://github.com/robustdj), [Daniel Weinmann](https://github.com/danielweinmann), [Edgars Beigarts](https://github.com/ebeigarts), [Henning Thies](https://github.com/henningthies), [rbq](https://github.com/rbq)
+Contributors: [Claudio Perez Gamayo](https://github.com/crossblaim), [Matt Polito](https://github.com/mattpolito), [Ryan Heneise](https://github.com/mysmallidea), [Caleb Wright](https://github.com/fabrikagency), [Derrick Camerino](https://github.com/robustdj), [Daniel Weinmann](https://github.com/danielweinmann), [Edgars Beigarts](https://github.com/ebeigarts), [Henning Thies](https://github.com/henningthies), [rbq](https://github.com/rbq), [Kir Shatrov](https://github.com/kirs) ([Evrone Company](https://github.com/evrone))
