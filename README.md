@@ -82,7 +82,7 @@ If you want to run it on remote server, just add this to your `deploy.rb`:
 
     require 'auto_html/capistrano'
     
-Now you can run `cap cap auto_html:rebuild CLASS=[your_model]`.
+Now you can run `cap auto_html:rebuild CLASS=[your_model]`.
 
 ## Bundled filters
 
