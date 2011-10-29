@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
 
   gem.summary = "Transform URIs to appropriate markup"
   gem.description = "Automatically transforms URIs (via domain) and includes the destination resource (Vimeo, YouTube movie, image, ...) in your document"
-  
+
   gem.authors  = ['Dejan Simic']
   gem.email    = 'desimic@gmail.com'
   gem.homepage = 'http://github.com/dejan/auto_html'

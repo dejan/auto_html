@@ -1,6 +1,6 @@
 AutoHtml.add_filter(:html_escape).with(
-  :map => { 
-    '&' => '&amp;',  
+  :map => {
+    '&' => '&amp;',
     '>' => '&gt;',
     '<' => '&lt;',
     '"' => '&quot;' }) do |text, options|

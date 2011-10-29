@@ -24,11 +24,11 @@ class SanitizeTest < Test::Unit::TestCase
 
   def test_trasform5
     result = auto_html("<a rel='nofollow'>test</div>") { sanitize :tags => %w(a), :attributes => %w(href)}
-    assert_equal "<a>test", result 
+    assert_equal "<a>test", result
     #
     # from Rails doc:
     #
-    #   Please note that sanitizing user-provided text does not 
+    #   Please note that sanitizing user-provided text does not
     #   guarantee that the resulting markup is valid.
     #
   end
