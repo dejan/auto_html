@@ -17,11 +17,11 @@ namespace :auto_html do
           auto_html_fields << method
         end
       end
-      
+
       auto_html_fields.each do |field|
         item.send(field)
       end
-      
+
       item.save
       i += 1
     end
