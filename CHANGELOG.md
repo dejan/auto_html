@@ -1,3 +1,8 @@
+## 1.5.0, released 2011-12-07
+* use redcarpet ~> 2.0.0
+* wmode option for youtube
+* rake task
+
 ## 1.4.2, released 2011-08-12
 * Add support for YouTube short url
 * added Redcarpet filter (Markdown rendering)
