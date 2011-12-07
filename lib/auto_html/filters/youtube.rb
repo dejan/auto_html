@@ -7,7 +7,7 @@ AutoHtml.add_filter(:youtube).with(:width => 420, :height => 315, :frameborder =
     frameborder = options[:frameborder]
 		wmode = options[:wmode]
 		src = "http://www.youtube.com/embed/#{youtube_id}"
-		src += "wmode=#{wmode}" if wmode
+		src += "?wmode=#{wmode}" if wmode
     %{<iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" allowfullscreen></iframe>}
   end
 end

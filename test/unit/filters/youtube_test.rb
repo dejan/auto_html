@@ -23,14 +23,12 @@ class YouTubeTest < Test::Unit::TestCase
   end
 
   def test_transform_with_options
-    result = auto_html('http://www.youtube.com/watch?v=BwNrmYRiX_o') { youtube(:width => 300, :height => 255, :frameborder => 1) }
-    assert_equal '<iframe width="300" height="255" src="http://www.youtube.com/embed/BwNrmYRiX_o" frameborder="1" allowfullscreen></iframe>', result
+    result = auto_html('http://www.youtube.com/watch?v=BwNrmYRiX_o') { youtube(:width => 300, :height => 255, :frameborder => 1, :wmode => 'window') }
+    assert_equal '<iframe width="300" height="255" src="http://www.youtube.com/embed/BwNrmYRiX_o?wmode=window" frameborder="1" allowfullscreen></iframe>', result
   end
-  
-  
+
   def test_transform_with_short_url
     result = auto_html('http://www.youtu.be/BwNrmYRiX_o') { youtube }
     assert_equal '<iframe width="420" height="315" src="http://www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe>', result
   end
-
 end
