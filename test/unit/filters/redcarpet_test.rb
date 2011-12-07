@@ -17,9 +17,15 @@ class RedcarpetTest < Test::Unit::TestCase
     assert_equal '<p><a href="http://example.org/">This is a link</a></p>'+"\n", result
   end
 
+  class LinksInNewWindow < ::Redcarpet::Render::HTML
+    def link(link, title, content)
+       "<a href=\"#{link}\" target=\"_blank\">#{content}</a>"
+    end    
+  end
+  
   def test_transform_link_target_blank
-    result = auto_html('[This is a link](http://example.org/)') { redcarpet :target => :_blank }
-    assert_equal '<p><a target="_blank" href="http://example.org/">This is a link</a></p>'+"\n", result
+    result = auto_html('[This is a link](http://example.org/)') { redcarpet(:renderer => LinksInNewWindow) }
+    assert_equal '<p><a href="http://example.org/" target="_blank">This is a link</a></p>'+"\n", result
   end
 
 end
