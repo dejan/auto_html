@@ -1,8 +1,8 @@
 ## 1.5.0, released 2011-12-07
-* use redcarpet ~> 2.0.0
+* use redcarpet ~> 2.0.0; :renderer option
 * use rinku ~> 1.5.0
-* wmode option for youtube
 * Rake task for rebuilding cached markup
+* default youtube embed code should be the same as provide by youtube.com; wmode is no longer default param
 
 ## 1.4.2, released 2011-08-12
 * Add support for YouTube short url
