@@ -4,6 +4,7 @@
 * Rake task for rebuilding cached markup
 * default youtube embed code should be the same as provide by youtube.com; wmode is no longer default param
 * reducing dependencies - do not bundle RedCloth filter. Redcarpet (markdown) is default choice for markup and planned for more usage internally, so the lib goes with only that.
+* minor youtube filter fixes (https support, short url with params)
 
 ## 1.4.2, released 2011-08-12
 * Add support for YouTube short url
