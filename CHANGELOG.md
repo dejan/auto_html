@@ -1,5 +1,5 @@
 ## 1.5.1, released 2012-02-18
-* Rails 2.3.1 support 
+* Rails 3.2 support 
 * Gist & GoogleMap filter
 * fix #26 - error after the rake task completed
 * fix #29 - youtube filter swallows text that comes after a link
