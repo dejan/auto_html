@@ -16,6 +16,11 @@ class YouTubeTest < Test::Unit::TestCase
     result = auto_html('http://www.youtube.com/watch?v=BwNrmYRiX_o&feature=related') { youtube }
     assert_equal '<iframe width="420" height="315" src="http://www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe>', result
   end
+  
+  def test_transform3
+    result = auto_html('foo http://www.youtube.com/watch?v=fT1ahr81HLw bar') { youtube }
+    assert_equal 'foo <iframe width="420" height="315" src="http://www.youtube.com/embed/fT1ahr81HLw" frameborder="0" allowfullscreen></iframe> bar', result
+  end
 
   def test_transform_url_without_www
     result = auto_html('http://youtube.com/watch?v=BwNrmYRiX_o') { youtube }

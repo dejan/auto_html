@@ -1,3 +1,8 @@
+## 1.5.1, released 2012-02-18
+* Rails 2.3.1 support 
+* Gist filter
+* GoogleMap filter
+
 ## 1.5.0, released 2011-12-07
 * use redcarpet ~> 2.0.0; :renderer option
 * use rinku ~> 1.5.0
