@@ -2,6 +2,7 @@
 * Rails 2.3.1 support 
 * Gist filter
 * GoogleMap filter
+* fix #29 - youtube filter swallows text that comes after a link
 
 ## 1.5.0, released 2011-12-07
 * use redcarpet ~> 2.0.0; :renderer option
