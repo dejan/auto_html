@@ -26,7 +26,8 @@ module AutoHtmlFor
 
       [raw_attrs].flatten.each do |raw_attr|
         define_method("#{raw_attr}#{suffix}=") do |val|
-          write_attribute("#{raw_attr}#{suffix}", val)
+          a = "#{raw_attr}#{suffix}"
+          write_attribute(a, val) if attributes[a]
         end
         define_method("#{raw_attr}#{suffix}") do
           result = read_attribute("#{raw_attr}#{suffix}") || send("auto_html_prepare_#{raw_attr}")
@@ -35,8 +36,9 @@ module AutoHtmlFor
               result
         end
         define_method("auto_html_prepare_#{raw_attr}") do
-          self.send(raw_attr.to_s + suffix + "=", 
-            auto_html(self.send(raw_attr), &proc))
+          result = auto_html(self.send(raw_attr), &proc)
+          self.send(raw_attr.to_s + suffix + "=", result)
+          result
         end
       end
     end

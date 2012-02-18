@@ -2,6 +2,7 @@ require 'rubygems'
 
 rails_version = ENV['RAILS_VERSION']
 if rails_version
+  gem "activesupport", rails_version
   gem "activerecord", rails_version
   gem "actionpack", rails_version
 end
