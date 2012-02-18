@@ -25,6 +25,6 @@ namespace :auto_html do
       item.save
       i += 1
     end
-    puts "Done! Processed #{pluralize(i, 'item')}."
+    puts "Done! Processed #{i} items."
   end
 end
