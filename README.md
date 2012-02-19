@@ -25,12 +25,12 @@ You'll probably have user input stored in model, so it's a good place to automat
       end
     end
 
-... and you'll have this behaviour: 
+... and you'll have this behavior: 
 
     Comment.create(:body => 'Hey check out this cool video: http://www.youtube.com/watch?v=WdsGihou8J4')  
     => #<Comment id: 123, body: '<p>Hey check out this cool video: <iframe class="youtube-player" type="text/html" width="587" height="350" src="http://www.youtube.com/embed/WdsGihou8J4" frameborder="0"> <br /></iframe></p>'>
 
-Note that order of invoking filters is important, ie. you want html_escape as first and link amongst last, so that it doesn't transform youtube URL to plain link.
+Note that order of invoking filters is important, i.e. you want html_escape as first and link amongst last, so that it doesn't transform youtube URL to plain link.
 
 
 Now all you have to do is to display it in template without escaping, since plugin took care of that:
