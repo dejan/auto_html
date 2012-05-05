@@ -1,3 +1,7 @@
+## 1.5.2, released 2012-05-05
+* Works with Rails 3.2.1+ 
+* Updated youtube regex to account for feature=player_embedded url param
+
 ## 1.5.1, released 2012-02-18
 * Rails 3.2 support 
 * Gist & GoogleMap filter
