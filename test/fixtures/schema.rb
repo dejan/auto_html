@@ -11,4 +11,10 @@ ActiveRecord::Schema.define do
     t.column "name",         :string
     t.column "bio",          :text
   end
+  
+  create_table "posts", :force => true do |t|
+    t.column "topic_id",     :integer
+    t.column "user_id",      :integer
+    t.column "content",      :text
+  end
 end
