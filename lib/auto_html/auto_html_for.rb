@@ -15,9 +15,12 @@ module AutoHtmlFor
       include AutoHtmlFor::InstanceMethods
 
       suffix =  AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix]
-      ([raw_attrs].flatten.map { |a| "#{a}#{suffix}" } - self.column_names).each do |missing_cache_column|
-        attr_accessor missing_cache_column
+      auto_html_for_columns = [raw_attrs].flatten.map { |a| "#{a}#{suffix}" }
+      missing_cache_columns =  auto_html_for_columns - self.column_names
+      missing_cache_columns.each do |attr|
+        attr_accessor attr
       end
+
       [raw_attrs].flatten.each do |raw_attr|
         define_method("#{raw_attr}=") do |val|
           self[raw_attr] = val
