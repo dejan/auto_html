@@ -13,34 +13,23 @@ module AutoHtmlFor
   module ClassMethods
     def auto_html_for(raw_attrs, &proc)
       include AutoHtmlFor::InstanceMethods
-      before_save :auto_html_prepare
-
-      define_method("auto_html_prepare") do
-        auto_html_methods = self.methods.select { |m| m=~/^auto_html_prepare_/ }
-        auto_html_methods.each do |method|
-          self.send(method)
-        end
-      end
 
       suffix =  AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix]
-
+      ([raw_attrs].flatten.map { |a| "#{a}#{suffix}" } - self.column_names).each do |missing_cache_column|
+        attr_accessor missing_cache_column
+      end
       [raw_attrs].flatten.each do |raw_attr|
-        define_method("#{raw_attr}#{suffix}=") do |val|
-          a = "#{raw_attr}#{suffix}"
-          write_attribute(a, val) if attributes[a]
-        end
-        define_method("#{raw_attr}#{suffix}") do
-          result = read_attribute("#{raw_attr}#{suffix}") || send("auto_html_prepare_#{raw_attr}")
-          result.respond_to?(:html_safe) ?
-            result.html_safe :
-              result
-        end
-        define_method("auto_html_prepare_#{raw_attr}") do
-          result = auto_html(self.send(raw_attr), &proc)
-          self.send(raw_attr.to_s + suffix + "=", result)
-          result
+        define_method("#{raw_attr}=") do |val|
+          self[raw_attr] = val
+          result = auto_html(val, &proc)
+          if result.respond_to?(:html_safe)
+            result = result.html_safe 
+          end
+          self.send("#{raw_attr}#{suffix}=", result)
+          val
         end
       end
+
     end
   end
 
@@ -48,3 +37,5 @@ module AutoHtmlFor
     include AutoHtml
   end
 end
+
+
