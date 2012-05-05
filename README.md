@@ -4,6 +4,14 @@ auto_html [![Build Status](https://secure.travis-ci.org/dejan/auto_html.png)](ht
 
 auto_html is a Rails extension for transforming URLs to appropriate resource (image, link, YouTube, Vimeo video,...). It's the perfect choice if you don't want to bother visitors with rich HTML editor or markup code, but you still want to allow them to embed video, images, links and more on your site, purely by pasting URL. Check out the [live demo](http://auto-html.rors.org).
 
+
+## Install
+
+Specify the gem in Gemfile of the project
+
+    gem "auto_html"
+
+
 ## Example usage
 
 Transforming string with text and URLs is done with *auto_html* method:
@@ -56,6 +64,11 @@ AutoHtml is highly customizable, and you can easily create new filters that will
     end
 
 
+## Bundled filters
+
+For filter list and options they support check: <http://github.com/dejan/auto_html/tree/master/lib/auto_html/filters>
+
+
 ## Non-ActiveRecord models
 
 AutoHtml uses standard ActiveModel API, which means that you can include AutoHtmlFor module (that automates transformation of the field) in any non-ActiveRecord model that uses ActiveModel. Here's working [mongoid](http://mongoid.org/) example:
@@ -72,6 +85,7 @@ AutoHtml uses standard ActiveModel API, which means that you can include AutoHtm
       end
     end
 
+
 ## Rake and Capistrano tasks
 
 AutoHtml has a Rake task for rebuilding cached in DB column values
@@ -83,17 +97,6 @@ If you want to run it on remote server, just add this to your `deploy.rb`:
     require 'auto_html/capistrano'
     
 Now you can run `cap auto_html:rebuild CLASS=[your_model]`.
-
-## Bundled filters
-
-For filter list and options they support check: <http://github.com/dejan/auto_html/tree/master/lib/auto_html/filters>
-
-
-## Install
-
-Specify the gem in Gemfile of the project
-
-    gem "auto_html"
 
 
 ## Licence
