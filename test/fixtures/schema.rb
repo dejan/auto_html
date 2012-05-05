@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define do
+ActiveRecord::Schema.define(:version => Time.now.to_i) do
   create_table "articles", :force => true do |t|
     t.column "title",         :string
     t.column "body",          :text
