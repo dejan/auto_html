@@ -1,3 +1,6 @@
+## 1.5.3, released 2012-05-08
+* Fixed Mongoid support
+
 ## 1.5.2, released 2012-05-05
 * Works with Rails 3.2.1+ 
 * Updated youtube regex to account for feature=player_embedded url param
