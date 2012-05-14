@@ -1,13 +1,11 @@
-AutoHtml.add_filter(:soundcloud).with(:width => 100, :height => 248) do |text, options|
-	text.gsub(/(https?):\/\/(www.)?soundcloud\.com\//) do
-		p = HTTParty.get(text)
-		s = p.to_s
-		a = s.rindex('%2Ftracks%2F')
-		b = s.rindex('&amp;color')
-		track_num = s[(a+12)..(b-1)]
-		width  = options[:width]
-    	height = options[:height]
+require 'uri'
+require 'net/http'
 
-    	%{<iframe width="#{width}" height="#{height}" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F#{track_num}&show_artwork=true"></iframe>}
-    end
+AutoHtml.add_filter(:soundcloud).with({}) do |text, options|
+  text.gsub(/(https?):\/\/(www.)?soundcloud\.com\/.*/) do
+    uri = URI("http://soundcloud.com/oembed")
+    uri.query = URI.encode_www_form({:format => 'json', :url => text})
+    response = JSON.parse(Net::HTTP.get(uri))
+    response["html"]
+  end
 end

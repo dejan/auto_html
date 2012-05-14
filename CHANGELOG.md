@@ -1,4 +1,6 @@
+## unreleased
 * support https links from vimeo
+* added a soundcloud filter
 
 ## 1.5.0, released 2011-12-07
 * use redcarpet ~> 2.0.0; :renderer option
