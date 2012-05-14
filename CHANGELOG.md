@@ -1,3 +1,6 @@
+## unreleased
+* Added Soundcloud filter
+
 ## 1.5.3, released 2012-05-08
 * Fixed Mongoid support
 
