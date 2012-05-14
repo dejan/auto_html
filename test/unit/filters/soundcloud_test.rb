@@ -1,5 +1,5 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
-require 'debugger'
+
 class SoundcloudTest < Test::Unit::TestCase
 
   def test_transform_url_with_www
