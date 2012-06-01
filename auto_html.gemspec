@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.homepage = 'http://github.com/dejan/auto_html'
 
   gem.add_dependency('rinku', '~> 1.5.0')
-  gem.add_dependency('redcarpet', '~> 2.0.0')
+  gem.add_dependency('redcarpet')
 
   # ensure the gem is built out of versioned files
   gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
