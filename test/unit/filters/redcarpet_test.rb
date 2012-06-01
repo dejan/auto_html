@@ -28,4 +28,11 @@ class RedcarpetTest < Test::Unit::TestCase
     assert_equal '<p><a href="http://example.org/" target="_blank">This is a link</a></p>'+"\n", result
   end
 
+  def test_options
+    result = auto_html('http://example.org/') { redcarpet }
+    assert_equal '<p>http://example.org/</p>'+"\n", result
+    
+    result = auto_html('http://example.org/') { redcarpet(:markdown_options => { :autolink => true }) }
+    assert_equal '<p><a href="http://example.org/">http://example.org/</a></p>'+"\n", result
+  end
 end
