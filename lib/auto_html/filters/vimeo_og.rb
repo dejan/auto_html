@@ -7,7 +7,7 @@ class NoParagraphRenderer < ::Redcarpet::Render::XHTML
 end
 
 AutoHtml.add_filter(:vimeo_og).with({:alt => ''}) do |text, options|
-
+	alt = options[:alt]
 	r = Redcarpet::Markdown.new(NoParagraphRenderer)
     text.gsub(/(https?):\/\/(www.)?vimeo\.com\/([A-Za-z0-9._%-]*)((\?|#)\S+)?/) do
 		p = HTTParty.get(text)
