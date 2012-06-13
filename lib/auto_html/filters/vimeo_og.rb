@@ -1,4 +1,14 @@
-AutoHtml.add_filter(:vimeo_og).with(:width => 440, :height => 248, :show_title => false, :show_byline => false, :show_portrait => false) do |text, options|
+require 'redcarpet'
+
+class NoParagraphRenderer < ::Redcarpet::Render::XHTML
+  def paragraph(text)
+    text
+  end    
+end
+
+AutoHtml.add_filter(:vimeo_og).with({:alt => ''}) do |text, options|
+
+	r = Redcarpet::Markdown.new(NoParagraphRenderer)
     text.gsub(/(https?):\/\/(www.)?vimeo\.com\/([A-Za-z0-9._%-]*)((\?|#)\S+)?/) do
 		p = HTTParty.get(text)
 		s = p.to_s
@@ -11,4 +21,6 @@ AutoHtml.add_filter(:vimeo_og).with(:width => 440, :height => 248, :show_title =
 		end
 		img.join
     end
+    img.
+    r.render("![#{alt}](img)")
 end
