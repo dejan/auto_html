@@ -25,6 +25,6 @@ AutoHtml.add_filter(:behance_og_i).with({:alt => ''}) do |text, options|
 			img << s[b]
 			b = b + 1
 		end
-    	r.render("![#{alt}](#{img.reverse.join})")
+    	r.render("![#{alt}](#{img.join})")
     end
 end
