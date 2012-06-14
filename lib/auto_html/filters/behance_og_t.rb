@@ -1,7 +1,11 @@
 AutoHtml.add_filter(:behance_og_t).with({:alt => ''}) do
 	alt = options[:alt]
 	r = Redcarpet::Markdown.new(NoParagraphRenderer)
-
+class NoParagraphRenderer < ::Redcarpet::Render::XHTML
+  def paragraph(text)
+    text
+  end    
+end
  	regex = /(https?):\/\/(www.)?be(hance)?\.net\/gallery\/([A-Za-z0-9_-]*)\/([0-9])*/
  	text.gsub(regex) do
 
