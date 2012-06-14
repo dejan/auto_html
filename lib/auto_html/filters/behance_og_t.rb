@@ -1,11 +1,3 @@
-require 'redcarpet'
-
-class NoParagraphRenderer < ::Redcarpet::Render::XHTML
-  def paragraph(text)
-    text
-  end    
-end
-
 AutoHtml.add_filter(:behance_og_t).with({:alt => ''}) do |text, options|
 	alt = options[:alt]
 	r = Redcarpet::Markdown.new(NoParagraphRenderer)
@@ -25,6 +17,6 @@ AutoHtml.add_filter(:behance_og_t).with({:alt => ''}) do |text, options|
 			img << s[b]
 			b = b + 1
 		end
-    	r.render("![#{alt}](#{img.join})")
+    	img.join
     end
 end
