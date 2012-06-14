@@ -6,7 +6,7 @@ class NoParagraphRenderer < ::Redcarpet::Render::XHTML
   end    
 end
 
-AutoHtml.add_filter(:behance_og_i).with({:alt => ''}) do |text, options|
+AutoHtml.add_filter(:behance_og_t).with({:alt => ''}) do |text, options|
 	alt = options[:alt]
 	r = Redcarpet::Markdown.new(NoParagraphRenderer)
 
