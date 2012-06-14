@@ -20,6 +20,6 @@ AutoHtml.add_filter(:vimeo_og).with({:alt => ''}) do |text, options|
 			b = b + 1
 		end
 		img.join
+		r.render("![#{alt}](img)")
     end
-    r.render("![#{alt}](img)")
 end
