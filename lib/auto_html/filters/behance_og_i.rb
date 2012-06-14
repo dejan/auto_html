@@ -9,7 +9,13 @@ end
 AutoHtml.add_filter(:soundcloud_og).with({:alt => ''}) do |text, options|
 	alt = options[:alt]
 	r = Redcarpet::Markdown.new(NoParagraphRenderer)
-	text.gsub(/(https?):\/\/(www.)?soundcloud\.com\//) do
+
+ 	regex = /(https?):\/\/(www.)?be(hance)?\.net\/gallery\/([A-Za-z0-9_-]*)\/([0-9])*/
+ 	text.gsub(regex) do
+
+#/(https?):\/\/(www.)?be(hance)?\.net\/gallery\/([A-Za-z0-9_-]*)\/([0-9])*/
+#add brackets () tip: \S ???
+
 		p = HTTParty.get(text)
 		s = p.to_s
 		a = s.rindex('og:image')
