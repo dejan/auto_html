@@ -31,5 +31,5 @@ AutoHtml.add_filter(:default_og_i).with({:alt => ''}) do |text, options|
 	    else
 	    	text
 	    end
-    end
+    #end
 end
