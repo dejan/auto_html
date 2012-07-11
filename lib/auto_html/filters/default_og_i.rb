@@ -12,7 +12,7 @@ AutoHtml.add_filter(:default_og_i).with({:alt => ''}) do |text, options|
 
  	#regex = /(https?):\/\/(www.)?be(hance)?\.net\/gallery\/([A-Za-z0-9_-]*)\/([0-9])*/
  	#text.gsub(regex) do
- 	text do
+ 	#text do
 
 #/(https?):\/\/(www.)?be(hance)?\.net\/gallery\/([A-Za-z0-9_-]*)\/([0-9])*/
 #add brackets () tip: \S ???
