@@ -1,9 +1,8 @@
 ## unreleased 
-* Twitter filter
-* Flickr filter
-* Soundcloud filter
-* Options for markdown filter
+* Twitter, Flickr, Soundcloud filters added
+* Options for markdown filter added
 * Omit protocol where applicable (youtube, googlemap, vimeo) to avod mixed content warnings. Fixes #50
+* rake task fixed. Resolves #42
 * Relax rinku version requirement
 
 ## 1.5.3, released 2012-05-08
