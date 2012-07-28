@@ -1,5 +1,9 @@
-## unreleased
-* Added Soundcloud filter
+## unreleased 
+* Twitter filter
+* Flickr filter
+* Soundcloud filter
+* Options for markdown filter
+* Relax rinku version requirement
 
 ## 1.5.3, released 2012-05-08
 * Fixed Mongoid support
