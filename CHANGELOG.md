@@ -3,7 +3,7 @@
 * Options for markdown filter added
 * Omit protocol where applicable (youtube, googlemap, vimeo) to avoid mixed content warnings. Fixes #50
 * rake task fixed. Resolves #42
-* Relax rinku version requirement
+* Relax redcarpet version requirement
 
 ## 1.5.3, released 2012-05-08
 * Fixed Mongoid support
