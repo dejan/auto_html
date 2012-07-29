@@ -1,4 +1,4 @@
-## unreleased 
+## 1.6.0, released 2012-07-28 
 * Twitter, Flickr, Soundcloud filters added
 * Options for markdown filter added
 * Omit protocol where applicable (youtube, googlemap, vimeo) to avod mixed content warnings. Fixes #50
