@@ -1,8 +1,8 @@
 ## 1.6.0, released 2012-07-28 
 * Twitter, Flickr, Soundcloud filters added
 * Options for markdown filter added
-* Omit protocol where applicable (youtube, googlemap, vimeo) to avoid mixed content warnings. Fixes #50
-* rake task fixed. Resolves #42
+* Omit protocol where applicable (youtube, googlemap, vimeo) to avoid mixed content warnings. Fixes [#50](https://github.com/dejan/auto_html/issues/50)
+* rake task fixed. Resolves [#42](https://github.com/dejan/auto_html/issues/42)
 * Relax redcarpet version requirement
 
 ## 1.5.3, released 2012-05-08
