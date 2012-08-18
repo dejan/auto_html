@@ -1,4 +1,4 @@
-auto_html [![Build Status](https://secure.travis-ci.org/dejan/auto_html.png)](http://travis-ci.org/dejan/auto_html)
+auto_html [![Build Status](https://secure.travis-ci.org/dejan/auto_html.png?branch=master)](http://travis-ci.org/dejan/auto_html)
 =========
 
 
