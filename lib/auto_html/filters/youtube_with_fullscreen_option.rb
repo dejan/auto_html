@@ -15,4 +15,3 @@ AutoHtml.add_filter(:youtube_with_fullscreen_option).with(:width => 420, :height
     %{<iframe title="YouTube video player" width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" controls="#{controls}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>}
   end
 end
- src="http://www.youtube.com/embed/fxs970FMYIo?HD=1;rel=0;showinfo=0;controls=0" height="289" frameborder="0">
