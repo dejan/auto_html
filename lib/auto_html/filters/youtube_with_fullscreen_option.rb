@@ -1,4 +1,4 @@
-AutoHtml.add_filter(:youtube_with_fullscreen_option).with(:width => 420, :height => 315, :frameborder => 0, :wmode => nil) do |text, options|
+AutoHtml.add_filter(:youtube_with_fullscreen_option).with(:width => 420, :height => 315, :frameborder => 0, :wmode => nil, :hd => 1, :rel => 0, :rel => 0, :fs => 1, :controls => 1) do |text, options|
   regex = /https?:\/\/(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?feature=player_embedded&v=)([A-Za-z0-9_-]*)(\&\S+)?(\S)*/
   text.gsub(regex) do
     youtube_id = $3
@@ -6,8 +6,13 @@ AutoHtml.add_filter(:youtube_with_fullscreen_option).with(:width => 420, :height
     height = options[:height]
     frameborder = options[:frameborder]
 		wmode = options[:wmode]
-		src = "//www.youtube.com/embed/#{youtube_id}?rel=0&fs=1"
+    hd = options[:hd]
+    rel = options[:rel]
+    fs = options[:fs]
+    controls = options [:controls]
+		src = "//www.youtube.com/embed/#{youtube_id}?rel=#{rel}&fs=#{fs}"
 		src += "?wmode=#{wmode}" if wmode
-    %{<iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>}
+    %{<iframe title="YouTube video player" width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" controls="#{controls}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>}
   end
 end
+ src="http://www.youtube.com/embed/fxs970FMYIo?HD=1;rel=0;showinfo=0;controls=0" height="289" frameborder="0">
