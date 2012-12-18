@@ -10,7 +10,7 @@ AutoHtml.add_filter(:youtube).with(:width => 420, :height => 315, :frameborder =
     rel = options[:rel]
     fs = options[:fs]
     controls = options[:controls]
-    showinfo = options[:schowinfo]
+    showinfo = options[:showinfo]
     src = "//www.youtube.com/embed/#{youtube_id}?rel=#{rel}&fs=#{fs}&HD=#{hd}&showinfo=#{showinfo}&controls=#{controls}"
     src += "?wmode=#{wmode}" if wmode
     %{<iframe title="YouTube video player" width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>}
