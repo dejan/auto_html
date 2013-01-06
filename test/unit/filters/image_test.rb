@@ -12,6 +12,11 @@ class ImageTest < Test::Unit::TestCase
     assert_equal 'http://blog.phusion.nl/2009/04/16/phusions-one-year-anniversary-gift-phusion-passenger-220/', result
   end
 
+  def test_dont_transform_a_formatted_image
+    result = auto_html('<img src="http://farm4.static.flickr.com/3459/3270173112_5099d3d730.jpg" alt=""/>'){ image({:alt => nil}) }
+    assert_equal '<img src="http://farm4.static.flickr.com/3459/3270173112_5099d3d730.jpg" alt=""/>', result
+  end
+
   def test_transform2
     result = auto_html('http://farm4.static.flickr.com/3459/3270173112_5099d3d730.jpg') { image({:alt => nil}) }
     assert_equal '<img src="http://farm4.static.flickr.com/3459/3270173112_5099d3d730.jpg" alt=""/>', result
