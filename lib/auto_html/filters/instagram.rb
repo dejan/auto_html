@@ -1,7 +1,7 @@
 require 'uri'
 require 'net/http'
 
-AutoHtml.add_filter(:instagram).with(:size => 640, :link_options => {}) do |text, options|
+AutoHtml.add_filter(:instagram).with(:size => nil, :link_options => {}) do |text, options|
   regex = %r{https?:\/\/(www.)?instagr(am\.com|\.am)/p/.+}
     
   text.gsub(regex) do

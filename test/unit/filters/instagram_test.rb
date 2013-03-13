@@ -37,17 +37,5 @@ class InstagramTest < Test::Unit::TestCase
      result = auto_html('http://instagr.am/p/WsQTLAGvx7/') { instagram(:link_options => {:add_link => 'true' }) }
      assert_equal '<a href="http://instagr.am/p/WsQTLAGvx7/" title="Dutchez enjoying the snow!! #dutchez #island #restday" target="_self"><img src="http://distilleryimage3.instagram.com/689fb0a489c611e2bbd422000a1f9ab2_7.jpg" alt="Dutchez enjoying the snow!! #dutchez #island #restday" width="612" height="612"></a>', result
   end
- # def test_transform_with_title_option
-  #  result = auto_html('http://instagr.am/p/WsQTLAGvx7/m') { instagram(:show_title => 'true') }
-  #end
-  
-  #def test_transform_with_size_title_option
-  #  result = auto_html('http://instagr.am/p/WsQTLAGvx7/m') { instagram(:size => 'small', :show_title => 'true') }
-  #end
-
-  
-  #def test_transform_with_size_link_title_option
-  #  result = auto_html('http://instagr.am/p/WsQTLAGvx7/m') { instagram(:size => 'small', :add_link => 'true',:show_title => 'true') }
-  #end
-  
+    
 end
