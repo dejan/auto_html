@@ -1,3 +1,7 @@
+require 'rails'
+
+require 'active_support/core_ext/module/attribute_accessors' if Rails::VERSION::MAJOR >= 4
+
 module AutoHtmlFor
 
   # default options that can be overridden on the global level
