@@ -8,6 +8,6 @@ AutoHtml.add_filter(:youku).with(:width => 420, :height => 315, :frameborder => 
 		wmode = options[:wmode]
 		src = "//player.youku.com/embed/#{youku_id}"
 		src += "?wmode=#{wmode}" if wmode
-    %{<iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" allowfullscreen></iframe>}
+    %{<iframe video-side="youku" video-id="#{youku_id}" width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" allowfullscreen></iframe>}
   end
 end
