@@ -1,7 +1,7 @@
-require 'uri'
-require 'net/http'
-
 AutoHtml.add_filter(:soundcloud).with({}) do |text, options|
+  require 'uri'
+  require 'net/http'
+
   # set these options
   # :maxwidth => '', :maxheight => '', :auto_play => false, :show_comments => false
   text.gsub(/(https?:\/\/)?(www.)?soundcloud\.com\/.*/) do |match|
