@@ -1,5 +1,59 @@
-## edge
+## 1.6.0, released 2012-07-28 
+* Twitter, Flickr, Soundcloud filters added
+* Options for markdown filter added
+* Omit protocol where applicable (youtube, googlemap, vimeo) to avoid mixed content warnings. Fixes [#50](https://github.com/dejan/auto_html/issues/50)
+* rake task fixed. Resolves [#42](https://github.com/dejan/auto_html/issues/42)
+* Relax redcarpet version requirement
+
+## 1.5.3, released 2012-05-08
+* Fixed Mongoid support
+
+## 1.5.2, released 2012-05-05
+* Works with Rails 3.2.1+ 
+* Updated youtube regex to account for feature=player_embedded url param
+
+## 1.5.1, released 2012-02-18
+* Rails 3.2 support 
+* Gist & GoogleMap filter
+* fix #26 - error after the rake task completed
+* fix #29 - youtube filter swallows text that comes after a link
+
+## 1.5.0, released 2011-12-07
+* use redcarpet ~> 2.0.0; :renderer option
+* use rinku ~> 1.5.0
+* Rake task for rebuilding cached markup
+* default youtube embed code should be the same as provide by youtube.com; wmode is no longer default param
+* reducing dependencies - do not bundle RedCloth filter. Redcarpet (markdown) is default choice for markup and planned for more usage internally, so the lib goes with only that.
+* minor youtube filter fixes (https support, short url with params)
+
+## 1.4.2, released 2011-08-12
+* Add support for YouTube short url
+* added Redcarpet filter (Markdown rendering)
+
+## 1.4.1, released 2011-07-09
+* AutoHtml gets module method: AutoHtml.auto_html(...)
+* on blank filter list return input instead of nil
+* AutoHtmlFor producing html_safe
+
+## 1.4.0, released 2011-07-09
+* remove Rails dependencies by using rinku & tag_helper
+* image filter supports attributes
+* output of auto_html method is html_safe
+* auto_html module is included in ApplicationHelper
+
+## 1.3.7, released 2011-04-12
+* require activerecord only if available
+
+## 1.3.6, released 2011-03-30
+* RedCloth name fix in gemspec
+
+## 1.3.5, released 2011-03-30
+* RedCloth filter
+* https support for image filter
+
+## 1.3.4, released 2011-01-01
 * added metacafe filter
+* converts all filter outputs to_s
 
 ## 1.3.3, released 2010-09-01
 * yet another Rails 3 initialization fix

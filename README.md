@@ -1,7 +1,15 @@
-auto_html
+auto_html [![Build Status](https://secure.travis-ci.org/dejan/auto_html.png?branch=master)](http://travis-ci.org/dejan/auto_html)
 =========
 
-auto_html is a Rails extension for transforming URLs to appropriate resource (image, link, YouTube, Vimeo video,...). It's the perfect choice if you don't want to bother visitors with rich HTML editor or markup code, but you still want to allow them to embed video, images, links and more on your site, purely by pasting URL. Check out the [live demo](http://auto-html.rors.org).
+
+auto_html is a Rails extension for transforming URLs to appropriate resource (image, link, YouTube, Vimeo video,...). It's the perfect choice if you don't want to bother visitors with rich HTML editor or markup code, but you still want to allow them to embed video, images, links and more on your site, purely by pasting URL. Check out the [live demo](http://rors.org/demos/auto_html).
+
+
+## Install
+
+Specify the gem in Gemfile of the project
+
+    gem "auto_html"
 
 
 ## Example usage
@@ -25,12 +33,12 @@ You'll probably have user input stored in model, so it's a good place to automat
       end
     end
 
-... and you'll have this behaviour: 
+... and you'll have this behavior: 
 
     Comment.create(:body => 'Hey check out this cool video: http://www.youtube.com/watch?v=WdsGihou8J4')  
     => #<Comment id: 123, body: '<p>Hey check out this cool video: <iframe class="youtube-player" type="text/html" width="587" height="350" src="http://www.youtube.com/embed/WdsGihou8J4" frameborder="0"> <br /></iframe></p>'>
 
-Note that order of invoking filters is important, ie. you want html_escape as first and link amongst last, so that it doesn't transform youtube URL to plain link.
+Note that order of invoking filters is important, i.e. you want html_escape as first and link amongst last, so that it doesn't transform youtube URL to plain link.
 
 
 Now all you have to do is to display it in template without escaping, since plugin took care of that:
@@ -47,7 +55,7 @@ If you need to display preview, no problem. Have something like this as action i
       render :text => comment.body_html
     end
 
-Plugin is highly customizable, and you can easily create new filters that will transform user input any way you like. For instance, this is the image filter that comes bundled with plugin:
+AutoHtml is highly customizable, and you can easily create new filters that will transform user input any way you like. For instance, this is the image filter that comes bundled with plugin:
 
     AutoHtml.add_filter(:image) do |text|
       text.gsub(/http:\/\/.+\.(jpg|jpeg|bmp|gif|png)(\?\S+)?/i) do |match|
@@ -56,41 +64,60 @@ Plugin is highly customizable, and you can easily create new filters that will t
     end
 
 
-
 ## Bundled filters
 
 For filter list and options they support check: <http://github.com/dejan/auto_html/tree/master/lib/auto_html/filters>
 
 
-## Install
+## Non-ActiveRecord models
 
-### Important note on versions
+AutoHtml uses standard ActiveModel API, which means that you can include AutoHtmlFor module (that automates transformation of the field) in any non-ActiveRecord model that uses ActiveModel. Here's working [mongoid](http://mongoid.org/) example:
 
-As from version 1.2.0 auto_html uses Rails' engine for discovering links. There are some bugs with that engine in versions under Rails 2.3.2. so it's recommended you use auto_html 1.1.2 in that case, since internal engine is used in that version.
+    class Post
+      include Mongoid::Document
+      include AutoHtmlFor
 
-    for Rails <= 2.3.1 use auto_html 1.1.2<br/>
-    for Rails >= 2.3.2 use the latest auto_html
+      field :body
 
-As from version 1.3.0, auto_html has been tested to work with Rails 3 and Ruby 1.9.
-
-### As a gem
-
-To enable the library in your Rails 2.1-2.3 project, use the gem configuration method in "config/environment.rb"
-
-    Rails::Initializer.run do |config|
-      config.gem 'auto_html'
+      auto_html_for :body do
+        simple_format
+        link
+      end
     end
 
-In Rails 3.0 specify the gem in your Gemfile
 
-    gem "auto_html"
+## Rake and Capistrano tasks
 
-### As a Rails plugin
+AutoHtml has a Rake task for rebuilding cached in DB column values
+Usage: `rake auto_html:rebuild CLASS=[your model]`
+Where `[your model]` is the name of model which values you want to rebuild.
 
-    script/plugin install git://github.com/dejan/auto_html.git
+If you want to run it on remote server, just add this to your `deploy.rb`:
+
+    require 'auto_html/capistrano'
+    
+Now you can run `cap auto_html:rebuild CLASS=[your_model]`.
 
 
-## Credits
+## Licence
 
-Author: [Dejan Simic](http://github.com/dejan)<br/>
-Contributors: [Claudio Perez Gamayo](http://github.com/crossblaim), [Matt Polito](http://github.com/mattpolito), [Ryan Heneise](http://github.com/mysmallidea), [Caleb Wright](http://github.com/fabrikagency), [Derrick Camerino](https://github.com/robustdj)
+Copyright (c) 2009 Dejan Simic
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
