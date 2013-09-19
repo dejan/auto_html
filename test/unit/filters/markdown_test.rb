@@ -14,7 +14,7 @@ class MarkdownTest < Test::Unit::TestCase
   
   def test_transform_list
     result = auto_html("# A heading\n\n* A list\n* A list 2"){ markdown }
-    assert_equal "<h1>A heading</h1>\n\n<ul>\n<li>A list</li>\n<li>A list 2</li>\n</ul>", result
+    assert_equal "<h1>A heading</h1>\n\n<ul>\n<li>A list</li>\n<li>A list 2</li>\n</ul>\n", result
   end
 
 end
