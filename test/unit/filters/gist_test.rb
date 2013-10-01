@@ -7,4 +7,9 @@ class GistTest < Test::Unit::TestCase
     assert_equal '<script src="https://gist.github.com/1710276.js"></script>', result
   end
 
+  def test_transform_with_username
+    result = auto_html('https://gist.github.com/toctan/6547840') { gist }
+    assert_equal '<script src="https://gist.github.com/6547840.js"></script>', result
+  end
+
 end
