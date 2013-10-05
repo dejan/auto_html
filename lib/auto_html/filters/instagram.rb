@@ -5,6 +5,7 @@ AutoHtml.add_filter(:instagram) do |text|
   regex = %r{https?:\/\/(www.)?instagr(am\.com|\.am)/p/.+}
   
   text.gsub(regex) do
-    image = URI("#{text}embed/")
+    uri = URI("#{text}embed/")
+    image = Net::HTTP.get(uri)
   end
 end
