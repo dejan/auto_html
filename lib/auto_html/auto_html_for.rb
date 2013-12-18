@@ -32,7 +32,7 @@ module AutoHtmlFor
       missing_cache_columns.each do |missing_cache_column|
         raw_attr = missing_cache_column.gsub(suffix, '')
         define_method(missing_cache_column) do
-          val = self[raw_attr]
+          val = self[raw_attr] || self.send(raw_attr.to_sym)
           auto_html(val, &proc)
         end
       end
