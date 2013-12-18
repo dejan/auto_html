@@ -52,4 +52,9 @@ class ImageTest < Test::Unit::TestCase
     assert_equal '<img src="https://img.skitch.com/20100910-1wrbg5749xe29ya5t3s85bnaiy.png" alt=""/>', result
   end
 
+  def test_proxy_option
+    result = auto_html('http://img.skitch.com/20100910-1wrbg5749xe29ya5t3s85bnaiy.png') { image({:alt => nil,:proxy => "https://proxy/?url="}) }
+    assert_equal '<img src="https://proxy/?url=http://img.skitch.com/20100910-1wrbg5749xe29ya5t3s85bnaiy.png" alt=""/>', result
+  end
+
 end
