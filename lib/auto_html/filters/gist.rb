@@ -1,9 +1,8 @@
 AutoHtml.add_filter(:gist).with({}) do |text, options|
   # E.g. https://gist.github.com/1710276
-  regex = /https:\/\/gist\.github\.com\/(\d+)/
+  regex = %r{https?://gist\.github\.com/(\w+/)?(\d+)}
   text.gsub(regex) do
-    gist_id = $1
+    gist_id = $2
     %{<script src="https://gist.github.com/#{gist_id}.js"></script>}
   end
 end
-
