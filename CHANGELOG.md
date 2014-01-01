@@ -1,3 +1,11 @@
+## 1.6.1, unreleased
+* Permit auto_html_for on an attribute that's not in the DB.
+* Image filter: :proxy option
+* Link filter: :short_link_name option
+* GoogleMap filter: support for all countries (domains)
+* Gist filter: support for new URL scheme
+* New filters: speakerdeck
+
 ## 1.6.0, released 2012-07-28 
 * Twitter, Flickr, Soundcloud filters added
 * Options for markdown filter added
