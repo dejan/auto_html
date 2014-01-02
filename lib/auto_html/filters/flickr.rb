@@ -15,6 +15,6 @@ AutoHtml.add_filter(:flickr).with(:maxwidth => nil, :maxheight => nil, :link_opt
     response = JSON.parse(Net::HTTP.get(uri))
 
     link_options = Array(options[:link_options]).reject { |k,v| v.nil? }.map { |k, v| %{#{k}="#{REXML::Text::normalize(v)}"} }.join(' ')
-    %{<a href="#{match}"#{ ' ' + link_options unless link_options.empty? }><img src="#{response["url"]}" alt="#{response["title"]}" title="#{response["title"]}" /></a>}
+    %{<a class="auto-html-link flickr-link" href="#{match}"#{ ' ' + link_options unless link_options.empty? }><img src="#{response["url"]}" alt="#{response["title"]}" title="#{response["title"]}" /></a>}
   end
 end

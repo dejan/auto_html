@@ -8,6 +8,6 @@ AutoHtml.add_filter(:google_map).with(:width => 420, :height => 315, :style => "
     height = options[:height]
     style = options[:style]
 		link_text = options[:link_text]
-    %{<iframe width="#{width}" height="#{height}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="//maps.google.#{domain_country}/maps?f=q&amp;source=s_q&amp;#{map_query}&amp;output=embed"></iframe><br /><small><a href="//maps.google.#{domain_country}/maps?f=q&amp;source=embed&amp;#{map_query}" style="#{style}">#{link_text}</a></small>}
+    %{<iframe class="auto-html-iframe google-map-iframe" width="#{width}" height="#{height}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="//maps.google.#{domain_country}/maps?f=q&amp;source=s_q&amp;#{map_query}&amp;output=embed"></iframe><br /><small><a href="//maps.google.#{domain_country}/maps?f=q&amp;source=embed&amp;#{map_query}" style="#{style}">#{link_text}</a></small>}
   end
 end
