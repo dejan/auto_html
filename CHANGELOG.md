@@ -4,6 +4,7 @@
 * Link filter: :short_link_name option
 * GoogleMap filter: support for all countries (domains)
 * Gist filter: support for new URL scheme
+* Soundcloud: does not use network call anymore
 * New filters: speakerdeck
 
 ## 1.6.0, released 2012-07-28 
