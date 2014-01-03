@@ -5,7 +5,8 @@
 * GoogleMap filter: support for all countries (domains)
 * Gist filter: support for new URL scheme
 * Soundcloud: does not use network call anymore
-* New filters: speakerdeck
+* GoogleMap: add :zoom, :show_info, :type and :more param
+* New filters: speakerdeck, worldstar
 
 ## 1.6.0, released 2012-07-28 
 * Twitter, Flickr, Soundcloud filters added
