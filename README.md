@@ -27,7 +27,7 @@ You'll probably have user input stored in model, so it's a good place to automat
       auto_html_for :body do
         html_escape
         image
-        youtube(:width => 400, :height => 250)
+        youtube(:width => 400, :height => 250, :autoplay => true)
         link :target => "_blank", :rel => "nofollow"
         simple_format
       end
