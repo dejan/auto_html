@@ -8,6 +8,7 @@
 * GoogleMap: add :zoom, :show_info, :type and :more param
 * YouTube: add :autoplay option
 * New filters: worldstar
+* Deprecate GoogleVideo since it is discontinued
 
 ## 1.6.0, released 2012-07-28 
 * Twitter, Flickr, Soundcloud filters added
