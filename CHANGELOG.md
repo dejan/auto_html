@@ -1,6 +1,6 @@
 ## 1.6.1, unreleased
 * Permit auto_html_for on an attribute that's not in the DB.
-* Image filter: :proxy option
+* Image filter: :proxy option, do not format existing <img> 
 * Link filter: :short_link_name option
 * GoogleMap filter: support for all countries (domains)
 * Gist filter: support for new URL scheme
