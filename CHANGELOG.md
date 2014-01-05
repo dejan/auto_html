@@ -1,4 +1,4 @@
-## 1.6.1, unreleased
+## 1.6.1, released 2013-01-05
 * Permit auto_html_for on an attribute that's not in the DB.
 * Image filter: :proxy option, do not format existing <img> 
 * Link filter: :short_link_name option
