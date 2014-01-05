@@ -7,7 +7,7 @@
 * Soundcloud: does not use network call anymore
 * GoogleMap: add :zoom, :show_info, :type and :more param
 * YouTube: add :autoplay option
-* New filters: speakerdeck, worldstar
+* New filters: worldstar
 
 ## 1.6.0, released 2012-07-28 
 * Twitter, Flickr, Soundcloud filters added
