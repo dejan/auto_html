@@ -1,8 +1,8 @@
-require 'uri'
-require 'net/http'
-require 'rexml/document'
-
 AutoHtml.add_filter(:flickr).with(:maxwidth => nil, :maxheight => nil, :link_options => {}) do |text, options|
+  require 'uri'
+  require 'net/http'
+  require 'rexml/document'
+
   regex = %r{http://(www\.)?flickr\.com/photos/[^\s<]*}
 
   text.gsub(regex) do |match|
