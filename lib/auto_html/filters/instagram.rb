@@ -7,6 +7,6 @@ AutoHtml.add_filter(:instagram).with(:width => 616, :height => 714) do |text, op
   height = options[:height]
   regex = %r{https?:\/\/(www.)?instagr(am\.com|\.am)/p/.+}
   text.gsub(regex) do
-    %{<iframe src="#{text}embed" height="#{width}" width="#{height}" frameborder="0" scrolling="no"></iframe>}
+    %{<iframe src="#{text}embed" height="#{height}" width="#{width}" frameborder="0" scrolling="no"></iframe>}
   end
 end
