@@ -1,7 +1,7 @@
 require 'uri'
 require 'net/http'
 
-AutoHtml.add_filter(:instagram).with(:width => 710, :height => 612) do |text, options|
+AutoHtml.add_filter(:instagram).with(:width => 616, :height => 714) do |text, options|
   text << '/' unless text.end_with?('/')
   width = options[:width]
   height = options[:height]
