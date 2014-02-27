@@ -18,8 +18,8 @@ class TwitterTest < Test::Unit::TestCase
         "author_name": "Dan Martell",
         "author_url": "http://twitter.com/danmartell"
     })
-    
-    FakeWeb.register_uri(:get, %r|http://api\.twitter\.com/1/statuses/oembed\.json|, :body => response)
+
+    FakeWeb.register_uri(:get, %r|https://api\.twitter\.com/1/statuses/oembed\.json|, :body => response)
   end
 
   def test_transform
