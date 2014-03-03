@@ -3,6 +3,6 @@ AutoHtml.add_filter(:gist).with({}) do |text, options|
   regex = %r{https?://gist\.github\.com/(\w+/)?(\d+)}
   text.gsub(regex) do
     gist_id = $2
-    %{<script src="https://gist.github.com/#{gist_id}.js"></script>}
+    %{<script type="text/javascript" src="https://gist.github.com/#{gist_id}.js"></script>}
   end
 end
