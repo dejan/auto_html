@@ -51,4 +51,9 @@ class YouTubeTest < Test::Unit::TestCase
     result = auto_html("http://youtu.be/t7NdBIA4zJg?t=1s&hd=1") { youtube }
     assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg" frameborder="0" allowfullscreen></iframe></div>', result
   end
+
+  def test_transform_without_protocol
+    result = auto_html("www.youtube.com/watch?v=t7NdBIA4zJg") { youtube }
+    assert_equal '<iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg" frameborder="0" allowfullscreen></iframe>', result
+  end
 end
