@@ -1,7 +1,13 @@
-## 1.6.2, unreleased
+## 1.6.2, unreleased 2014-03-15
 * Deferred loading of filters dependencies when possible
+* Wrap youtube video with div for easier styling
+* Update redcarpet to latest
+* New filter: instagram 
+* Small fix for hashtag filter
+* Allow replacing youtube URL without protocol
+* Fix gist filter - add type attribute
 
-## 1.6.1, released 2013-01-05
+## 1.6.1, released 2014-01-05
 * Permit auto_html_for on an attribute that's not in the DB.
 * Image filter: :proxy option, do not format existing <img> 
 * Link filter: :short_link_name option
