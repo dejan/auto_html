@@ -7,7 +7,7 @@ AutoHtml.add_filter(:twitter).with({}) do |text, options|
   text.gsub(regex) do |match|
     params = { :url => match }.merge(options)
 
-    uri = URI("http://api.twitter.com/1/statuses/oembed.json")
+    uri = URI("https://api.twitter.com/1/statuses/oembed.json")
     uri.query = URI.encode_www_form(params)
 
     response = JSON.parse(Net::HTTP.get(uri))
