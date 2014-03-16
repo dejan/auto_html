@@ -1,7 +1,7 @@
 Gem::Specification.new do |gem|
   gem.name = 'auto_html'
-  gem.version = '1.5.1'
-  gem.date = Date.today.to_s
+  gem.version = '1.5.1.1'
+  gem.date = "2014-03-16"
 
   gem.summary = "Transform URIs to appropriate markup"
   gem.description = "Automatically transforms URIs (via domain) and includes the destination resource (Vimeo, YouTube movie, image, ...) in your document"
