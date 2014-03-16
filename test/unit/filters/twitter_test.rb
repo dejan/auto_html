@@ -23,17 +23,17 @@ class TwitterTest < Test::Unit::TestCase
   end
 
   def test_transform
-    transormed_html = "things"
+    transformed_html = "things"
     result = auto_html('https://twitter.com/danmartell/statuses/279651488517738496') { twitter }
-    assert_equal transormed_html, result
+    assert_equal transformed_html, result
   end
 
   def test_dont_transform_a_regular_link_to_twitter
-    transormed_html = %Q(<blockquote class="twitter-tweet"><p>Stop saying you can&#39;t! Start asking &quot;What would need to be true for me to accomplish this&quot; - it&#39;ll change your life. <a href="https://twitter.com/search?q=%23focus&amp;src=hash">#focus</a> <a href="https://twitter.com/search?q=%23solutions&amp;src=hash">#solutions</a></p>&mdash; Dan Martell (@danmartell) <a href="https://twitter.com/danmartell/statuses/279651488517738496">December 14, 2012</a></blockquote>
+    transformed_html = %Q(<blockquote class="twitter-tweet"><p>Stop saying you can&#39;t! Start asking &quot;What would need to be true for me to accomplish this&quot; - it&#39;ll change your life. <a href="https://twitter.com/search?q=%23focus&amp;src=hash">#focus</a> <a href="https://twitter.com/search?q=%23solutions&amp;src=hash">#solutions</a></p>&mdash; Dan Martell (@danmartell) <a href="https://twitter.com/danmartell/statuses/279651488517738496">December 14, 2012</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>)
-    result = auto_html(transormed_html) { twitter }
+    result = auto_html(transformed_html) { twitter }
 
-    assert_equal transormed_html, result
+    assert_equal transformed_html, result
   end
 
 end
