@@ -17,12 +17,12 @@ class YouTubeTest < Test::Unit::TestCase
     assert_equal '<iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe>', result
   end
 
-  def test_transform3
+  def test_transform4
     result = auto_html('foo http://www.youtube.com/watch?v=fT1ahr81HLw bar') { youtube }
     assert_equal 'foo <iframe width="420" height="315" src="//www.youtube.com/embed/fT1ahr81HLw" frameborder="0" allowfullscreen></iframe> bar', result
   end
 
-  def test_transform4
+  def test_transform5
     result = auto_html('foo http://www.youtube.com/watch?v=fT1ahr81HLw<br>bar') { youtube }
     assert_equal 'foo <iframe width="420" height="315" src="//www.youtube.com/embed/fT1ahr81HLw" frameborder="0" allowfullscreen></iframe><br>bar', result
   end
@@ -39,6 +39,11 @@ class YouTubeTest < Test::Unit::TestCase
 
   def test_transform_with_short_url
     result = auto_html('http://www.youtu.be/BwNrmYRiX_o') { youtube }
+    assert_equal '<iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe>', result
+  end
+
+  def test_transform_with_embed_url
+    result = auto_html('http://youtube.com/embed/BwNrmYRiX_o') { youtube }
     assert_equal '<iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe>', result
   end
 
