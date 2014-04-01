@@ -1,4 +1,7 @@
-## 1.6.2, unreleased 2014-03-15
+## 1.6.3, released 2014-04-01
+* Fixed Twitter filter
+
+## 1.6.2, released 2014-03-15
 * Deferred loading of filters dependencies when possible
 * Wrap youtube video with div for easier styling
 * Update redcarpet to latest
