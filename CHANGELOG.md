@@ -1,5 +1,9 @@
+## 1.6.4, released 2014-04-11
+* New filter: youtube image filter 
+
 ## 1.6.3, released 2014-04-01
 * Fixed Twitter filter
+* New filter: liveleak
 
 ## 1.6.2, released 2014-03-15
 * Deferred loading of filters dependencies when possible
