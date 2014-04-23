@@ -1,0 +1,27 @@
+require 'autotest/growl'
+require 'autotest/fsevent'
+require 'redgreen'
+
+Autotest.add_hook :initialize do |at|
+  unless ARGV.empty?
+    at.find_directories = ARGV
+  else
+    # Clear all mappings
+    #at.clear_mappings
+
+    # Ignore these files
+    %w(
+      .hg .git .svn stories tmtags 
+      Gemfile Rakefile Capfile README 
+      .html app/assets config .keep
+      spec/spec.opts spec/rcov.opts vendor/gems vendor/ruby 
+      autotest svn-commit .DS_Store
+    ).each { |exception|at.add_exception(exception) }
+
+    # Now add support for the test files themselves
+    at.add_mapping(%r%^test/(.*)/(.*)\.rb$%) do |file, m|
+      at.files_matching %r%#{file}%
+    end
+
+  end
+end
