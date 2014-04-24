@@ -17,4 +17,16 @@ class DailyMotionTest < Test::Unit::TestCase
     assert_equal '<object type="application/x-shockwave-flash" data="http://www.dailymotion.com/swf/xakv5i&related=0" width="500" height="300"><param name="movie" value="http://www.dailymotion.com/swf/xakv5i&related=0"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><a href="http://www.dailymotion.com/video/xakv5i?embed=1"><img src="http://www.dailymotion.com/thumbnail/video/xakv5i" width="500" height="300"/></a></object>', result
   end
 
+
+  def test_prevent_html_transform
+    str = '<object type="application/x-shockwave-flash" data="http://www.dailymotion.com/swf/xakv5i&related=0" width="500" height="300"><param name="movie" value="http://www.dailymotion.com/swf/xakv5i&related=0"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><a href="http://www.dailymotion.com/video/xakv5i?embed=1"><img src="http://www.dailymotion.com/thumbnail/video/xakv5i" width="500" height="300"/></a></object>'
+
+    result = auto_html(str) { dailymotion(:width => 500, :height => 300) }
+
+    assert_equal(
+      str, result, 
+      "Should not re-transform HTML with dailymotion links inside of it"
+    )
+  end
+
 end
