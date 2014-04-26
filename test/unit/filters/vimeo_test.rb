@@ -49,4 +49,16 @@ class VimeoTest < Test::Unit::TestCase
     assert_equal %Q|#{DIV_START}<iframe src="//player.vimeo.com/video/3300155?title=0&byline=0&portrait=0" width="440" height="248" frameborder="0"></iframe></div>|, result
   end
 
+  def test_prevent_html_transform
+    str = '<iframe src="//player.vimeo.com/video/3300155?title=0&byline=0&portrait=0" width="440" height="248" frameborder="0"></iframe>'
+
+    result = auto_html(str) { vimeo }
+
+    assert_equal(
+      str, result, 
+      "Should not re-transform HTML with Vimeo links inside of it"
+    )
+  end
+
+
 end
