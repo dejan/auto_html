@@ -42,6 +42,16 @@ class YouTubeTest < Test::Unit::TestCase
     assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe></div>', result
   end
 
+  def test_transform_with_user_params_and_no_start_timecode
+    result = auto_html("https://www.youtube.com/watch?v=t7NdBIA4zJg") { youtube(user_params: true) }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg" frameborder="0" allowfullscreen></iframe></div>', result
+  end
+
+  def test_transform_with_start_timecode
+    result = auto_html("https://www.youtube.com/watch?v=t7NdBIA4zJg?t=1m30s") { youtube(user_params: true) }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg?start=90" frameborder="0" allowfullscreen></iframe></div>', result
+  end
+
   def test_transform_https
     result = auto_html("https://www.youtube.com/watch?v=t7NdBIA4zJg") { youtube }
     assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg" frameborder="0" allowfullscreen></iframe></div>', result
@@ -50,6 +60,16 @@ class YouTubeTest < Test::Unit::TestCase
   def test_short_with_params
     result = auto_html("http://youtu.be/t7NdBIA4zJg?t=1s&hd=1") { youtube }
     assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg" frameborder="0" allowfullscreen></iframe></div>', result
+  end
+
+  def test_short_with_start_time
+    result = auto_html("http://youtu.be/t7NdBIA4zJg?start=200sdfsdg&end=300s&hd=1") { youtube(user_params: true) }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg?start=200&end=300" frameborder="0" allowfullscreen></iframe></div>', result
+  end
+
+  def test_short_with_start_timecode
+    result = auto_html("http://youtu.be/t7NdBIA4zJg?t=1m30s&hd=1") { youtube(user_params: true) }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg?start=90" frameborder="0" allowfullscreen></iframe></div>', result
   end
 
   def test_transform_without_protocol
