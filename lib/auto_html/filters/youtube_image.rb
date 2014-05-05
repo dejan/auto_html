@@ -1,4 +1,4 @@
-AutoHtml.add_filter(:youtube_image).with(:width => 320, :height => 315, :style => 'medium', :target => 'blank', :border => '0') do |text, options|
+AutoHtml.add_filter(:youtube_image).with(width: 320, height: 315, style: 'medium', target: 'blank', border: '0') do |text, options|
   styles = { 'default' => 'default', 'high' => 'hqdefault',
              'medium' => 'mqdefault', 'normal' => 'sddefault',
              'max' => 'maxresdefault' }
