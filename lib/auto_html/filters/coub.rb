@@ -7,6 +7,6 @@ AutoHtml.add_filter(:coub).with(width: 640, height: 480, frameborder: 0, allowfu
     frameborder = options[:frameborder]
     allowfullscreen = options[:allowfullscreen]
     src = "//coub.com/embed/#{coub_id}"
-    %{<iframe src="#{src}?muted=false&amp;autostart=false&originalSize=false&hideTopBar=false&noSiteButtons=false&startWithHD=false"  width="#{width}" height="#{height}" frameborder="#{frameborder}" allowfullscreen="#{allowfullscreen}"></iframe>}
+    %{<iframe src="#{src}?muted=false&autostart=false&originalSize=false&hideTopBar=false&noSiteButtons=false&startWithHD=false"  width="#{width}" height="#{height}" frameborder="#{frameborder}" allowfullscreen="#{allowfullscreen}"></iframe>}
   end
 end
