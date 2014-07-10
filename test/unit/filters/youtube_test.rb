@@ -17,12 +17,12 @@ class YouTubeTest < Test::Unit::TestCase
     assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe></div>', result
   end
 
-  def test_transform3
+  def test_transform4
     result = auto_html('foo http://www.youtube.com/watch?v=fT1ahr81HLw bar') { youtube }
     assert_equal 'foo <div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/fT1ahr81HLw" frameborder="0" allowfullscreen></iframe></div> bar', result
   end
 
-  def test_transform4
+  def test_transform5
     result = auto_html('foo http://www.youtube.com/watch?v=fT1ahr81HLw<br>bar') { youtube }
     assert_equal 'foo <div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/fT1ahr81HLw" frameborder="0" allowfullscreen></iframe></div><br>bar', result
   end

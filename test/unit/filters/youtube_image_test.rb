@@ -17,12 +17,12 @@ class YouTubeImageTest < Test::Unit::TestCase
     assert_equal '<div class="thumbnail youtube"><a href="https://www.youtube.com/watch?v=BwNrmYRiX_o" target="_blank"><img src="//img.youtube.com/vi/BwNrmYRiX_o/mqdefault.jpg" width="320" height="315" border="0"></a></div>', result
   end
 
-  def test_transform3
+  def test_transform4
     result = auto_html('foo http://www.youtube.com/watch?v=fT1ahr81HLw bar') { youtube_image }
     assert_equal 'foo <div class="thumbnail youtube"><a href="https://www.youtube.com/watch?v=fT1ahr81HLw" target="_blank"><img src="//img.youtube.com/vi/fT1ahr81HLw/mqdefault.jpg" width="320" height="315" border="0"></a></div> bar', result
   end
 
-  def test_transform4
+  def test_transform5
     result = auto_html('foo http://www.youtube.com/watch?v=fT1ahr81HLw<br>bar') { youtube_image }
     assert_equal 'foo <div class="thumbnail youtube"><a href="https://www.youtube.com/watch?v=fT1ahr81HLw" target="_blank"><img src="//img.youtube.com/vi/fT1ahr81HLw/mqdefault.jpg" width="320" height="315" border="0"></a></div><br>bar', result
   end
