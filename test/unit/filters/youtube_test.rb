@@ -76,4 +76,9 @@ class YouTubeTest < Test::Unit::TestCase
     result = auto_html("www.youtube.com/watch?v=t7NdBIA4zJg") { youtube }
     assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg" frameborder="0" allowfullscreen></iframe></div>', result
   end
+
+  def test_multiple_questionable_urls_in_one_string
+    result = auto_html("http://www.youtube.com/watch?v=bjN8_S4xVc4&amp;feature=share&amp;list=TL5YfrkNQnNVE http://www.youtube.com/watch?v=79maSdfxQCU&amp;list=TL3GbaFhZ6ji4") { youtube(user_params: true) }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/bjN8_S4xVc4" frameborder="0" allowfullscreen></iframe></div> <div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/79maSdfxQCU" frameborder="0" allowfullscreen></iframe></div>', result
+  end
 end
