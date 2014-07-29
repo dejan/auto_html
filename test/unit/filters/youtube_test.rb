@@ -68,8 +68,8 @@ class YouTubeTest < Test::Unit::TestCase
   end
 
   def test_short_with_start_timecode
-    result = auto_html("http://youtu.be/t7NdBIA4zJg?t=1m30s&hd=1") { youtube(user_params: true) }
-    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg?start=90" frameborder="0" allowfullscreen></iframe></div>', result
+    result = auto_html("http://youtu.be/t7NdBIA4zJg?t=1h10m30s&hd=1") { youtube(user_params: true) }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg?start=4230" frameborder="0" allowfullscreen></iframe></div>', result
   end
 
   def test_transform_without_protocol
@@ -80,5 +80,15 @@ class YouTubeTest < Test::Unit::TestCase
   def test_multiple_questionable_urls_in_one_string
     result = auto_html("http://www.youtube.com/watch?v=bjN8_S4xVc4&amp;feature=share&amp;list=TL5YfrkNQnNVE http://www.youtube.com/watch?v=79maSdfxQCU&amp;list=TL3GbaFhZ6ji4") { youtube(user_params: true) }
     assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/bjN8_S4xVc4" frameborder="0" allowfullscreen></iframe></div> <div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/79maSdfxQCU" frameborder="0" allowfullscreen></iframe></div>', result
+  end
+
+  def test_short_with_start_timecode_in_minutes_only
+    result = auto_html("http://youtu.be/qglAm8QiX5k?t=10m") { youtube(user_params: true) }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/qglAm8QiX5k?start=600" frameborder="0" allowfullscreen></iframe></div>', result
+  end
+
+  def test_short_with_start_timecode_in_seconds_only
+    result = auto_html("http://youtu.be/qglAm8QiX5k?t=33s") { youtube(user_params: true) }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/qglAm8QiX5k?start=33" frameborder="0" allowfullscreen></iframe></div>', result
   end
 end

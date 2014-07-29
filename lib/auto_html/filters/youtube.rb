@@ -6,9 +6,17 @@ AutoHtml.add_filter(:youtube).with(:width => 420, :height => 315, :frameborder =
       params['start'].gsub(/\D/,'')
     elsif params['t']
       # convert timecode to seconds
-      matched_time = params['t'].match(/((\d+)m)?(\d+)s/)
-      min,sec = matched_time[2..3].map(&:to_i)
-      min * 60 + sec
+      seconds = params['t'].scan(/(\d+)(.)/).map do |time, unit|
+        case unit
+        when 'h'
+          time.to_i * 3600
+        when 'm'
+          time.to_i * 60
+        else
+          time.to_i
+        end
+      end
+      seconds.sum
     end
   }
 
