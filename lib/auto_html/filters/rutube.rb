@@ -1,7 +1,7 @@
 AutoHtml.add_filter(:rutube).with(width: 640, height: 480, frameborder: 0) do |text, options|
-  regex = /(http?:\/\/)?(www.)?(rutube\.ru\/video\/([A-Za-z0-9]*))(\/.*)?/
+  regex = %r{(https?://)?(www.)?rutube\.ru/(play|video)/(embed/)?([A-Za-z0-9]*)(/.*)?}
   text.gsub(regex) do
-    rutube_id = $4
+    rutube_id = $5
     width = options[:width]
     height = options[:height]
     frameborder = options[:frameborder]

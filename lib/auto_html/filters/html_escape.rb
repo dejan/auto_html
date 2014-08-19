@@ -1,5 +1,5 @@
 AutoHtml.add_filter(:html_escape).with(
-  :map => { 
+  map: { 
     '&' => '&amp;',  
     '>' => '&gt;',
     '<' => '&lt;',

@@ -1,5 +1,6 @@
-AutoHtml.add_filter(:worldstar).with(:width => 448, :height => 374) do |text,options|
-    text.gsub(/http:\/\/www\.worldstarhiphop\.com\/videos\/video\.php\?v\=(wshh[A-Za-z0-9]+)/) do 
+AutoHtml.add_filter(:worldstar).with(width: 448, height: 374) do |text,options|
+  regex = %r{http://www\.worldstarhiphop\.com/videos/video\.php\?v\=(wshh[A-Za-z0-9]+)}
+    text.gsub(regex) do 
       video_id = $1
       width  = options[:width]
       height = options[:height]
