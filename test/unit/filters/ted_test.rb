@@ -12,7 +12,7 @@ class TedTest < Test::Unit::TestCase
   end
 
   def test_transform_url_with_options
-    result = auto_html('http://www.ted.com/talks/amy_cuddy_your_body_language_shapes_who_you_are.html') { ted(:width => '50%', :height => '100', :scrolling => 'yes', :frameborder => 1, :allow_full_screen => true) }
+    result = auto_html('http://www.ted.com/talks/amy_cuddy_your_body_language_shapes_who_you_are.html') { ted(width: '50%', height: '100', scrolling: 'yes', frameborder: 1, allow_full_screen: true) }
     assert_equal '<iframe width="50%" height="100" frameborder="1" scrolling="yes" src="http://embed.ted.com/talks/amy_cuddy_your_body_language_shapes_who_you_are.html" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>', result
   end
 end

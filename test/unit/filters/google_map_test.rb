@@ -13,12 +13,12 @@ class GoogleMapTest < Test::Unit::TestCase
   end
 
   def test_show_info
-    result = auto_html('http://maps.google.com.br/maps?q=Joinville+-+Santa+Catarina') { google_map(:show_info => false) }
+    result = auto_html('http://maps.google.com.br/maps?q=Joinville+-+Santa+Catarina') { google_map(show_info: false) }
     assert_equal '<iframe width="420" height="315" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="//maps.google.com.br/maps?f=q&amp;source=s_q&amp;q=Joinville+-+Santa+Catarina&amp;output=embed&amp;iwloc=near&amp;t=m&amp;z=18"></iframe><br /><small><a href="//maps.google.com.br/maps?f=q&amp;source=embed&amp;q=Joinville+-+Santa+Catarina" style="color:#000;text-align:left">View Larger Map</a></small>', result
   end
 
   def test_type_and_zoom
-    result = auto_html('http://maps.google.com.br/maps?q=Joinville+-+Santa+Catarina') { google_map(:type => :satellite, :zoom => 3) }
+    result = auto_html('http://maps.google.com.br/maps?q=Joinville+-+Santa+Catarina') { google_map(type: :satellite, zoom: 3) }
     assert_equal '<iframe width="420" height="315" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="//maps.google.com.br/maps?f=q&amp;source=s_q&amp;q=Joinville+-+Santa+Catarina&amp;output=embed&amp;t=k&amp;z=3"></iframe><br /><small><a href="//maps.google.com.br/maps?f=q&amp;source=embed&amp;q=Joinville+-+Santa+Catarina" style="color:#000;text-align:left">View Larger Map</a></small>', result
   end
 end

@@ -3,12 +3,12 @@ require File.expand_path('../../unit_test_helper', __FILE__)
 class LinkTest < Test::Unit::TestCase
 
   def test_transform
-    result = auto_html("http://vukajlija.com") { link }
+    result = auto_html('http://vukajlija.com') { link }
     assert_equal '<a href="http://vukajlija.com" >http://vukajlija.com</a>', result
   end
 
   def test_transform_with_the_slash_at_the_end
-    result = auto_html("http://github.com/") { link }
+    result = auto_html('http://github.com/') { link }
     assert_equal '<a href="http://github.com/" >http://github.com/</a>', result
   end
 
@@ -39,17 +39,17 @@ class LinkTest < Test::Unit::TestCase
   end
 
   def test_transform_with_options
-    result = auto_html("http://rors.org") { link :target => "_blank" }
+    result = auto_html('http://rors.org') { link target: '_blank' }
     assert_equal '<a href="http://rors.org" target="_blank">http://rors.org</a>', result
   end
 
   def test_transform_with_short_link_name_option
-    result = auto_html("http://rors.org?some=params&and=more") { link :short_link_name => true }
+    result = auto_html('http://rors.org?some=params&and=more') { link short_link_name: true }
     assert_equal '<a href="http://rors.org?some=params&and=more" >http://rors.org</a>', result
   end
 
   def test_transform_with_short_link_name_option_false
-    result = auto_html("http://rors.org?some=params&and=more") { link :short_link_name => false }
+    result = auto_html('http://rors.org?some=params&and=more') { link short_link_name: false }
     assert_equal '<a href="http://rors.org?some=params&and=more" >http://rors.org?some=params&and=more</a>', result
   end
 end

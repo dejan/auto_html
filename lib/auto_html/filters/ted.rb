@@ -1,6 +1,6 @@
-# TED talks (http://www.ted.com)
-AutoHtml.add_filter(:ted).with(:width => 640, :height => 360, :scrolling => "no", :frameborder => 0, :allow_full_screen => false) do |text, options|
-  text.gsub(/https?:\/\/(www.|embed.)?ted\.com\/talks\/([A-Za-z0-9._%-]*)\.html((\?|#)\S+)?/) do
+AutoHtml.add_filter(:ted).with(width: 640, height: 360, scrolling: "no", frameborder: 0, allow_full_screen: false) do |text, options|
+  regex = %r{https?://(www.|embed.)?ted\.com/talks/([A-Za-z0-9._%-]*)\.html((\?|#)\S+)?}
+  text.gsub(regex) do
     ted_page = $2
     width = options[:width]
     height = options[:height]
