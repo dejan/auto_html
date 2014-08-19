@@ -1,6 +1,12 @@
+language: ruby
 env:
-  - "RAILS_VERSION=3.2.0"
-  - "RAILS_VERSION=4.0.0"
+  - "RAILS_VERSION=3.2.19"
+  - "RAILS_VERSION=4.1.4"
 rvm:
   - 1.9.3
   - 2.0.0
+  - 2.1.0
+  - 2.1.1
+  - 2.1.2
+  - ruby-head
+  - rbx
