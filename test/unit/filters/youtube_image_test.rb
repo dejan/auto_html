@@ -1,7 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
 class YouTubeImageTest < Test::Unit::TestCase
-
   def test_transform
     result = auto_html('http://www.youtube.com/watch?v=BwNrmYRiX_o') { youtube_image }
     assert_equal '<a href="https://www.youtube.com/watch?v=BwNrmYRiX_o" target="_blank"><img src="//img.youtube.com/vi/BwNrmYRiX_o/mqdefault.jpg" width="320" height="315" border="0"></a>', result
@@ -43,17 +42,17 @@ class YouTubeImageTest < Test::Unit::TestCase
   end
 
   def test_transform_https
-    result = auto_html("https://www.youtube.com/watch?v=t7NdBIA4zJg") { youtube_image }
+    result = auto_html('https://www.youtube.com/watch?v=t7NdBIA4zJg') { youtube_image }
     assert_equal '<a href="https://www.youtube.com/watch?v=t7NdBIA4zJg" target="_blank"><img src="//img.youtube.com/vi/t7NdBIA4zJg/mqdefault.jpg" width="320" height="315" border="0"></a>', result
   end
 
   def test_short_with_params
-    result = auto_html("http://youtu.be/t7NdBIA4zJg?t=1s&hd=1") { youtube_image }
+    result = auto_html('http://youtu.be/t7NdBIA4zJg?t=1s&hd=1') { youtube_image }
     assert_equal '<a href="https://www.youtube.com/watch?v=t7NdBIA4zJg" target="_blank"><img src="//img.youtube.com/vi/t7NdBIA4zJg/mqdefault.jpg" width="320" height="315" border="0"></a>', result
   end
 
   def test_transform_without_protocol
-    result = auto_html("www.youtube.com/watch?v=t7NdBIA4zJg") { youtube_image }
+    result = auto_html('www.youtube.com/watch?v=t7NdBIA4zJg') { youtube_image }
     assert_equal '<a href="https://www.youtube.com/watch?v=t7NdBIA4zJg" target="_blank"><img src="//img.youtube.com/vi/t7NdBIA4zJg/mqdefault.jpg" width="320" height="315" border="0"></a>', result
   end
 end
