@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.email    = 'desimic@gmail.com'
   gem.homepage = 'http://github.com/dejan/auto_html'
 
-  gem.add_dependency('rinku', '~> 1.5.0')
+  gem.add_dependency('rinku', '~> 1.7')
   gem.add_dependency('redcarpet', '~> 3.1')
 
   # ensure the gem is built out of versioned files
