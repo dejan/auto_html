@@ -14,6 +14,6 @@ AutoHtml.add_filter(:youtube).with(width: 420, height: 315, frameborder: 0, wmod
     params << 'autoplay=1' if autoplay
     params << 'rel=0' if hide_related
     src += "?#{params.join '&'}" unless params.empty?
-    %{<iframe src="#{src}" width="#{width}" height="#{height}" frameborder="#{frameborder}" allowfullscreen></iframe>}
+    %{<iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" allowfullscreen></iframe>}
   end
 end
