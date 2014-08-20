@@ -1,4 +1,4 @@
-AutoHtml.add_filter(:youtube_image).with(:width => 320, :height => 315, :style => 'medium', :target => 'blank', :border => '0') do |text, options|
+AutoHtml.add_filter(:youtube_image).with(width: 320, height: 315, style: 'medium', target: 'blank', border: '0') do |text, options|
   styles = { 'default' => 'default', 'high' => 'hqdefault',
              'medium' => 'mqdefault', 'normal' => 'sddefault',
              'max' => 'maxresdefault' }
@@ -12,6 +12,6 @@ AutoHtml.add_filter(:youtube_image).with(:width => 320, :height => 315, :style =
     border = options[:border]
     style = styles[options[:style]] rescue styles['default']
     src = "//img.youtube.com/vi/#{youtube_id}/#{style}.jpg"
-    %{<div class="thumbnail youtube"><a href="#{video_url}" target="_#{target}"><img src="#{src}" width="#{width}" height="#{height}" border="#{border}"></a></div>}
+    %{<a href="#{video_url}" target="_#{target}"><img src="#{src}" width="#{width}" height="#{height}" border="#{border}"></a>}
   end
 end

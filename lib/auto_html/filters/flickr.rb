@@ -1,4 +1,4 @@
-AutoHtml.add_filter(:flickr).with(:maxwidth => nil, :maxheight => nil, :link_options => {}) do |text, options|
+AutoHtml.add_filter(:flickr).with(maxwidth: nil, maxheight: nil, link_options: {}) do |text, options|
   require 'uri'
   require 'net/http'
   require 'rexml/document'
@@ -6,7 +6,7 @@ AutoHtml.add_filter(:flickr).with(:maxwidth => nil, :maxheight => nil, :link_opt
   regex = %r{http://(www\.)?flickr\.com/photos/[^\s<]*}
 
   text.gsub(regex) do |match|
-    params = { :url => match, :format => "json" }
+    params = { url: match, format: "json" }
     [:maxwidth, :maxheight].each { |p| params[p] = options[p] unless options[p].nil? or not options[p] > 0 }
 
     uri = URI("http://www.flickr.com/services/oembed")

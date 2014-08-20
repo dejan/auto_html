@@ -19,17 +19,17 @@ class TwitterTest < Test::Unit::TestCase
         "width": 550
     })
 
-    FakeWeb.register_uri(:get, %r|https://api\.twitter\.com/1/statuses/oembed\.json|, :body => response)
+    FakeWeb.register_uri(:get, %r{https://api\.twitter\.com/1/statuses/oembed\.json}, body: response)
   end
 
   def test_transform
-    transformed_html = "things"
+    transformed_html = 'things'
     result = auto_html('https://twitter.com/danmartell/statuses/279651488517738496') { twitter }
     assert_equal transformed_html, result
   end
 
   def test_transform_with_dangling_slash
-    transformed_html = "things"
+    transformed_html = 'things'
     result = auto_html('https://twitter.com/danmartell/statuses/279651488517738496/') { twitter }
     assert_equal transformed_html, result
   end

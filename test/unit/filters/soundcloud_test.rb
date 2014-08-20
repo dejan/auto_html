@@ -23,7 +23,7 @@ class SoundcloudTest < Test::Unit::TestCase
   end
 
   def test_transform_url_with_options
-    result = auto_html('http://www.soundcloud.com/forss/flickermood') { soundcloud(:width => '50%', :height => '100', :auto_play => true, :show_comments => true) }    
+    result = auto_html('http://www.soundcloud.com/forss/flickermood') { soundcloud(width: '50%', height: '100', auto_play: true, show_comments: true) }
     assert_equal '<iframe width="50%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http://www.soundcloud.com/forss/flickermood&show_artwork=false&show_comments=true&auto_play=true&color=915f33&theme_color=00FF00"></iframe>', result
   end
 end
