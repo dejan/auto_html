@@ -2,7 +2,7 @@
   require File.expand_path("../auto_html/#{f}", __FILE__)
 end
 
-Dir["#{File.dirname(__FILE__) + '/auto_html/filters'}/**/*"].each do |filter|
+Dir["#{File.dirname(__FILE__) + '/auto_html/filters'}/**/*.rb"].each do |filter|
   require "#{filter}"
 end
 
