@@ -12,6 +12,16 @@ class VimeoTest < Test::Unit::TestCase
     assert_equal '<iframe src="//player.vimeo.com/video/3300155?title=0&byline=0&portrait=0" width="440" height="248" frameborder="0"></iframe>', result
   end
 
+  def test_transform_url_with_player
+    result = auto_html('http://player.vimeo.com/video/3300155') { vimeo }
+    assert_equal '<iframe src="//player.vimeo.com/video/3300155?title=0&byline=0&portrait=0" width="440" height="248" frameborder="0"></iframe>', result
+  end
+
+  def test_transform_url_protocol_agnostic
+    result = auto_html('//vimeo.com/3300155') { vimeo }
+    assert_equal '<iframe src="//player.vimeo.com/video/3300155?title=0&byline=0&portrait=0" width="440" height="248" frameborder="0"></iframe>', result
+  end
+
   def test_transform_url_with_params
     result = auto_html('http://vimeo.com/3300155?pg=embed&sec=') { vimeo }
     assert_equal '<iframe src="//player.vimeo.com/video/3300155?title=0&byline=0&portrait=0" width="440" height="248" frameborder="0"></iframe>', result
