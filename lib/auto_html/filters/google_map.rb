@@ -14,6 +14,6 @@ AutoHtml.add_filter(:google_map).with(:width => 420, :height => 315, :style => "
     map_options << map_type[type] if map_type.has_key?(type)
     map_options << "&amp;z=#{options[:zoom]}"
     map_options << options[:more]
-    %{<iframe width="#{width}" height="#{height}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="//maps.google.#{domain_country}/maps?f=q&amp;source=s_q&amp;#{map_query}&amp;output=embed#{map_options}"></iframe><br /><small><a href="//maps.google.#{domain_country}/maps?f=q&amp;source=embed&amp;#{map_query}" style="#{style}">#{link_text}</a></small>}
+    %{<div class="map google"><iframe width="#{width}" height="#{height}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="//maps.google.#{domain_country}/maps?f=q&amp;source=s_q&amp;#{map_query}&amp;output=embed#{map_options}"></iframe></div><br /><small><a href="//maps.google.#{domain_country}/maps?f=q&amp;source=embed&amp;#{map_query}" style="#{style}">#{link_text}</a></small>}
   end
 end
