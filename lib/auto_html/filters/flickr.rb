@@ -3,7 +3,7 @@ AutoHtml.add_filter(:flickr).with(:maxwidth => nil, :maxheight => nil, :link_opt
   require 'net/http'
   require 'rexml/document'
 
-  regex = %r{http://(www\.)?flickr\.com/photos/[^\s<]*}
+  regex = %r{https?://(www\.)?flickr\.com/photos/[^\s<]*}
 
   text.gsub(regex) do |match|
     params = { :url => match, :format => "json" }
