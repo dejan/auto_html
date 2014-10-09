@@ -9,7 +9,7 @@ AutoHtml.add_filter(:flickr).with(:maxwidth => nil, :maxheight => nil, :link_opt
     params = { :url => match, :format => "json" }
     [:maxwidth, :maxheight].each { |p| params[p] = options[p] unless options[p].nil? or not options[p] > 0 }
 
-    uri = URI("http://www.flickr.com/services/oembed")
+    uri = URI("https://www.flickr.com/services/oembed")
     uri.query = URI.encode_www_form(params)
 
     response = JSON.parse(Net::HTTP.get(uri))
