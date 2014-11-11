@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class WorldstarTest < Test::Unit::TestCase 
+class WorldstarTest < Minitest::Test 
 
   DIV_START = '<div class="video-container worldstar">'
 

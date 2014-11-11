@@ -1,7 +1,7 @@
 require File.expand_path('../unit_test_helper', __FILE__)
 
 
-class AutoHtmlTest < Test::Unit::TestCase
+class AutoHtmlTest < Minitest::Test
 
   def test_should_be_raw_input_when_no_filters_provided
     input = "Hey check out my blog => http://rors.org"

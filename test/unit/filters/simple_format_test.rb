@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class SimpleFormatTest < Test::Unit::TestCase
+class SimpleFormatTest < Minitest::Test
 
   def test_transform
     result = auto_html('Hey check out my blog => http://rors.org') { simple_format }

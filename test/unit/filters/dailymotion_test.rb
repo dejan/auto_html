@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class DailyMotionTest < Test::Unit::TestCase
+class DailyMotionTest < Minitest::Test
 
   DIV_START = '<div class="video-container dailymotion">'
 

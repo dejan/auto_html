@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class LiveLeakTest < Test::Unit::TestCase
+class LiveLeakTest < Minitest::Test
 
   DIV_START = '<div class="video-container liveleak">'
 

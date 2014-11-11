@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class VimeoTest < Test::Unit::TestCase
+class VimeoTest < Minitest::Test
 
   DIV_START = '<div class="video-container vimeo">'
 
