@@ -7,6 +7,6 @@ AutoHtml.add_filter(:tape_tv).with(:width => '100%', :height => 166, :frameborde
     width = options[:width]
     height = options[:height]
     frameborder = options[:frameborder]
-    %{<iframe width="#{width}" height="#{height}" src="#{match.to_s}" frameborder="#{frameborder}" allowfullscreen></iframe>}
+    %{<iframe width="#{width}" height="#{height}" src="#{match.to_s}/embed" frameborder="#{frameborder}" allowfullscreen></iframe>}
   end
 end
