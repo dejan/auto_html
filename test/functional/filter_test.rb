@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 end
 
-class FilterTest < Test::Unit::TestCase
+class FilterTest < Minitest::Test
   include FixtureSetup
 
   def test_transform_after_save

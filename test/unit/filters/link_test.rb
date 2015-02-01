@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class LinkTest < Test::Unit::TestCase
+class LinkTest < Minitest::Test
 
   def test_transform
     result = auto_html("http://vukajlija.com") { link }
