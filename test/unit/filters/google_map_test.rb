@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class GoogleMapTest < Test::Unit::TestCase
+class GoogleMapTest < Minitest::Test
 
   def test_transform
     result = auto_html('http://maps.google.co.kr/maps?q=%ED%8C%8C%ED%8A%B8%EB%84%88%EC%8A%A4%ED%83%80%EC%9B%8C+1%EC%B0%A8&hl=ko&ie=UTF8&ll=37.472942,126.884762&spn=0.00774,0.010053&sll=37.473027,126.88451&sspn=0.003887,0.005026&vpsrc=6&gl=kr&hq=%ED%8C%8C%ED%8A%B8%EB%84%88%EC%8A%A4%ED%83%80%EC%9B%8C+1%EC%B0%A8&t=m&z=17&iwloc=A') { google_map }

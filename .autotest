@@ -1,0 +1,30 @@
+require 'autotest/growl'
+require 'autotest/fsevent'
+
+Autotest.add_hook :initialize do |at|
+  unless ARGV.empty?
+    at.find_directories = ARGV
+  else
+    # Clear all mappings
+    #at.clear_mappings
+
+    # Ignore these files
+    %w(
+      .hg .git .svn stories tmtags 
+      Gemfile Rakefile Capfile README 
+      .html app/assets config .keep
+      spec/spec.opts spec/rcov.opts vendor/gems vendor/ruby 
+      autotest svn-commit .DS_Store
+    ).each { |exception|at.add_exception(exception) }
+
+  at.add_mapping(%r{^lib/auto_html/filters/.*\.rb$}) do |f, _|
+      at.files_matching %r{^test/unit/filters/.*_test\.rb$}
+    end
+
+    # Now add support for the test files themselves
+    at.add_mapping(%r%^test/(.*)/(.*)\_test.rb$%) do |file, m|
+      at.files_matching %r%#{file}%
+    end
+
+  end
+end

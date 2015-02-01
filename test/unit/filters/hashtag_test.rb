@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class HashtagTest < Test::Unit::TestCase
+class HashtagTest < Minitest::Test
 
   def test_transform
     result = auto_html("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ipsum et leo adipiscing ultrices. Etiam ac elementum cras amet. #LoremIpsum") { hashtag }

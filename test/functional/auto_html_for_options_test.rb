@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   end
 end
 
-class AutoHtmlForOptionsTest < Test::Unit::TestCase
+class AutoHtmlForOptionsTest < Minitest::Test
   include FixtureSetup
 
   def test_transform_after_save

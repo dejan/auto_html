@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class TedTest < Test::Unit::TestCase
+class TedTest < Minitest::Test
   def test_transform_url_with_www
     output = auto_html('http://www.ted.com/talks/amy_cuddy_your_body_language_shapes_who_you_are.html') { ted }
     assert_equal '<iframe width="640" height="360" frameborder="0" scrolling="no" src="http://embed.ted.com/talks/amy_cuddy_your_body_language_shapes_who_you_are.html"></iframe>', output

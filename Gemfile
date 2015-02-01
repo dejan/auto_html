@@ -2,17 +2,16 @@ source "http://rubygems.org"
 
 gemspec
 
-rails_version = ENV["RAILS_VERSION"] || "default"
-
-rails = case rails_version
-when "master"
-  {github: "rails/rails"}
-when "default"
-  "~> 3.2.0"
-else
-  "~> #{rails_version}"
-end
-
-gem "rails", rails 
+gem "rails", '~> 4.1'
 gem 'sqlite3', '~> 1.3.3'
 gem 'fakeweb'
+
+# For testing
+gem 'minitest'
+#gem 'minitest-autotest'
+gem 'minitest-reporters'
+gem 'minitest-focus'
+
+gem 'autotest'
+gem 'autotest-growl'
+gem 'autotest-fsevent'
