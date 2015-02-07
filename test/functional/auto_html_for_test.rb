@@ -16,7 +16,7 @@ class Article < ActiveRecord::Base
   end
 end
 
-class AutoHtmlForTest < Test::Unit::TestCase
+class AutoHtmlForTest < Minitest::Test
   include FixtureSetup
 
   def test_transform_on_initialization

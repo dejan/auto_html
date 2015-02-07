@@ -14,6 +14,6 @@ AutoHtml.add_filter(:liveleak).with(:width => 420, :height => 315, :frameborder 
     params << "autoplay=1" if autoplay
     params << "rel=0" if hide_related
     src += "?#{params.join '&'}" unless params.empty?
-    %{<iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" allowfullscreen></iframe>}
+    %{<div class="video-container liveleak"><iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" allowfullscreen></iframe></div>}
   end
 end
