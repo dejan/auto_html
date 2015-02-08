@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class ImageTest < Test::Unit::TestCase
+class ImageTest < Minitest::Test
 
   def test_transform
     result = auto_html('http://rors.org/images/rails.png') { image({:alt => nil}) }

@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class LiveLeakTest < Test::Unit::TestCase
+class LiveLeakTest < Minitest::Test
 
   def test_transform
     result = auto_html('http://www.liveleak.com/view?i=BwNrmYRiX_o') { liveleak }

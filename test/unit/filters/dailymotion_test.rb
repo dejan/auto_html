@@ -1,6 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
-class DailyMotionTest < Test::Unit::TestCase
+class DailyMotionTest < Minitest::Test
 
   def test_transform
     result = auto_html("http://www.dailymotion.com/en/featured/video/xag4p2_tempsmorttv-episode-01_shortfilms") { dailymotion }

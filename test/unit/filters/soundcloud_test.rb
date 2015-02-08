@@ -1,7 +1,7 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 require 'fakeweb'
 
-class SoundcloudTest < Test::Unit::TestCase
+class SoundcloudTest < Minitest::Test
   def test_transform_url_with_www
     result = auto_html('http://www.soundcloud.com/forss/flickermood') { soundcloud }
     assert_equal '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http://www.soundcloud.com/forss/flickermood&show_artwork=false&show_comments=false&auto_play=false&color=915f33&theme_color=00FF00"></iframe>', result
