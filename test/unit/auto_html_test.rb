@@ -23,6 +23,11 @@ class AutoHtmlTest < Minitest::Test
     result = auto_html("Check the logo: http://rors.org/images/rails.png. Visit: http://rubyonrails.org") { simple_format; image(:alt => nil); link }
     assert_equal '<p>Check the logo: <img src="http://rors.org/images/rails.png" alt=""/>. Visit: <a href="http://rubyonrails.org" >http://rubyonrails.org</a></p>', result
   end
+
+  def test_should_accept_html_with_link_and_image
+    result = auto_html("Website: http://www.google.com<br/>http://rors.org/images/rails.png") { image(:alt => nil); link }
+    assert_equal 'Website: <a href="http://www.google.com" >http://www.google.com</a><br/><img src="http://rors.org/images/rails.png" alt=""/>', result
+  end
   
   def test_should_return_blank_if_input_is_blank
     result = auto_html("") { simple_format; image(:alt => nil); link }
