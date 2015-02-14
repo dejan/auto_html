@@ -1,123 +1,170 @@
-auto_html [![Build Status](https://secure.travis-ci.org/dejan/auto_html.png?branch=master)](http://travis-ci.org/dejan/auto_html)
-=========
+# AutoHtml
 
+AutoHtml is a collection of filters that transform plain text into HTML code.
 
-auto_html is a Rails extension for transforming URLs to appropriate resource (image, link, YouTube, Vimeo video,...). It's the perfect choice if you don't want to bother visitors with rich HTML editor or markup code, but you still want to allow them to embed video, images, links and more on your site, purely by pasting URL. Check out the [live demo](http://rors.org/demos/auto_html).
+## Installation
 
+Add this line to your application's Gemfile:
 
-## Install
+```ruby
+gem 'auto_html'
+```
 
-Specify the gem in Gemfile of the project
+And then execute:
 
-    gem "auto_html"
+```sh
+$ bundle
+```
 
+Or install it yourself as:
 
-## Example usage
+```sh
+$ gem install auto_html
+```
 
-Transforming string with text and URLs is done with *auto_html* method:
+## Usage
 
-    include AutoHtml
-    
-    auto_html('Hey! Checkout out: http://vukajlija.com') { simple_format; link(:target => 'blank') }
-    => "<p>Hey! Checkout out: <a href='http://vukajlija.com' target='blank'>http://vukajlija.com</a></p>"
+Every filter accepts input through `call` method:
 
-You'll probably have user input stored in model, so it's a good place to automate and even store this conversion for performance reason. This is done with *auto_html_for* method. Let's say you have model Comment with attribute body. Create another column in table Comments called body_html (again, this is optional but recommended for performance reasons). Now have something like this: 
+```ruby
+AutoHtml::Link.call('Checkout out my blog: http://rors.org')
+# => 'Checkout out my blog: <a href="http://rors.org">http://rors.org</a>'
+```
 
-    class Comment < ActiveRecord::Base
-      auto_html_for :body do
-        html_escape
-        image
-        youtube(:width => 400, :height => 250, :autoplay => true)
-        link :target => "_blank", :rel => "nofollow"
-        simple_format
-      end
-    end
+This will instantiate the `Link` filter object with default options. If you want to specify 
+differnet options, you can instantiate the filter object yourself like so:
 
-... and you'll have this behavior: 
+```ruby
+AutoHtml::Link.new(target: '_blank').call('Checkout out my blog: http://rors.org')
+# => 'Checkout out my blog: <a href="http://rors.org" target="blank">http://rors.org</a>'
+```
 
-    Comment.create(:body => 'Hey check out this cool video: http://www.youtube.com/watch?v=WdsGihou8J4')  
-    => #<Comment id: 123, body: '<p>Hey check out this cool video: <div class="video youtube"><iframe class="youtube-player" type="text/html" width="587" height="350" src="http://www.youtube.com/embed/WdsGihou8J4" frameborder="0"> <br /></iframe></div></p>'>
+To combine multiple filters instantiate a special filter called `Format` that accepts array of filters:
 
-Note that order of invoking filters is important, i.e. you want html_escape as first and link amongst last, so that it doesn't transform youtube URL to plain link.
+```ruby
+format = Format.new [HtmlEscape, Image, Link, SimpleFormat]
+format.call('Check the logo: http://rors.org/images/rails.png. Visit: http://rubyonrails.org')
+# => '<p>Check the logo: <img src="http://rors.org/images/rails.png" alt="" />. Visit: <a href="http://rubyonrails.org" >http://rubyonrails.org</a></p>'
+```
 
+`Format` can accept both `Filter` instance or class, for example:
 
-Now all you have to do is to display it in template without escaping, since plugin took care of that:
+```ruby
+Format.new [
+  HtmlEscape,
+  Youtube.new(width: 410, height: 270),
+  Vimeo.new(width: 410, height: 270),
+  Image,
+  GoogleMaps,
+  Link.new(target: "_blank", rel: "nofollow"),
+  Emoji,
+  SimpleFormat
+]
+```
 
-    <% for comment in @comments %>
-       <li><%= comment.body_html %></li>
-    <% end %>
-
-
-If you need to display preview, no problem. Have something like this as action in your controller:
-
-    def preview
-      comment = Comment.new(params[:comment])
-      render :text => comment.body_html
-    end
-
-AutoHtml is highly customizable, and you can easily create new filters that will transform user input any way you like. For instance, this is the image filter that comes bundled with plugin:
-
-    AutoHtml.add_filter(:image) do |text|
-      text.gsub(/http:\/\/.+\.(jpg|jpeg|bmp|gif|png)(\?\S+)?/i) do |match|
-        %|<img src="#{match}" alt=""/>|
-      end
-    end
-
+Note that order of filters is important, i.e. you usually want `HtmlEscape` as first and `Link` amongst last, so that it doesn't transform YouTube URLs to plain links.
 
 ## Bundled filters
 
-For filter list and options they support check: <http://github.com/dejan/auto_html/tree/master/lib/auto_html/filters>
+* `AutoHtml::Emoji`
+* `AutoHtml::Gist`
+* `AutoHtml::GoogleMaps`
+* `AutoHtml::HtmlEscape`
+* `AutoHtml::Image`
+* `AutoHtml::Instagram`
+* `AutoHtml::Link`
+* `AutoHtml::SimpleFormat`
+* `AutoHtml::Vimeo`
+* `AutoHtml::Youtube`
 
+## Creating a new filter
 
-## Non-ActiveRecord models
+Here's an example of the filter that would convert Ted links to embeded videos
 
-AutoHtml uses standard ActiveModel API, which means that you can include AutoHtmlFor module (that automates transformation of the field) in any non-ActiveRecord model that uses ActiveModel. Here's working [mongoid](http://mongoid.org/) example:
-
-    class Post
-      include Mongoid::Document
-      include AutoHtmlFor
-
-      field :body
-
-      auto_html_for :body do
-        simple_format
-        link
-      end
+```Ruby
+module AutoHtml
+  class Ted < Filter
+    def call(input)
+      input.gsub(/https?:\/\/(www.|embed.)?ted\.com\/talks\/([A-Za-z0-9._%-]*)\.html((\?|#)\S+)?/) do
+        ted_page = $2
+        tag(:iframe
+          framebroder: 0,
+          scrolling: 'no',
+          width: width,
+          height: height,
+          src: "http://embed.ted.com/talks/#{ted_page}.html",
+          webkitAllowFullScreen: true,
+          mozallowfullscreen: true,
+          allowFullScreen: true)
     end
 
+    private
 
-## Rake and Capistrano tasks
+    def width
+      @options[:width] || 560
+    end
 
-AutoHtml has a Rake task for rebuilding cached in DB column values
-Usage: `rake auto_html:rebuild CLASS=[your model]`
-Where `[your model]` is the name of model which values you want to rebuild.
+    def height
+      @options[:height] || 315
+    end
+  end
+end
+```
 
-If you want to run it on remote server, just add this to your `deploy.rb`:
+## Rails integration
 
-    require 'auto_html/capistrano'
-    
-Now you can run `cap auto_html:rebuild CLASS=[your_model]`.
+In `initializer/auto_html.rb` have something like:
 
+```ruby
+module AutoHtml
+  CommentFormat =
+    Format.new [
+      HtmlEscape,
+      Youtube.new(width: 410, height: 270),
+      Vimeo.new(width: 410, height: 270),
+      Image,
+      GoogleMaps,
+      Link.new(target: "_blank", rel: "nofollow"),
+      Emoji,
+      SimpleFormat
+    ]
+
+  ChatLineFormat =
+    Format.new [
+      HtmlEscape,
+      Emoji,
+      SimpleFormat
+    ]
+
+  # ... define more formats if needed
+end
+```
+
+Now, to store transformation in database (for performance reasons) in a separate column:
+
+```ruby
+class Comment < ActiveRecord::Base
+  def text=(str)
+    self[:text_html] = AutoHtml::CommentFormat.call(str)
+    super
+  end
+end
+```
+
+To transform on-the-fly (consider caching the fragment):
+
+```ruby
+class ChatLineHelper
+  def format(comment)
+    AutoHtml::ChatLineFormat.call(chat_line.text)
+  end
+end
+```
+
+## Code status
+
+[![Circle CI](https://circleci.com/gh/dejan/auto_html/tree/banzai.svg?style=svg&circle-token=57823c8b62302106564f97b58b64643b9760ed99)](https://circleci.com/gh/dejan/auto_html/tree/banzai)
 
 ## Licence
 
-Copyright (c) 2009 Dejan Simic
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+AutoHtml is released under the [MIT License](https://raw.githubusercontent.com/dejan/auto_html/master/MIT-LICENCE).

@@ -1,9 +1,10 @@
-AutoHtml.add_filter(:html_escape).with(
-  :map => { 
-    '&' => '&amp;',  
-    '>' => '&gt;',
-    '<' => '&lt;',
-    '"' => '&quot;' }) do |text, options|
+require 'cgi'
 
-  text.to_s.gsub(/[&"><]/) { |special| options[:map][special] }
+module AutoHtml
+  # HTML escape filter
+  class HtmlEscape < Filter
+    def call(text)
+      CGI.escapeHTML(text)
+    end
+  end
 end

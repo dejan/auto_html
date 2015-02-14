@@ -1,16 +1,65 @@
-AutoHtml.add_filter(:vimeo).with(:width => 440, :height => 248, :show_title => false, :show_byline => false, :show_portrait => false, :allow_fullscreen => false) do |text, options|
-  text.gsub(/https?:\/\/(www.)?vimeo\.com\/([A-Za-z0-9._%-]*)((\?|#)\S+)?/) do
-    vimeo_id = $2
-    width  = options[:width]
-    height = options[:height]
-    show_title      = "title=0"    unless options[:show_title]
-    show_byline     = "byline=0"   unless options[:show_byline]  
-    show_portrait   = "portrait=0" unless options[:show_portrait]
-    allow_fullscreen = " webkitallowfullscreen mozallowfullscreen allowfullscreen" if options[:allow_fullscreen]
-    frameborder     = options[:frameborder] || 0
-    query_string_variables = [show_title, show_byline, show_portrait].compact.join("&")
-    query_string    = "?" + query_string_variables unless query_string_variables.empty?
+module AutoHtml
+  # Vimeo filter
+  class Vimeo < Filter
+    def call(text)
+      text.gsub(regexp) do
+        vimeo_id = Regexp.last_match(2)
+        src = src_url(vimeo_id)
+        tag(:iframe, { src: src }.merge(iframe_attributes)) { '' }
+      end
+    end
 
-    %{<iframe src="//player.vimeo.com/video/#{vimeo_id}#{query_string}" width="#{width}" height="#{height}" frameborder="#{frameborder}"#{allow_fullscreen}></iframe>}
+    private
+
+    def regexp
+      %r{https?://(www.)?vimeo\.com/([A-Za-z0-9._%-]*)((\?|#)\S+)?}
+    end
+
+    def src_url(vimeo_id)
+      path = "//player.vimeo.com/video/#{vimeo_id}"
+      src_params = params.compact.join('&')
+      [path, src_params].compact.join('?')
+    end
+
+    def params
+      [].tap do |x|
+        x << 'title=0' unless options[:show_title]
+        x << 'byline=0' unless options[:show_byline]
+        x << 'portrait=0' unless options[:show_portrait]
+      end
+    end
+
+    def iframe_attributes
+      {}.tap do |attrs|
+        attrs[:width] = width
+        attrs[:height] = height
+        attrs[:frameborder] = frameborder
+        attrs.merge!(fullscreen_attributes) if allow_fullscreen?
+      end
+    end
+
+    def allow_fullscreen?
+      options[:allow_fullscreen] || false
+    end
+
+    def fullscreen_attributes
+      {
+        webkitallowfullscreen: 'yes',
+        mozallowfullscreen: 'yes',
+        allowfullscreen: 'yes'
+      }
+    end
+
+    def frameborder
+      options[:frameborder] || 0
+    end
+
+    def width
+      options[:width] || 440
+    end
+
+    def height
+      options[:height] || 248
+    end
   end
 end

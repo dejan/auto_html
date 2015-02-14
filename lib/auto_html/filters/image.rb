@@ -1,16 +1,26 @@
-require 'redcarpet'
+require 'tag_helper'
 
-class NoParagraphRenderer < ::Redcarpet::Render::XHTML
-  def paragraph(text)
-    text
-  end
-end
+module AutoHtml
+  # Image filter
+  class Image < Filter
+    def call(text)
+      text.gsub(regexp) do |match|
+        tag(:img, src: proxy + match, alt: alt)
+      end
+    end
 
-AutoHtml.add_filter(:image).with({:alt => ''}) do |text, options|
-  r = Redcarpet::Markdown.new(NoParagraphRenderer)
-  alt = options[:alt]
-  options[:proxy] ||= ""
-  text.gsub(/(?<!src=")https?:\/\/.+?\.(jpg|jpeg|bmp|gif|png)(\?\S+)?/i) do |match|
-    r.render("![#{alt}](#{options[:proxy]}#{match})")
+    private
+
+    def regexp
+      %r{(?<!src=")https?:\/\/.+?\.(jpg|jpeg|bmp|gif|png)(\?\S+)?}i
+    end
+
+    def proxy
+      options[:proxy] || ''
+    end
+
+    def alt
+      options[:alt] || ''
+    end
   end
 end

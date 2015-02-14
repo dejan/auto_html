@@ -1,11 +1,23 @@
-## 1.6.4, released 2014-04-11
+CHANGELOG
+=========
+
+## 2.0.0-snapshot
+
+* New, breaking API
+* Removed Rails dependency
+* Filters cleanup, only the most popular ones are bundled
+
+## 1.6.4
+
 * New filter: youtube image filter 
 
-## 1.6.3, released 2014-04-01
+## 1.6.3
+
 * Fixed Twitter filter
 * New filter: liveleak
 
-## 1.6.2, released 2014-03-15
+## 1.6.2
+
 * Deferred loading of filters dependencies when possible
 * Wrap youtube video with div for easier styling
 * Update redcarpet to latest
@@ -14,8 +26,9 @@
 * Allow replacing youtube URL without protocol
 * Fix gist filter - add type attribute
 
-## 1.6.1, released 2014-01-05
-* Permit auto_html_for on an attribute that's not in the DB.
+## 1.6.1
+
+* Permit auto_html_for on an attribute that is not in the DB.
 * Image filter: :proxy option, do not format existing <img> 
 * Link filter: :short_link_name option
 * GoogleMap filter: support for all countries (domains)
@@ -26,27 +39,32 @@
 * New filters: worldstar
 * Deprecate GoogleVideo since it is discontinued
 
-## 1.6.0, released 2012-07-28 
+## 1.6.0
+
 * Twitter, Flickr, Soundcloud filters added
 * Options for markdown filter added
-* Omit protocol where applicable (youtube, googlemap, vimeo) to avoid mixed content warnings. Fixes [#50](https://github.com/dejan/auto_html/issues/50)
-* rake task fixed. Resolves [#42](https://github.com/dejan/auto_html/issues/42)
+* Omit protocol where applicable (youtube, googlemap, vimeo) to avoid mixed content warnings #50
+* rake task fixed #42
 * Relax redcarpet version requirement
 
-## 1.5.3, released 2012-05-08
+## 1.5.3
+
 * Fixed Mongoid support
 
-## 1.5.2, released 2012-05-05
+## 1.5.2
+
 * Works with Rails 3.2.1+ 
 * Updated youtube regex to account for feature=player_embedded url param
 
-## 1.5.1, released 2012-02-18
+## 1.5.1
+
 * Rails 3.2 support 
 * Gist & GoogleMap filter
 * fix #26 - error after the rake task completed
 * fix #29 - youtube filter swallows text that comes after a link
 
-## 1.5.0, released 2011-12-07
+## 1.5.0
+
 * use redcarpet ~> 2.0.0; :renderer option
 * use rinku ~> 1.5.0
 * Rake task for rebuilding cached markup
@@ -54,47 +72,58 @@
 * reducing dependencies - do not bundle RedCloth filter. Redcarpet (markdown) is default choice for markup and planned for more usage internally, so the lib goes with only that.
 * minor youtube filter fixes (https support, short url with params)
 
-## 1.4.2, released 2011-08-12
+## 1.4.2
+
 * Add support for YouTube short url
 * added Redcarpet filter (Markdown rendering)
 
-## 1.4.1, released 2011-07-09
+## 1.4.1
+
 * AutoHtml gets module method: AutoHtml.auto_html(...)
 * on blank filter list return input instead of nil
 * AutoHtmlFor producing html_safe
 
-## 1.4.0, released 2011-07-09
+## 1.4.0
+
 * remove Rails dependencies by using rinku & tag_helper
 * image filter supports attributes
 * output of auto_html method is html_safe
 * auto_html module is included in ApplicationHelper
 
-## 1.3.7, released 2011-04-12
+## 1.3.7
+
 * require activerecord only if available
 
-## 1.3.6, released 2011-03-30
+## 1.3.6
+
 * RedCloth name fix in gemspec
 
-## 1.3.5, released 2011-03-30
+## 1.3.5
+
 * RedCloth filter
 * https support for image filter
 
-## 1.3.4, released 2011-01-01
+## 1.3.4
+
 * added metacafe filter
 * converts all filter outputs to_s
 
-## 1.3.3, released 2010-09-01
+## 1.3.3
+
 * yet another Rails 3 initialization fix
 
-## 1.3.2, released 2010-08-27
+## 1.3.2
+
 * pre-rails 3 initialization fix
 
-## 1.3.1, released 2010-08-22
+## 1.3.1
+
 * Rails 3 initialization fix
 * fixes to conform Rails 3.0.0.rc, sanitization by default in text_helpers (auto_link, simple_format)
 * added vimeo html5 universal embed player 
 
-## 1.3.0, released 2010-08-14
+## 1.3.0
+
 * no need for explicit call to auto_html_prepare
 * no need for DB column for cache (ie. _html)
 * Rails 3 support
@@ -103,32 +132,32 @@
 * youtube filter supports html5
 
 
-## 1.2.1, released 2009-10-28
+## 1.2.1
 
 * more options for vimeo filter
 * switch to gemcutter
 
-## 1.2.0, released 2009-09-26
+## 1.2.0
 
-* link filter now uses Rails' link discovery engine. Closes: <http://github.com/dejan/auto_html/issues#issue/2> and  <http://github.com/dejan/auto_html/issues#issue/3> if Rails 2.3+ is in use.
+* link filter now uses Rails' link discovery engine #3
 * added dailymotion filter
 * added sanitize filter
 
-## 1.1.2, released 2009-09-24
+## 1.1.2
 
-* link filter fix. Closes: <http://github.com/dejan/auto_html/issues#issue/2>
+* link filter fix #2
 
-## 1.1.1, released 2009-09-06
+## 1.1.1
 
 * test_helper fix
 
-## 1.1.0, released 2009-09-05
+## 1.1.0
 
 * Plugin gemified
-* AutoHtmlFor.options[:htmlized_attribute_suffix] is now AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix]. Closes gh-1
+* AutoHtmlFor.options[:htmlized_attribute_suffix] is now AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix]. Closes #1
 * Removed deezer filter since deezer.com no longer provides sharing of this kind
 
 ## 1.0.0
 
-* Stuff described here: <http://www.elctech.com/projects/auto_html-plugin>
+* Initial public release
 

@@ -1,10 +1,31 @@
-require 'uri'
-require 'net/http'
+module AutoHtml
+  # Instagram filter
+  class Instagram < Filter
+    def call(text)
+      text << '/' unless text.end_with?('/')
+      text.gsub(regexp) do
+        tag(
+          :iframe,
+          src: "#{text}embed",
+          height: height,
+          width: width,
+          frameborder: 0,
+          scrolling: 'no') { '' }
+      end
+    end
 
-AutoHtml.add_filter(:instagram) do |text|
-  text << '/' unless text.end_with?('/')
-  regex = %r{https?:\/\/(www.)?instagr(am\.com|\.am)/p/.+}
-  text.gsub(regex) do
-    %{<iframe src="#{text}embed" height="714" width="616" frameborder="0" scrolling="no"></iframe>}
+    private
+
+    def width
+      options[:width] || 616
+    end
+
+    def height
+      options[:height] || 714
+    end
+
+    def regexp
+      %r{https?:\/\/(www.)?instagr(am\.com|\.am)/p/.+}
+    end
   end
 end

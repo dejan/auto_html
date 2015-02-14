@@ -1,17 +1,17 @@
-%w(base filter builder auto_html_for).each do |f|
-  require File.expand_path("../auto_html/#{f}", __FILE__)
-end
+# AutoHtml is a collection of filters that traform
+# the input, a plain text, into HTML code.
+module AutoHtml
+  autoload :Filter,       'auto_html/filter'
+  autoload :Format,       'auto_html/format'
 
-Dir["#{File.dirname(__FILE__) + '/auto_html/filters'}/**/*"].each do |filter|
-  require "#{filter}"
-end
-
-# if rails
-require 'auto_html/railtie' if defined?(Rails::Railtie)
-if defined?(ActiveRecord::Base)
-  ActiveRecord::Base.send :include, AutoHtmlFor
-
-  module ActionView::Helpers::TextHelper
-    include AutoHtml
-  end
+  autoload :Emoji,        'auto_html/filters/emoji'
+  autoload :Gist,         'auto_html/filters/gist'
+  autoload :GoogleMaps,   'auto_html/filters/google_maps'
+  autoload :HtmlEscape,   'auto_html/filters/html_escape'
+  autoload :Image,        'auto_html/filters/image'
+  autoload :Instagram,    'auto_html/filters/instagram'
+  autoload :Link,         'auto_html/filters/link'
+  autoload :SimpleFormat, 'auto_html/filters/simple_format'
+  autoload :Vimeo,        'auto_html/filters/vimeo'
+  autoload :Youtube,      'auto_html/filters/youtube'
 end
