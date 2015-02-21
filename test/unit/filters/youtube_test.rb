@@ -56,4 +56,14 @@ class YouTubeTest < Minitest::Test
     result = auto_html("www.youtube.com/watch?v=t7NdBIA4zJg") { youtube }
     assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg" frameborder="0" allowfullscreen></iframe></div>', result
   end
+
+  def test_transform_with_m_subdomain
+    result = auto_html("http://m.youtube.com/watch?v=t7NdBIA4zJg") { youtube }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg" frameborder="0" allowfullscreen></iframe></div>', result
+  end
+
+  def test_transform_with_m_subdomain_and_short_url
+    result = auto_html("http://m.youtu.be/BwNrmYRiX_o") { youtube }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe></div>', result
+  end
 end

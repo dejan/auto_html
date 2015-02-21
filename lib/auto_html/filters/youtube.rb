@@ -1,5 +1,5 @@
-AutoHtml.add_filter(:youtube).with(:width => 420, :height => 315, :frameborder => 0, :wmode => nil, :autoplay => false, :hide_related => false) do |text, options|
-  regex = /(https?:\/\/)?(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?feature=player_embedded&v=)([A-Za-z0-9_-]*)(\&\S+)?(\?\S+)?/
+AutoHtml.add_filter(:youtube).with(:width => 420, :height => 315, :wmode => nil, :autoplay => false, :hide_related => false) do |text, options|
+  regex = /(https?:\/\/)?(m.|www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?feature=player_embedded&v=)([A-Za-z0-9_-]*)(\&\S+)?(\?\S+)?/
   text.gsub(regex) do
     youtube_id = $4
     width = options[:width]
@@ -14,6 +14,6 @@ AutoHtml.add_filter(:youtube).with(:width => 420, :height => 315, :frameborder =
     params << "autoplay=1" if autoplay
     params << "rel=0" if hide_related
     src += "?#{params.join '&'}" unless params.empty?
-    %{<div class="video youtube"><iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" allowfullscreen></iframe></div>}
+    %{<div class="video youtube embed-responsive embed-responsive-4by3"><iframe width="#{width}" height="#{height}" src="#{src}" allowfullscreen></iframe></div>}
   end
 end
