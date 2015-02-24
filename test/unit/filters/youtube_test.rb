@@ -32,6 +32,16 @@ class YouTubeTest < Minitest::Test
     assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe></div>', result
   end
 
+  def test_transform_url_protocol_agnostic
+    result = auto_html('//youtube.com/watch?v=BwNrmYRiX_o') { youtube }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe></div>', result
+  end
+
+  def test_transform_url_embed
+    result = auto_html('//www.youtube.com/embed/BwNrmYRiX_o') { youtube }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe></div>', result
+  end
+
   def test_transform_with_options
     result = auto_html('http://www.youtube.com/watch?v=BwNrmYRiX_o') { youtube(:width => 300, :height => 255, :frameborder => 1, :wmode => 'window') }
     assert_equal '<div class="video youtube"><iframe width="300" height="255" src="//www.youtube.com/embed/BwNrmYRiX_o?wmode=window" frameborder="1" allowfullscreen></iframe></div>', result
