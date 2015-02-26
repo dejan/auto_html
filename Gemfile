@@ -16,3 +16,9 @@ end
 gem "rails", rails 
 gem 'sqlite3', '~> 1.3.3'
 gem 'fakeweb'
+
+# For testing
+gem 'autotest'
+gem 'autotest-growl'
+gem 'autotest-fsevent'
+gem 'mynyml-redgreen'

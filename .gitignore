@@ -2,3 +2,5 @@ test.sqlite3
 TODO
 Gemfile.lock
 *.gem
+.bundle
+vendor
