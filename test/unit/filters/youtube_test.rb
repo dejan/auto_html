@@ -9,22 +9,22 @@ class YouTubeTest < Minitest::Test
     assert_equal %Q|#{DIV_START}<iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe></div>|, result
   end
 
-  def test_transform2
+  def test_transform_2
     result = auto_html('http://www.youtube.com/watch?v=BwNrmYRiX_o&eurl=http%3A%2F%2Fvukajlija.com%2Fvideo%2Fklipovi%3Fstrana%3D6&feature=player_embedded') { youtube }
     assert_equal %Q|#{DIV_START}<iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe></div>|, result
   end
 
-  def test_transform3
+  def test_transform_3
     result = auto_html('http://www.youtube.com/watch?v=BwNrmYRiX_o&feature=related') { youtube }
     assert_equal %Q|#{DIV_START}<iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe></div>|, result
   end
 
-  def test_transform3
+  def test_transform_with_foo
     result = auto_html('foo http://www.youtube.com/watch?v=fT1ahr81HLw bar') { youtube }
     assert_equal %Q|foo #{DIV_START}<iframe width="420" height="315" src="//www.youtube.com/embed/fT1ahr81HLw" frameborder="0" allowfullscreen></iframe></div> bar|, result
   end
 
-  def test_transform4
+  def test_transform_with_foo_bar_break
     result = auto_html('foo http://www.youtube.com/watch?v=fT1ahr81HLw<br>bar') { youtube }
     assert_equal %Q|foo #{DIV_START}<iframe width="420" height="315" src="//www.youtube.com/embed/fT1ahr81HLw" frameborder="0" allowfullscreen></iframe></div><br>bar|, result
   end
@@ -64,6 +64,17 @@ class YouTubeTest < Minitest::Test
 
     result = auto_html(str) { youtube }
 
+    assert_equal(
+      str, result, 
+      "Should not re-transform HTML with YouTube links inside of it"
+    )
+  end
+
+  def test_prevent_html_transform_in_link
+    str = %Q\
+     With its piano line highly reminiscent of Journey's "<a href="https://www.youtube.com/watch?v=OMD8hBsA-RI#t=221">Faithfully</a>," One Direction's "Steal My Girl"
+    \
+    result = auto_html(str) { youtube }
     assert_equal(
       str, result, 
       "Should not re-transform HTML with YouTube links inside of it"
