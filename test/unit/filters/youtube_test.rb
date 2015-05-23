@@ -56,4 +56,9 @@ class YouTubeTest < Minitest::Test
     result = auto_html("www.youtube.com/watch?v=t7NdBIA4zJg") { youtube }
     assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg" frameborder="0" allowfullscreen></iframe></div>', result
   end
+
+  def test_transform_with_start_param
+    result = auto_html("www.youtube.com/watch?v=t7NdBIA4zJg&start=30") { youtube }
+    assert_equal '<div class="video youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg?start=30" frameborder="0" allowfullscreen></iframe></div>', result
+  end
 end
