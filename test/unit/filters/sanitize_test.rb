@@ -23,8 +23,12 @@ class SanitizeTest < Minitest::Test
   end
 
   def test_trasform5
-    result = auto_html("<a rel='nofollow'>test</div>") { sanitize :tags => %w(a), :attributes => %w(href)}
-    assert_equal "<a>test", result 
+    result = auto_html("<a rel='nofollow'>test</div>") { sanitize :tags => %w(a), :attributes => %w(href) }
+    if Rails::VERSION::MAJOR == 4 and Rails::VERSION::MINOR == 2
+      assert_equal "<a>test</a>", result
+    else
+      assert_equal "<a>test", result
+    end
     #
     # from Rails doc:
     #
