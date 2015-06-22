@@ -1,5 +1,5 @@
 AutoHtml.add_filter(:youtube).with(:width => 420, :height => 315, :frameborder => 0, :wmode => nil, :autoplay => false, :hide_related => false) do |text, options|
-  regex = /(https?:\/\/)?(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?(feature=\S+&)?v=)([A-Za-z0-9_-]*)(\&\S+)*/
+  regex = /(https?:\/\/)?(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?(\S+=\S+&)*v=)([A-Za-z0-9_-]+)(\&\S+)*/
   text.gsub(regex) do
     youtube_id = $5
     width = options[:width]
