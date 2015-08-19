@@ -11,6 +11,6 @@ AutoHtml.add_filter(:vimeo).with(:width => 440, :height => 248, :show_title => f
     query_string_variables = [show_title, show_byline, show_portrait].compact.join("&")
     query_string    = "?" + query_string_variables unless query_string_variables.empty?
 
-    %{<iframe src="//player.vimeo.com/video/#{vimeo_id}#{query_string}" width="#{width}" height="#{height}" frameborder="#{frameborder}"#{allow_fullscreen}></iframe>}
+    %{<div class="video vimeo"><iframe src="//player.vimeo.com/video/#{vimeo_id}#{query_string}" width="#{width}" height="#{height}" frameborder="#{frameborder}"#{allow_fullscreen}></iframe></div>}
   end
 end
