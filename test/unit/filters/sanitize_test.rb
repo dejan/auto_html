@@ -24,7 +24,7 @@ class SanitizeTest < Minitest::Test
 
   def test_trasform5
     result = auto_html("<a rel='nofollow'>test</div>") { sanitize :tags => %w(a), :attributes => %w(href)}
-    assert_equal "<a>test", result 
+    assert_equal "<a>test</a>", result 
     #
     # from Rails doc:
     #

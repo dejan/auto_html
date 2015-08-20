@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency('rinku', '~> 1.7')
   gem.add_dependency('redcarpet', '~> 3.1')
+  gem.add_dependency('rails-html-sanitizer', '~> 1.0.2')
 
   # ensure the gem is built out of versioned files
   gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
