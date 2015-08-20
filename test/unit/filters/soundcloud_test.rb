@@ -48,5 +48,17 @@ class SoundcloudTest < Minitest::Test
     end
   end
 
+    def test_prevent_html_transform_in_link
+      str = %Q{
+       <p>So, I really didn’t expect <b>Kiiara</b> to drop another new one already, since I’m still so wrapped up in her previous songs, <a href="https://soundcloud.com/kiiaraonline/gold">Gold</a> and <a href="https://soundcloud.com/kiiaraonline/kiiara-tennessee">Tennessee</a>
+      }
+      result = auto_html(str) { soundcloud }
+      assert_equal(
+        str, result, 
+        "Should not re-transform HTML with Soundcloud links inside of it"
+      )
+    end
+
+
 
 end
