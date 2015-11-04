@@ -24,11 +24,23 @@ class InstagramTest < Minitest::Test
   def test_prevent_html_transform
     str = '<iframe src="http://instagram.com/p/WsQTLAGvx7/embed" height="714" width="616" frameborder="0" scrolling="no"></iframe>'
 
-    result = auto_html(str) { vimeo }
+    result = auto_html(str) { instagram }
 
     assert_equal(
       str, result, 
       "Should not re-transform HTML with Instagram embeds"
+    )
+  end
+
+
+  def test_prevent_html_transform_in_link
+    str = %Q{
+      The <a href="https://instagram.com/p/8xhXNmlbOb/">video </a>currently being shared on ATP's socials has a soundtrack from their latest label signings Mueran Humanos.
+    }
+    result = auto_html(str) { instagram }
+    assert_equal(
+      str, result, 
+      "Should not re-transform HTML when IG link inside HTML"
     )
   end
 
