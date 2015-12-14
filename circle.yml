@@ -1,6 +1,5 @@
 dependencies:
   override:
-    - rvm-exec 1.9.3 bundle install
     - rvm-exec 2.0.0 bundle install
     - rvm-exec 2.1.6 bundle install
     - rvm-exec 2.2.3 bundle install
@@ -9,7 +8,6 @@ test:
   pre:
     - rvm-exec 2.2.3 bundle exec rubocop
   override:
-    - rvm-exec 1.9.3 bundle exec rspec
     - rvm-exec 2.0.0 bundle exec rspec
     - rvm-exec 2.1.6 bundle exec rspec
     - rvm-exec 2.2.3 bundle exec rspec

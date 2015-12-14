@@ -3,35 +3,34 @@ require 'gemoji'
 
 module AutoHtml
   # Emoji filter
-  class Emoji < Filter
+  class Emoji
+    def initialize(asset_root: '/images', width: 20, height: 20)
+      @asset_root = asset_root
+      @width = width
+      @height = height
+    end
+
     def call(text)
-      text.gsub(emoji_pattern) do |_match|
+      text.gsub(emoji_pattern) do
         name = Regexp.last_match(1)
         alt = ":#{name}:"
-        tag(:img, html_options(name: name, alt: alt))
+        html_options = {
+          src: emoji_url(name),
+          class: 'emoji',
+          title: alt,
+          alt: alt,
+          height: @width,
+          witdh: @height,
+          align: 'absmiddle'
+        }
+        TagHelper.tag(:img, html_options)
       end
     end
 
     private
 
-    def html_options(options)
-      {
-        src: emoji_url(options[:name]),
-        class: 'emoji',
-        title: options[:alt],
-        alt: options[:alt],
-        height: 20,
-        witdh: 20,
-        align: 'absmiddle'
-      }
-    end
-
     def emoji_url(name)
-      File.join(asset_root, asset_path(name))
-    end
-
-    def asset_root
-      options[:asset_root] || '/images'
+      File.join(@asset_root, asset_path(name))
     end
 
     def asset_path(name)
