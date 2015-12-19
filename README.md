@@ -26,7 +26,7 @@ $ gem install auto_html
 
 AutoHtml uses concepts found in "Pipes and Filters" processing design pattern:
 
-* `Filter` - transforms an input. In AutoHtml context, this is any object that does the transformation through `#call(String)` method. AutoHtml provides some filters already, ie Link, Image, Markdown, etc. Filter options should be passed in initializer.
+* `Filter` - transforms an input. In AutoHtml context, this is any object that does the transformation through `#call(String)` method. Filter options should be passed in initializer. AutoHtml provides some filters already, ie Link, Image, Markdown, etc.
 * `Pipeline` - a composition of filters that transforms input by passing the output of one filter as input for the next filter in line. In AutoHtml context, this is the `AutoHtml::Pipeline` class. Since the same interface (method `#call`) is used to pass input, we can say that Pipeline is just another Filter, which means it can be used as a building block for other Pipelines, in a mix with other filters.
 
 ## Examples
