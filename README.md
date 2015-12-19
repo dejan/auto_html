@@ -32,18 +32,24 @@ AutoHtml uses concepts found in "Pipes and Filters" processing design pattern:
 ## Examples
 
 ```ruby
-link = AutoHtml::Link.new(target: '_blank')
-link.call('Checkout out my blog: http://rors.org')
+link_filter = AutoHtml::Link.new(target: '_blank')
+link_filter.call('Checkout out my blog: http://rors.org')
 # => 'Checkout out my blog: <a target="blank" href="http://rors.org">http://rors.org</a>'
 
-emoji = AutoHtml::Emoji.new
-emoji.call(':point_left: yo!')
+emoji_filter = AutoHtml::Emoji.new
+emoji_filter.call(':point_left: yo!')
 # => '<img src="/images/emoji/unicode/1f448.png" class="emoji" title=":point_left:" alt=":point_left:" height="20" witdh="20" align="absmiddle" /> yo!'
 
 # Use Pipeline to combine filters
-chat_line_format = AutoHtml::Pipeline.new(link, emoji)
-chat_line_format.call('Checkout out my blog: http://rors.org :point_left: yo!')
+base_format = AutoHtml::Pipeline.new(link_filter, emoji_filter)
+base_format.call('Checkout out my blog: http://rors.org :point_left: yo!')
 # => 'Checkout out my blog: <a href="http://rors.org">http://rors.org</a> <img src="/images/emoji/unicode/1f448.png" class="emoji" title=":point_left:" alt=":point_left:" height="20" witdh="20" align="absmiddle" /> yo!'
+
+# A pipeline can be reused in another pipeline. Note that the order of filters is important - ie you want
+# `Image` before `Link` filter so that URL of the image gets transformed to `img` tag and not `a` tag.
+comment_format = AutoHtml::Pipeline.new(AutoHtml::Markdown.new, AutoHtml::Image.new, base_format)
+comment_format.call("Hello!\n\n Checkout out my blog: http://rors.org :point_left: yo! \n\n http://gifs.joelglovier.com/boom/booyah.gif")
+# => "<p>Hello!</p>\n\n<p>Checkout out my blog: <a href="<img src="http://rors.org" target="_blank">http://rors.org</a> <img src="/images/emoji/unicode/1f448.png" />" class="emoji" title=":point_left:" alt=":point_left:" height="20" witdh="20" align="absmiddle" /> yo! </p>\n\n<p><a href="<img src="http://gifs.joelglovier.com/boom/booyah.gif" />" target="_blank"><img src="http://gifs.joelglovier.com/boom/booyah.gif" /></a></p>\n"
 ```
 
 ## Bundled filters
