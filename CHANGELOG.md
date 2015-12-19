@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-## 2.0.0-snapshot
+## 2.0.0
 
 * New, breaking API
 * Removed Rails dependency
