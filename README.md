@@ -54,9 +54,6 @@ comment_format.call("Hello!\n\n Checkout out my blog: http://rors.org :point_lef
 
 ## Bundled filters
 
-AutoHtml versions prior to 2.0 had much more bundled filters. In order to increase maintainability of the project,
-decission was made to reduce the list to only few essential ones.
-
 Bellow is the list of bundled filters along with their optional arguments on initialization and their default values.
 
 * `AutoHtml::Emoji`, width: 20, height: 20, asset_root: '/images'
