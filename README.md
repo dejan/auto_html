@@ -62,7 +62,7 @@ Bellow is the list of bundled filters along with their optional arguments on ini
 
 ## Code status
 
-[![Circle CI](https://circleci.com/gh/dejan/auto_html/tree/v2.svg?style=svg&circle-token=57823c8b62302106564f97b58b64643b9760ed99)](https://circleci.com/gh/dejan/auto_html/tree/v2)
+[![Circle CI](https://circleci.com/gh/dejan/auto_html.svg?style=svg&circle-token=57823c8b62302106564f97b58b64643b9760ed99)](https://circleci.com/gh/dejan/auto_html)
 
 ## Licence
 
