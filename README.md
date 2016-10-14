@@ -65,21 +65,28 @@ Bellow is the list of bundled filters along with their optional arguments on ini
 
 ## Using AutoHtml with ActiveRecord
 
-For performance reasons it's a good idea to store the formated output in the database in a separate column so that it's not generated every time.
+For performance reasons it's a good idea to store the formated output in the database, in a separate column, to avoid generating the same content on each access.
 This can be acomplished simply by overriding the attribute writter:
 
 ```ruby
 class Comment < ActiveRecord::Base
-
   FORMAT = AutoHtml::Pipeline.new(
     AutoHtml::HtmlEscape.new,
-    AutoHtml::Link.new(target: '_blank'))
+    AutoHtml::Markdown.new
+  )
 
   def text=(t)
     super(t)
     self[:text_html] = FORMAT.call(t)
   end
 end
+```
+
+Now, every time `text` attribute is set, `text_html` will be set as well:
+
+```Ruby
+comment = Comment.new(text: 'Hey!')
+comment.text_html # => '<p>Hey!</p>'
 ```
 
 ## Code status
