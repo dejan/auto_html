@@ -63,6 +63,25 @@ Bellow is the list of bundled filters along with their optional arguments on ini
 * `AutoHtml::Markdown`
 * `AutoHtml::SimpleFormat`
 
+## Using AutoHtml with ActiveRecord
+
+For performance reasons it's a good idea to store the formated output in the database in a separate column so that it's not generated every time.
+This can be acomplished simply by overriding the attribute writter:
+
+```ruby
+class Comment < ActiveRecord::Base
+
+  FORMAT = AutoHtml::Pipeline.new(
+    AutoHtml::HtmlEscape.new,
+    AutoHtml::Link.new(target: '_blank'))
+
+  def text=(t)
+    super(t)
+    self[:text_html] = FORMAT.call(t)
+  end
+end
+```
+
 ## Code status
 
 [![Circle CI](https://circleci.com/gh/dejan/auto_html.svg?style=svg&circle-token=57823c8b62302106564f97b58b64643b9760ed99)](https://circleci.com/gh/dejan/auto_html)
