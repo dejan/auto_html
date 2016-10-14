@@ -15,10 +15,10 @@ RSpec.describe AutoHtml::Pipeline do
   end
 
   it 'is blank if input is blank' do
-    expect(subject.call '').to eq ''
+    expect(subject.call('')).to eq ''
   end
 
   it 'is blank if input is nil' do
-    expect(subject.call nil).to eq ''
+    expect(subject.call(nil)).to eq ''
   end
 end

@@ -41,6 +41,7 @@ module AutoHtml
       @emoji_pattern ||=
         /:(#{emoji_names.map { |name| Regexp.escape(name) }.join('|')}):/
     end
+    private_class_method :emoji_pattern
 
     def emoji_pattern
       self.class.emoji_pattern
@@ -49,6 +50,7 @@ module AutoHtml
     def self.emoji_names
       ::Emoji.all.map(&:aliases).flatten.sort
     end
+    private_class_method :emoji_names
 
     def emoji_filename(name)
       ::Emoji.find_by_alias(name).image_filename
