@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # AutoHtml is a collection of filters that transform plain text into HTML code.
 module AutoHtml
   autoload :Pipeline,     'auto_html/pipeline'

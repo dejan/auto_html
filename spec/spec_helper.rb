@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'auto_html'
 
 RSpec.configure do |config|

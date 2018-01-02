@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AutoHtml
   # Applies collection of filters to a text
   class Pipeline
