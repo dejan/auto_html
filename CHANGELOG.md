@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+## 2.0.1
+
+* Fix for nofollow attribute on link filter; #175 @mgka
+
 ## 2.0.0
 
 * New, breaking API
