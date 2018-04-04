@@ -13,13 +13,13 @@ module AutoHtml
     end
 
     def call(text)
-      Rinku.auto_link(text, :all, target_attr)
+      Rinku.auto_link(text, :all, attributes)
     end
 
     private
 
     def attributes
-      [target_attr, rel_attr].compact.join(' ')
+      [target_attr, rel_attr].compact.join(' ') unless [target_attr, rel_attr].compact.empty?
     end
 
     def rel_attr

@@ -33,9 +33,21 @@ RSpec.describe AutoHtml::Link do
     expect(result).to eq '<a href="http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0">http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0</a>'
   end
 
-  it 'transforms with options' do
+  it 'transforms with target options' do
     filter = described_class.new(target: '_blank')
     result = filter.call('http://rors.org')
     expect(result).to eq '<a href="http://rors.org" target="_blank">http://rors.org</a>'
+  end
+
+  it 'transforms with rel options' do
+    filter = described_class.new(rel: 'nofollow')
+    result = filter.call('http://rors.org')
+    expect(result).to eq '<a href="http://rors.org" rel="nofollow">http://rors.org</a>'
+  end
+
+  it 'transforms with target and rel options' do
+    filter = described_class.new(target: '_blank', rel: 'nofollow')
+    result = filter.call('http://rors.org')
+    expect(result).to eq '<a href="http://rors.org" target="_blank" rel="nofollow">http://rors.org</a>'
   end
 end
