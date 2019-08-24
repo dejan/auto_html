@@ -89,10 +89,6 @@ comment = Comment.new(text: 'Hey!')
 comment.text_html # => '<p>Hey!</p>'
 ```
 
-## Code status
-
-[![Circle CI](https://circleci.com/gh/dejan/auto_html.svg?style=svg&circle-token=57823c8b62302106564f97b58b64643b9760ed99)](https://circleci.com/gh/dejan/auto_html)
-
 ## Licence
 
 AutoHtml is released under the [MIT License](https://raw.githubusercontent.com/dejan/auto_html/master/MIT-LICENSE).
