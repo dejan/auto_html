@@ -9,6 +9,7 @@ module AutoHtml
 
     def call(text)
       return '' if text.nil? || text.empty?
+
       @filters.inject(text) do |content, filter|
         filter.call(content)
       end

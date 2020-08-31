@@ -17,10 +17,12 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rinku', '~> 1.7'
   gem.add_dependency 'tag_helper', '~> 0.5'
 
-  gem.add_development_dependency 'rake', '~> 10.4'
+  gem.required_ruby_version = '>= 2.0.0'
+
+  gem.add_development_dependency 'rake', '>= 12.3.3'
   gem.add_development_dependency 'rspec', '~> 3.3'
   gem.add_development_dependency 'rspec_junit_formatter', '~> 0.2'
-  gem.add_development_dependency 'rubocop', '~> 0.52.1'
+  gem.add_development_dependency 'rubocop', '~> 0.89.1'
 
   gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
                   'README*', 'LICENSE'] & `git ls-files -z`.split("\0")
