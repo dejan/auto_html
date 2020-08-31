@@ -13,8 +13,8 @@ Gem::Specification.new do |gem|
   gem.license  = 'MIT'
 
   gem.add_dependency 'gemoji', '~> 2.1'
-  gem.add_dependency 'redcarpet', '~> 3.3'
-  gem.add_dependency 'rinku', '~> 1.7'
+  gem.add_dependency 'redcarpet', '~> 3.5'
+  gem.add_dependency 'rinku', '~> 2.0'
   gem.add_dependency 'tag_helper', '~> 0.5'
 
   gem.required_ruby_version = '>= 2.0.0'
