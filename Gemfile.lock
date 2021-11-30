@@ -51,6 +51,7 @@ GEM
     unicode-display_width (1.7.0)
 
 PLATFORMS
+  universal-java-11
   x86_64-linux
 
 DEPENDENCIES
