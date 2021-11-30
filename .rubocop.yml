@@ -1,6 +1,7 @@
 AllCops:
   NewCops: enable
   TargetRubyVersion: 2.5
+  SuggestExtensions: false
 
 Metrics/MethodLength:
   Enabled: false
