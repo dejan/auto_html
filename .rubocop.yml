@@ -1,5 +1,6 @@
 AllCops:
-  TargetRubyVersion: 2.4
+  NewCops: enable
+  TargetRubyVersion: 2.5
 
 Metrics/MethodLength:
   Enabled: false
@@ -8,7 +9,4 @@ Metrics/LineLength:
   Enabled: false
 
 Metrics/BlockLength:
-  Enabled: false
-
-Gemspec/RequiredRubyVersion:
   Enabled: false
