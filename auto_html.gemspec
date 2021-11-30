@@ -15,15 +15,17 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'gemoji', '~> 2.1'
   gem.add_dependency 'redcarpet', '~> 3.5'
   gem.add_dependency 'rinku', '~> 2.0'
-  gem.add_dependency 'tag_helper', '~> 0.5'
 
-  gem.required_ruby_version = '>= 2.0.0'
+  gem.required_ruby_version = '>= 2.5.0'
 
-  gem.add_development_dependency 'rake', '>= 12.3.3'
+  gem.add_development_dependency 'rake', '~> 13.0.6'
   gem.add_development_dependency 'rspec', '~> 3.3'
   gem.add_development_dependency 'rspec_junit_formatter', '~> 0.2'
-  gem.add_development_dependency 'rubocop', '~> 0.89.1'
+  gem.add_development_dependency 'rubocop', '~> 1.23'
 
   gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
                   'README*', 'LICENSE'] & `git ls-files -z`.split("\0")
+  gem.metadata = {
+    'rubygems_mfa_required' => 'true'
+  }
 end

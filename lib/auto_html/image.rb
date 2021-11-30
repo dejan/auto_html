@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'tag_helper'
-
 module AutoHtml
   # Image filter
   class Image
@@ -19,7 +17,7 @@ module AutoHtml
     private
 
     def image_pattern
-      %r{(?<!src=")https?:\/\/.+?\.(jpg|jpeg|bmp|gif|png)(\?\S+)?}i
+      %r{(?<!src=")https?://.+?\.(jpg|jpeg|bmp|gif|png)(\?\S+)?}i
     end
   end
 end

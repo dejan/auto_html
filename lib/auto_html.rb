@@ -3,7 +3,7 @@
 # AutoHtml is a collection of filters that transform plain text into HTML code.
 module AutoHtml
   autoload :Pipeline,     'auto_html/pipeline'
-
+  autoload :TagHelper,    'auto_html/tag_helper'
   autoload :Emoji,        'auto_html/emoji'
   autoload :HtmlEscape,   'auto_html/html_escape'
   autoload :Image,        'auto_html/image'
