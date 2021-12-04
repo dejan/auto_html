@@ -56,7 +56,7 @@ comment_format.call("Hello!\n\n Checkout out my blog: http://rors.org :point_lef
 
 Bellow is the list of bundled filters along with their optional arguments on initialization and their default values.
 
-* `AutoHtml::Emoji`, width: 20, height: 20, asset_root: '/images'
+* `AutoHtml::Emoji`
 * `AutoHtml::HtmlEscape`
 * `AutoHtml::Image`, proxy: nil, alt: nil
 * `AutoHtml::Link`, target: nil, rel: nil
