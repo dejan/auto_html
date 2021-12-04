@@ -20,7 +20,6 @@ Run rubocop:
 
     bundle exec rubocop
 
-
 Run server
 
     bundle exec rackup

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autohtml-deployment
+  labels:
+    app: autohtml
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: autohtml
+  template:
+    metadata:
+      labels:
+        app: autohtml
+    spec:
+      containers:
+        - name: autohtml
+          image: ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA
+          ports:
+            - containerPort: 9292
+      imagePullSecrets:
+        - name: ghcr-credentials
