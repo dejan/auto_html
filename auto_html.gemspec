@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.homepage = 'https://github.com/dejan/auto_html'
   gem.license  = 'MIT'
 
-  gem.add_dependency 'gemoji', '~> 2.1'
+  gem.add_dependency 'gemoji', '~> 4.0.0.rc2'
   gem.add_dependency 'redcarpet', '~> 3.5'
   gem.add_dependency 'rinku', '~> 2.0'
 
