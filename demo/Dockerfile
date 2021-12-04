@@ -12,5 +12,7 @@ COPY Gemfile /app
 COPY Gemfile.lock /app
 RUN bundle install
 
+COPY . /app
+
 EXPOSE 9292
 CMD ["rackup", "-o", "0.0.0.0"]
