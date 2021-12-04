@@ -40,4 +40,4 @@ jobs:
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
-          args: apply -f ./apply/
+          args: apply -f ./demo/apply/

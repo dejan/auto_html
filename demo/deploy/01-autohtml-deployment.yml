@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: autohtml
   name: autohtml-deployment
   labels:
     app: autohtml
