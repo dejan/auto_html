@@ -17,7 +17,7 @@ module AutoHtml
     private
 
     def image_pattern
-      %r{(?<!src=")https?://.+?\.(jpg|jpeg|bmp|gif|png)(\?\S+)?}i
+      %r{(?<!src=")https?://.+?\.(jpg|jpeg|bmp|gif|png|svg)(\?\S+)?}i
     end
   end
 end
