@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name = 'auto_html'
-  gem.version = '2.0.2'
+  gem.version = '2.1.0'
 
   gem.summary = 'Plain text to HTML conversion'
   gem.description = 'Collection of filters for transforming text into HTML code'
