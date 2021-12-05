@@ -1,0 +1,43 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Demo
+
+on:
+  push:
+    branches: [ master, demo ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./demo
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: docker build . -t ghcr.io/${{ github.repository }}:${{ github.sha }}
+
+      - name: Push Docker image
+        run: docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
+
+      - name: Repleace ENV variables in deploy files
+        run: |
+          mkdir apply
+          for f in $(find ./deploy/ -regex '.*\.yml'); do envsubst < $f > "./apply/$(basename $f)"; done
+      - uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        with:
+          args: apply -f ./demo/apply/

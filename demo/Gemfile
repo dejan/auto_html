@@ -1,0 +1,12 @@
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
+
+gem 'auto_html'
+gem 'puma'
+gem 'rack-test'
+gem 'rerun'
+gem 'roda'
+gem 'rspec'
+gem 'rubocop'
+gem 'tilt'

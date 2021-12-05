@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>auto_html demo</title>
+    <link rel="stylesheet" href="/css/bulma-0.9.3.min.css">
+    <link rel="stylesheet" href="/css/highlight-11.3.1-agate.min.css">
+    <script src="/js/highlight-11.3.1.min.js"></script>
+
+    <script type="module">
+      import { Application, Controller } from "/js/stimulus-3.0.1.js"
+      window.Stimulus = Application.start()
+      Stimulus.register("demo", class extends Controller {
+        static targets = [ "form", "code", "html" ]
+
+        connect() {
+          this.formTarget.text.select();
+          this.input();
+        }
+
+        input() {
+          fetch(this.formTarget.action, {method:'post', body: new FormData(this.formTarget)})
+            .then(response => response.text())
+            .then(html => this.htmlTarget.innerHTML = html)
+            .then(html => this.codeTarget.innerHTML = hljs.highlight(html, {language: 'html'}).value);
+        }
+      })
+    </script>
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container" data-controller="demo">
+        <h1 class="title">auto_html Ruby gem demo</h1>
+        <p class="subtitle">Transforms user input text into enriched HTML</p>
+        <form name="form" action="auto-html" data-demo-target="form" method="post" >
+          <div class="field">
+            <label class="label">Enter some text:</label>
+            <div class="control">
+              <textarea name="text" class="textarea" data-action="demo#input" placeholder="Type something ...">
+Hello! :wave: This is a quick demo for 'auto_html'.
+Visit: https://github.com/dejan/auto_html to learn more.
+
+https://gifs.joelglovier.com/omg/ooooo.gif</textarea>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <label class="checkbox"><input name="filters[]" value="escape" type="checkbox" data-action="demo#input" checked="checked"> Escape</input></label>
+              <label class="checkbox"><input name="filters[]" value="simple_format" type="checkbox" data-action="demo#input" checked="checked"> Format</input></label>
+              <label class="checkbox"><input name="filters[]" value="image" type="checkbox" data-action="demo#input" checked="checked"> Image</input></label>
+              <label class="checkbox"><input name="filters[]" value="link" type="checkbox" data-action="demo#input" checked="checked"> Link</input></label>
+              <label class="checkbox"><input name="filters[]" value="emoji" type="checkbox" data-action="demo#input" checked="checked"> Emoji</input></label>
+            </div>
+          </div>
+        </form>
+        <hr/>
+        <p class="label">This is how genereted code looks like:</p>
+        <div data-demo-target="code" class="content box has-text-white has-background-dark"></div>
+        <p class="label">This is how genereted code looks like rendered:</p>
+        <div data-demo-target="html" class="content box"></div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: autohtml-ingress
+  namespace: autohtml
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
+spec:
+  tls:
+   - hosts:
+     - "autohtml.rors.org"
+     secretName: "autohtml-tls"
+  rules:
+  - host: "autohtml.rors.org"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: autohtml-service
+            port:
+              number: 80
