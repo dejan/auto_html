@@ -6,6 +6,7 @@ require 'auto_html'
 # Demo app for auto_html
 class Demo < Roda
   plugin :render
+  plugin :static, ['/css', '/js']
 
   FILTERS = {
     'escape' => AutoHtml::HtmlEscape.new,

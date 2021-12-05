@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>auto_html demo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet"href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/agate.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <link rel="stylesheet" href="/css/bulma-0.9.3.min.css">
+    <link rel="stylesheet" href="/css/highlight-11.3.1-agate.min.css">
+    <script src="/js/highlight-11.3.1.min.js"></script>
 
     <script type="module">
-      import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
+      import { Application, Controller } from "/js/stimulus-3.0.1.js"
       window.Stimulus = Application.start()
       Stimulus.register("demo", class extends Controller {
         static targets = [ "form", "code", "html" ]
@@ -42,7 +42,7 @@
 Hello! :wave: This is a quick demo for 'auto_html'.
 Visit: https://github.com/dejan/auto_html to learn more.
 
-http://gifs.joelglovier.com/omg/ooooo.gif</textarea>
+https://gifs.joelglovier.com/omg/ooooo.gif</textarea>
             </div>
           </div>
           <div class="field">
