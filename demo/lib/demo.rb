@@ -12,7 +12,7 @@ class Demo < Roda
     'simple_format' => AutoHtml::SimpleFormat.new,
     'link' => AutoHtml::Link.new,
     'image' => AutoHtml::Image.new,
-    'emoji' => AutoHtml::Emoji.new,
+    'emoji' => AutoHtml::Emoji.new
   }.freeze
 
   route do |r|
