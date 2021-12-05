@@ -13,7 +13,6 @@ class Demo < Roda
     'link' => AutoHtml::Link.new,
     'image' => AutoHtml::Image.new,
     'emoji' => AutoHtml::Emoji.new,
-    'markdown' => AutoHtml::Markdown.new
   }.freeze
 
   route do |r|
