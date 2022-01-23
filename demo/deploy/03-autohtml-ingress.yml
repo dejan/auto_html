@@ -4,6 +4,7 @@ metadata:
   name: autohtml-ingress
   namespace: autohtml
   annotations:
+    kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
   tls:
