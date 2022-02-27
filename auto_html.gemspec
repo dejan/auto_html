@@ -14,8 +14,8 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'gemoji', '~> 4.0.0.rc2'
   gem.add_dependency 'redcarpet', '~> 3.5'
-  gem.add_dependency 'rinku', '~> 2.0'
   gem.add_dependency 'rexml', '~> 3.2.5'
+  gem.add_dependency 'rinku', '~> 2.0'
 
   gem.required_ruby_version = '>= 2.5.0'
 
