@@ -4,6 +4,7 @@ PATH
     auto_html (2.1.0)
       gemoji (~> 4.0.0.rc2)
       redcarpet (~> 3.5)
+      rexml (~> 3.2.5)
       rinku (~> 2.0)
 
 GEM
@@ -51,6 +52,7 @@ GEM
     unicode-display_width (2.1.0)
 
 PLATFORMS
+  x86_64-darwin-19
   x86_64-linux
 
 DEPENDENCIES
