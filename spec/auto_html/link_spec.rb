@@ -33,6 +33,11 @@ RSpec.describe AutoHtml::Link do
     expect(result).to eq '<a href="http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0">http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0</a>'
   end
 
+  it 'not transforms short domain URL' do
+    result = subject.call('http://localhost:3000')
+    expect(result).to eq 'http://localhost:3000'
+  end
+
   it 'transforms with target options' do
     filter = described_class.new(target: '_blank')
     result = filter.call('http://rors.org')
@@ -43,6 +48,12 @@ RSpec.describe AutoHtml::Link do
     filter = described_class.new(rel: 'nofollow')
     result = filter.call('http://rors.org')
     expect(result).to eq '<a href="http://rors.org" rel="nofollow">http://rors.org</a>'
+  end
+
+  it 'transforms with short_domains options' do
+    filter = described_class.new(short_domains: true)
+    result = filter.call('http://localhost:3000')
+    expect(result).to eq '<a href="http://localhost:3000">http://localhost:3000</a>'
   end
 
   it 'transforms with target and rel options' do
