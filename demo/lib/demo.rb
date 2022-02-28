@@ -11,7 +11,7 @@ class Demo < Roda
   FILTERS = {
     'escape' => AutoHtml::HtmlEscape.new,
     'simple_format' => AutoHtml::SimpleFormat.new,
-    'link' => AutoHtml::Link.new,
+    'link' => AutoHtml::Link.new(short_domains: true),
     'image' => AutoHtml::Image.new,
     'emoji' => AutoHtml::Emoji.new
   }.freeze
