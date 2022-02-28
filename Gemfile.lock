@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    auto_html (2.1.0)
+    auto_html (2.1.1)
       gemoji (~> 4.0.0.rc2)
       redcarpet (~> 3.5)
       rexml (~> 3.2.5)
