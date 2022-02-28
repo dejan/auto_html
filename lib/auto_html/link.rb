@@ -7,13 +7,14 @@ require 'rexml/document'
 module AutoHtml
   # Link filter
   class Link
-    def initialize(target: nil, rel: nil)
+    def initialize(target: nil, rel: nil, short_domains: false)
       @target = target
       @rel = rel
+      @short_domains = short_domains
     end
 
     def call(text)
-      Rinku.auto_link(text, :all, attributes)
+      Rinku.auto_link(text, :all, attributes, nil, flags)
     end
 
     private
@@ -28,6 +29,10 @@ module AutoHtml
 
     def target_attr
       %(target="#{@target}") if @target
+    end
+
+    def flags
+      @short_domains ? Rinku::AUTOLINK_SHORT_DOMAINS : 0
     end
   end
 end
