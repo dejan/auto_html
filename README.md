@@ -1,6 +1,6 @@
 # AutoHtml
 
-AutoHtml is a collection of filters that transforms plain text into HTML code. See [live demo](https://autohtml.rors.org).
+AutoHtml is a collection of filters that transforms plain text into HTML code. See [live demo](https://autohtml.makeme.tools).
 
 ## Installation
 
