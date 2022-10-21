@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
    - hosts:
-     - "autohtml.rors.org"
+     - "autohtml.makeme.tools"
      secretName: "autohtml-tls"
   rules:
-  - host: "autohtml.rors.org"
+  - host: "autohtml.makeme.tools"
     http:
       paths:
       - pathType: Prefix
