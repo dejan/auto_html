@@ -4,8 +4,8 @@ require 'spec_helper'
 
 RSpec.describe AutoHtml::Image do
   it 'transforms an image link to image tag' do
-    result = subject.call('http://rors.org/images/rails.png')
-    expect(result).to eq('<img src="http://rors.org/images/rails.png" />')
+    result = subject.call('https://example.org/images/rails.png')
+    expect(result).to eq('<img src="https://example.org/images/rails.png" />')
   end
 
   it 'transforms image link with a param to image tag' do
@@ -30,8 +30,8 @@ RSpec.describe AutoHtml::Image do
   end
 
   it 'transforms an image link within text to image tag' do
-    result = subject.call('Which do you prefer, this one http://www.lockhartfineart.com/images/Rio_Grande_Frost.JPG, or this one http://rors.org/images/rails.png?')
-    expect(result).to eq('Which do you prefer, this one <img src="http://www.lockhartfineart.com/images/Rio_Grande_Frost.JPG" />, or this one <img src="http://rors.org/images/rails.png" />?')
+    result = subject.call('Which do you prefer, this one http://www.lockhartfineart.com/images/Rio_Grande_Frost.JPG, or this one https://example.org/images/rails.png?')
+    expect(result).to eq('Which do you prefer, this one <img src="http://www.lockhartfineart.com/images/Rio_Grande_Frost.JPG" />, or this one <img src="https://example.org/images/rails.png" />?')
   end
 
   it 'transforms an image link with a lot of param to image tag' do

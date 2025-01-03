@@ -4,8 +4,8 @@ require 'spec_helper'
 
 RSpec.describe AutoHtml::SimpleFormat do
   it 'formats input using simple rules' do
-    result = subject.call('Hey check out my blog => http://rors.org')
-    expect(result).to eq '<p>Hey check out my blog => http://rors.org</p>'
+    result = subject.call('Hey check out my blog => https://example.org')
+    expect(result).to eq '<p>Hey check out my blog => https://example.org</p>'
 
     expect(subject.call("crazy\r\n cross\r platform linebreaks")).to eq "<p>crazy\n<br /> cross\n<br /> platform linebreaks</p>"
     expect(subject.call("A paragraph\n\nand another one!")).to eq "<p>A paragraph</p>\n\n<p>and another one!</p>"
