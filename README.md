@@ -109,7 +109,6 @@ rake rubocop
 rake spec
 ```
 
-
 ## Licence
 
 AutoHtml is released under the [MIT License](https://raw.githubusercontent.com/dejan/auto_html/master/MIT-LICENSE).
