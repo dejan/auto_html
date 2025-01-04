@@ -7,6 +7,7 @@ GEM
       redcarpet (~> 3.5)
       rexml (~> 3.2.5)
       rinku (~> 2.0)
+    did_you_mean (2.0.0)
     diff-lcs (1.5.1)
     ffi (1.17.1)
     ffi (1.17.1-aarch64-linux-gnu)
@@ -98,6 +99,7 @@ PLATFORMS
 
 DEPENDENCIES
   auto_html
+  did_you_mean
   puma
   rack-test
   rackup
