@@ -91,8 +91,23 @@ comment.text_html # => '<p>Hey!</p>'
 
 ## Development
 
+### Install dependencies
+
+```sh
+bundle install
+```
+
 ### Run Rubocop
 
+```sh
+rake rubocop
+```
+
+### Run tests
+
+```sh
+rake spec
+```
 
 
 ## Licence
