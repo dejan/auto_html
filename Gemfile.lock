@@ -11,7 +11,6 @@ GEM
   remote: http://rubygems.org/
   specs:
     ast (2.4.2)
-    did_you_mean (1.6.3)
     diff-lcs (1.4.4)
     gemoji (4.0.1)
     json (2.7.5)
@@ -64,7 +63,6 @@ PLATFORMS
 
 DEPENDENCIES
   auto_html!
-  did_you_mean (~> 1.4)
   rake (~> 13.0.6)
   rspec (~> 3.3)
   rspec_junit_formatter (~> 0.2)
