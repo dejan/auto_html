@@ -89,6 +89,12 @@ comment = Comment.new(text: 'Hey!')
 comment.text_html # => '<p>Hey!</p>'
 ```
 
+## Development
+
+### Run Rubocop
+
+
+
 ## Licence
 
 AutoHtml is released under the [MIT License](https://raw.githubusercontent.com/dejan/auto_html/master/MIT-LICENSE).

@@ -19,11 +19,6 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 2.5.0'
 
-  gem.add_development_dependency 'rake', '~> 13.0.6'
-  gem.add_development_dependency 'rspec', '~> 3.3'
-  gem.add_development_dependency 'rspec_junit_formatter', '~> 0.2'
-  gem.add_development_dependency 'rubocop', '~> 1.23'
-
   gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
                   'README*', 'LICENSE'] & `git ls-files -z`.split("\0")
   gem.metadata = {
