@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
-    auto_html (2.2.0)
+    auto_html (2.2.1)
       gemoji (~> 4.0.0.rc2)
       redcarpet (~> 3.5)
       rexml (~> 3.3.9)
@@ -43,7 +43,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    redcarpet (3.6.0)
+    redcarpet (3.6.1)
     regexp_parser (2.10.0)
     rerun (0.14.0)
       listen (~> 3.0)
