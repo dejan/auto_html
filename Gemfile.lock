@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    auto_html (2.2.0)
+    auto_html (2.2.1)
       gemoji (~> 4.0.0.rc2)
       redcarpet (~> 3.5)
       rexml (~> 3.3.9)
@@ -69,4 +69,4 @@ DEPENDENCIES
   rubocop (~> 1.23)
 
 BUNDLED WITH
-   2.2.22
+   2.6.8
